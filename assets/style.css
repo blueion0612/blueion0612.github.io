@@ -662,18 +662,21 @@ h2 {
 
 .project-year {
   font-family: var(--mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.08em;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
   color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 3px 10px;
   white-space: nowrap;
 }
 
-/* right-side stack: visibility → year → language */
+/* right-side row: visibility · year · language, boxed to one spec */
 .project-side,
 .project-meta {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 8px;
   flex-shrink: 0;
 }
@@ -864,7 +867,8 @@ footer {
   .award-year { width: auto; }
 
   .project-list li { flex-direction: column; gap: 8px; }
-  .project-meta { flex-direction: row; align-items: center; gap: 10px; margin-top: 0; order: -1; }
+  .project-meta { justify-content: flex-start; margin-top: 0; order: -1; }
+  .project-head { flex-wrap: wrap; }
 
   .contact-mail { font-size: 1.02rem; }
 }
