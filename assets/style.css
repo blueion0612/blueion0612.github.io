@@ -226,6 +226,34 @@ section > p {
   object-fit: cover;
 }
 
+/* ------------------------------------------------------------ fact rows (about & contact) */
+
+.facts { margin: 0; }
+
+.fact {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 28px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+.facts .fact:last-child { border-bottom: 1px solid var(--line); }
+
+.fact dt {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding-top: 4px;
+}
+
+.fact dd {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
 /* ------------------------------------------------------------ research cards */
 
 .grid-2 {
@@ -355,10 +383,26 @@ section > p {
   color: var(--muted);
 }
 
-.project-card > p {
-  font-size: 0.94rem;
+.project-points {
+  list-style: none;
+  margin-top: 2px;
+}
+
+.project-points li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.93rem;
   color: var(--muted);
-  max-width: 70ch;
+  line-height: 1.6;
+  margin: 5px 0;
+  max-width: 72ch;
+}
+
+.project-points li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
 }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
@@ -412,8 +456,6 @@ section > p {
 
 /* ------------------------------------------------------------ contact & footer */
 
-#contact .contact-line { margin-top: 20px; }
-
 footer {
   border-top: 1px solid var(--line);
   margin-top: 96px;
@@ -457,6 +499,12 @@ footer {
     grid-template-columns: 1fr;
     gap: 6px;
     padding: 18px 0;
+  }
+
+  .fact {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 14px 0;
   }
 
   .project-list li { flex-direction: column; gap: 8px; }
