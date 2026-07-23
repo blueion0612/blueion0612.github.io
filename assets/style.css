@@ -745,16 +745,18 @@ h2 {
 
 .project-list { list-style: none; }
 
-.project-list li {
+.project-list > li {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
-  padding: 18px 0;
+  padding: 20px 0;
   border-top: 1px solid var(--line);
 }
-.project-list li:first-child { border-top: none; }
-.project-list li:last-child { border-bottom: 1px solid var(--line); }
+.project-list > li:first-child { border-top: none; }
+.project-list > li:last-child { border-bottom: 1px solid var(--line); }
+
+.list-main .project-points { margin-top: 8px; }
 
 .project-list a,
 .project-list .no-link { font-weight: 600; color: var(--ink); }
@@ -866,7 +868,7 @@ footer {
   .awards li { flex-direction: column; gap: 4px; padding: 13px 0; }
   .award-year { width: auto; }
 
-  .project-list li { flex-direction: column; gap: 8px; }
+  .project-list > li { flex-direction: column; gap: 8px; }
   .project-meta { justify-content: flex-start; margin-top: 0; order: -1; }
   .project-head { flex-wrap: wrap; }
 

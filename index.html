@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Besley:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/style.css?v=12">
+  <link rel="stylesheet" href="assets/style.css?v=13">
 </head>
 <body>
 
@@ -267,21 +267,21 @@
 
       <article class="project-card">
         <div class="project-head">
-          <h3><a href="https://github.com/blueion0612/IVO" target="_blank" rel="noopener">IVO — IMU-Vision Overlay</a></h3>
+          <h3><a href="https://github.com/blueion0612/sEMG_Gesture_Classifier" target="_blank" rel="noopener">sEMG Gesture Classifier</a></h3>
           <div class="project-side">
             <span class="tag vis-public">Public</span>
-            <span class="project-year">2025</span>
-            <span class="chip">Python · JS</span>
+            <span class="project-year">2026</span>
+            <span class="chip">Python</span>
           </div>
         </div>
         <ul class="project-points">
-          <li>Hands-free presentation control — 15 smartwatch IMU gestures + webcam hand tracking, haptic confirmation on the wrist</li>
-          <li>On-screen drawing with real-time handwriting OCR, calculation, and graph generation</li>
-          <li>Local Whisper speech-to-text and on-device LLM Q&amp;A summarization — no cloud required</li>
-          <li>Myongji University capstone project</li>
+          <li>Six-gesture hand recognition from 16-channel surface EMG at 2&nbsp;kHz — public GREAT dataset (8 subjects, arm-translation protocol)</li>
+          <li>Classical-ML bake-off across Hudgins-4 and rich-14 feature sets, extended with boosting successors and soft voting</li>
+          <li>Reproduces the original paper's protocol as a baseline, then adds LOSO evaluation — KNN ≈ 98% on full data</li>
+          <li>Graduate coursework, Korea University</li>
         </ul>
         <div class="chips">
-          <span class="chip">AI</span><span class="chip">App</span><span class="chip chip-mod">IMU</span><span class="chip chip-mod">Vision</span>
+          <span class="chip">AI</span><span class="chip chip-mod">EMG</span>
         </div>
       </article>
 
@@ -324,30 +324,43 @@
       </article>
     </div>
 
-    <h3 class="more-heading">More Projects</h3>
+    <h3 class="more-heading">Development Projects</h3>
     <ul class="project-list">
       <li>
         <div class="list-main">
           <a href="https://github.com/blueion0612/Mint_IDE_Student" target="_blank" rel="noopener">MINT Exam IDE</a>
           <span class="list-sep">·</span>
           <a href="https://github.com/blueion0612/Mint_IDE_Teacher" target="_blank" rel="noopener">MINT Grader</a>
-          <p>Anti-cheat coding-exam environment — monitored editor (edit history, clipboard forensics, screen recording), AES-256-encrypted submissions, and a batch-decrypt grading tool for instructors.</p>
+          <ul class="project-points">
+            <li>Anti-cheat coding-exam environment — monitored editor with edit history, clipboard forensics, and screen recording</li>
+            <li>AES-256-encrypted submissions; instructors batch-decrypt code, activity logs, and recordings per student</li>
+            <li>Tauri desktop apps with one-command classroom installers (portable Python, Node, JDK, FFmpeg bundled)</li>
+          </ul>
           <div class="chips"><span class="chip">SW</span><span class="chip">App</span></div>
         </div>
         <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2026</span><span class="chip">Rust · TS</span></span>
       </li>
       <li>
         <div class="list-main">
-          <a href="https://github.com/blueion0612/sEMG_Gesture_Classifier" target="_blank" rel="noopener">sEMG Gesture Classifier</a>
-          <p>Classical-ML bake-off for six-gesture recognition on the public GREAT dataset (16-channel sEMG, 2&nbsp;kHz) — Hudgins/rich feature sets, boosting successors, paper-protocol reproduction, and LOSO. Graduate coursework.</p>
-          <div class="chips"><span class="chip">AI</span><span class="chip chip-mod">EMG</span></div>
+          <a href="https://github.com/blueion0612/IVO" target="_blank" rel="noopener">IVO — IMU-Vision Overlay</a>
+          <ul class="project-points">
+            <li>Hands-free presentation control — 15 smartwatch IMU gestures + webcam hand tracking, haptic confirmation on the wrist</li>
+            <li>On-screen drawing with real-time handwriting OCR, calculation, and graph generation</li>
+            <li>Local Whisper speech-to-text and on-device LLM Q&amp;A summarization — no cloud required</li>
+            <li>Myongji University capstone project</li>
+          </ul>
+          <div class="chips"><span class="chip">AI</span><span class="chip">App</span><span class="chip chip-mod">IMU</span><span class="chip chip-mod">Vision</span></div>
         </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2026</span><span class="chip">Python</span></span>
+        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip">Python · JS</span></span>
       </li>
       <li>
         <div class="list-main">
           <a href="https://github.com/blueion0612/IMU_Stream_APP_MJU" target="_blank" rel="noopener">IMU Stream App</a>
-          <p>Real-time IMU streaming from a WearOS watch and Android phone over UDP — accelerometer, gyroscope, and rotation vector, with server-to-watch haptic feedback.</p>
+          <ul class="project-points">
+            <li>Streams accelerometer, gyroscope, and rotation vector from a WearOS watch and Android phone — 50&nbsp;Hz over UDP, 55 channels</li>
+            <li>Server-to-watch haptic feedback and live Wi-Fi status monitoring</li>
+            <li>Data source for the IMU gesture pipeline and IVO</li>
+          </ul>
           <div class="chips"><span class="chip">App</span><span class="chip chip-mod">IMU</span></div>
         </div>
         <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip">Kotlin</span></span>
@@ -355,7 +368,11 @@
       <li>
         <div class="list-main">
           <a href="https://github.com/blueion0612/CapstoneVOX" target="_blank" rel="noopener">CapstoneVOX</a>
-          <p>Smartwatch gesture recognition with live pose estimation in Unity — five sequence models (BiLSTM, GRU, CNN, CNN-BiLSTM, TCN) benchmarked on F1, parameters, and FLOPs.</p>
+          <ul class="project-points">
+            <li>Smartwatch gesture recognition with live pose estimation rendered in Unity</li>
+            <li>Five sequence models benchmarked on F1, parameters, and FLOPs — CNN-BiLSTM strongest</li>
+            <li>Built on the wear_mocap stack; capstone design project</li>
+          </ul>
           <div class="chips"><span class="chip">AI</span><span class="chip">App</span><span class="chip chip-mod">IMU</span></div>
         </div>
         <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip">Python · C#</span></span>
