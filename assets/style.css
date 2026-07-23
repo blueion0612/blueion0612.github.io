@@ -650,7 +650,7 @@ h2 {
 
 .project-head {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 10px;
@@ -668,12 +668,24 @@ h2 {
   white-space: nowrap;
 }
 
+/* right-side stack: visibility → year → language */
+.project-side,
 .project-meta {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
   flex-shrink: 0;
-  margin-top: 4px;
+}
+.project-meta { margin-top: 4px; }
+
+.vis-public { color: var(--green); border: 1px solid var(--green-dim); }
+.vis-private { color: var(--gold); border: 1px solid var(--gold-dim); }
+
+.chip-mod {
+  color: var(--green);
+  border-color: var(--green-dim);
+  background: transparent;
 }
 
 .project-points { list-style: none; margin-top: 2px; }
@@ -751,6 +763,8 @@ h2 {
   margin-top: 3px;
   max-width: 64ch;
 }
+
+.project-list .chips { margin-top: 10px; }
 
 .list-sep { color: var(--muted); margin: 0 4px; }
 
@@ -850,6 +864,7 @@ footer {
   .award-year { width: auto; }
 
   .project-list li { flex-direction: column; gap: 8px; }
+  .project-meta { flex-direction: row; align-items: center; gap: 10px; margin-top: 0; order: -1; }
 
   .contact-mail { font-size: 1.02rem; }
 }

@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Besley:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/style.css?v=10">
+  <link rel="stylesheet" href="assets/style.css?v=11">
 </head>
 <body>
 
@@ -248,62 +248,78 @@
       <article class="project-card">
         <div class="project-head">
           <h3>Hip Exoskeleton Gait Assessment</h3>
-          <span class="project-year">2026</span>
+          <div class="project-side">
+            <span class="tag vis-private">Private</span>
+            <span class="project-year">2026</span>
+            <span class="chip">Python</span>
+          </div>
         </div>
         <ul class="project-points">
           <li>Turns a hip exoskeleton into a gait-assessment platform — clinical metrics from the robot's own sensors alone (hip-joint encoders + thigh IMUs, 100&nbsp;Hz)</li>
           <li>Estimates three clinical measures in real time: sit-to-stand power age, Gait Profile Score, and enhanced Gait Variability Index</li>
           <li>Knowledge distillation — motion-capture and reference-IMU teachers train lightweight onboard student models</li>
-          <li>Validated leave-one-subject-out on ~30 adults aged 21–76, indoors and outdoors, across assistance levels — industry-sponsored R&amp;D, code private</li>
+          <li>Validated leave-one-subject-out on ~30 adults aged 21–76, indoors and outdoors, across assistance levels — industry-sponsored R&amp;D</li>
         </ul>
         <div class="chips">
-          <span class="chip">PyTorch</span><span class="chip">Knowledge Distillation</span><span class="chip">LOSO</span><span class="chip">Private</span>
+          <span class="chip">AI</span><span class="chip">SW</span><span class="chip chip-mod">IMU</span><span class="chip chip-mod">Encoder</span>
         </div>
       </article>
 
       <article class="project-card">
         <div class="project-head">
           <h3><a href="https://github.com/blueion0612/IVO" target="_blank" rel="noopener">IVO — IMU-Vision Overlay</a></h3>
-          <span class="project-year">2025</span>
+          <div class="project-side">
+            <span class="tag vis-public">Public</span>
+            <span class="project-year">2025</span>
+            <span class="chip">Python · JS</span>
+          </div>
         </div>
         <ul class="project-points">
-          <li>Hands-free presentation overlay — 15 smartwatch IMU gestures + webcam hand tracking, with haptic confirmation on the watch</li>
+          <li>Hands-free presentation control — 15 smartwatch IMU gestures + webcam hand tracking, haptic confirmation on the wrist</li>
           <li>On-screen drawing with real-time handwriting OCR, calculation, and graph generation</li>
           <li>Local Whisper speech-to-text and on-device LLM Q&amp;A summarization — no cloud required</li>
           <li>Myongji University capstone project</li>
         </ul>
         <div class="chips">
-          <span class="chip">Electron</span><span class="chip">Python</span><span class="chip">Computer Vision</span><span class="chip">On-device AI</span>
+          <span class="chip">AI</span><span class="chip">App</span><span class="chip chip-mod">IMU</span><span class="chip chip-mod">Vision</span>
         </div>
       </article>
 
       <article class="project-card">
         <div class="project-head">
           <h3><a href="https://github.com/blueion0612/PPG_Classifier" target="_blank" rel="noopener">PPG Fist Classifier</a></h3>
-          <span class="project-year">2025</span>
+          <div class="project-side">
+            <span class="tag vis-public">Public</span>
+            <span class="project-year">2025</span>
+            <span class="chip">Python</span>
+          </div>
         </div>
         <ul class="project-points">
-          <li>Hand-state detection (open vs. fist) from 16-channel smartwatch PPG at 25&nbsp;Hz</li>
-          <li>Leave-one-session-out evaluation — F1&nbsp;0.73 after 20&nbsp;s of calibration, AUC&nbsp;0.94 user-dependent</li>
-          <li>Zero-shot, few-shot, and user-dependent scenarios compared on the same protocol</li>
+          <li>Detects hand state (open vs. fist) from 16-channel smartwatch PPG at 25&nbsp;Hz — no IMU, no camera</li>
+          <li>224 engineered features (time, gradient, band-power) → gradient boosting, running in real time over UDP</li>
+          <li>Honest evaluation ladder — zero-shot F1&nbsp;0.46 → 0.73 with 20&nbsp;s calibration → AUC&nbsp;0.94 user-dependent (leave-one-session-out)</li>
         </ul>
         <div class="chips">
-          <span class="chip">Python</span><span class="chip">LOSO</span><span class="chip">AUC 0.94</span>
+          <span class="chip">AI</span><span class="chip chip-mod">PPG</span>
         </div>
       </article>
 
       <article class="project-card">
         <div class="project-head">
           <h3><a href="https://github.com/blueion0612/IMU_Gesture_Classifier" target="_blank" rel="noopener">IMU Gesture Classifier</a></h3>
-          <span class="project-year">2025</span>
+          <div class="project-side">
+            <span class="tag vis-public">Public</span>
+            <span class="project-year">2025</span>
+            <span class="chip">Python</span>
+          </div>
         </div>
         <ul class="project-points">
-          <li>Two-stage deep learning pipeline — a binary entry detector gates a 15-class gesture classifier</li>
-          <li>Real-time smartwatch IMU streams at 50&nbsp;Hz over UDP; separates <em>when</em> a gesture happens from <em>which</em> gesture it is</li>
-          <li>Powers the gesture command set used by IVO</li>
+          <li>Recognizes 15 wrist gestures in real time from a smartwatch IMU stream (6 channels, 50&nbsp;Hz over UDP)</li>
+          <li>Two-stage pipeline — an entry detector answers <em>when</em>, a classifier answers <em>which</em>; six architectures grid-searched (MLP, LSTM, GRU, TCN, CNN variants)</li>
+          <li>Best pair in deployment: LSTM entry detection + TCN classification — powers IVO's gesture commands</li>
         </ul>
         <div class="chips">
-          <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">15 classes</span>
+          <span class="chip">AI</span><span class="chip chip-mod">IMU</span>
         </div>
       </article>
     </div>
@@ -311,34 +327,38 @@
     <h3 class="more-heading">More Projects</h3>
     <ul class="project-list">
       <li>
-        <div>
+        <div class="list-main">
           <a href="https://github.com/blueion0612/Mint_IDE_Student" target="_blank" rel="noopener">MINT Exam IDE</a>
           <span class="list-sep">·</span>
           <a href="https://github.com/blueion0612/Mint_IDE_Teacher" target="_blank" rel="noopener">MINT Grader</a>
-          <p>Anti-cheat coding-exam environment — monitored editor with edit-history logging and screen recording, AES-256-encrypted submissions, and a batch-decrypt grading tool for instructors.</p>
+          <p>Anti-cheat coding-exam environment — monitored editor (edit history, clipboard forensics, screen recording), AES-256-encrypted submissions, and a batch-decrypt grading tool for instructors.</p>
+          <div class="chips"><span class="chip">SW</span><span class="chip">App</span></div>
         </div>
-        <span class="project-meta"><span class="project-year">2026</span><span class="chip">Rust · TS</span></span>
+        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2026</span><span class="chip">Rust · TS</span></span>
       </li>
       <li>
-        <div>
+        <div class="list-main">
           <a href="https://github.com/blueion0612/sEMG_Gesture_Classifier" target="_blank" rel="noopener">sEMG Gesture Classifier</a>
-          <p>Classical-ML bake-off for six-gesture sEMG recognition on the public GREAT dataset — Hudgins/rich feature sets, boosting successors, paper-protocol reproduction, and LOSO. Graduate coursework.</p>
+          <p>Classical-ML bake-off for six-gesture recognition on the public GREAT dataset (16-channel sEMG, 2&nbsp;kHz) — Hudgins/rich feature sets, boosting successors, paper-protocol reproduction, and LOSO. Graduate coursework.</p>
+          <div class="chips"><span class="chip">AI</span><span class="chip chip-mod">EMG</span></div>
         </div>
-        <span class="project-meta"><span class="project-year">2026</span><span class="chip">scikit-learn</span></span>
+        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2026</span><span class="chip">Python</span></span>
       </li>
       <li>
-        <div>
+        <div class="list-main">
           <a href="https://github.com/blueion0612/IMU_Stream_APP_MJU" target="_blank" rel="noopener">IMU Stream App</a>
           <p>Real-time IMU streaming from a WearOS watch and Android phone over UDP — accelerometer, gyroscope, and rotation vector, with server-to-watch haptic feedback.</p>
+          <div class="chips"><span class="chip">App</span><span class="chip chip-mod">IMU</span></div>
         </div>
-        <span class="project-meta"><span class="project-year">2025</span><span class="chip">Kotlin</span></span>
+        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip">Kotlin</span></span>
       </li>
       <li>
-        <div>
+        <div class="list-main">
           <a href="https://github.com/blueion0612/CapstoneVOX" target="_blank" rel="noopener">CapstoneVOX</a>
           <p>Smartwatch gesture recognition with live pose estimation in Unity — five sequence models (BiLSTM, GRU, CNN, CNN-BiLSTM, TCN) benchmarked on F1, parameters, and FLOPs.</p>
+          <div class="chips"><span class="chip">AI</span><span class="chip">App</span><span class="chip chip-mod">IMU</span></div>
         </div>
-        <span class="project-meta"><span class="project-year">2025</span><span class="chip">Unity</span></span>
+        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip">Python · C#</span></span>
       </li>
     </ul>
   </section>
