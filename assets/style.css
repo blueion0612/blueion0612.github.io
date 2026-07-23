@@ -734,9 +734,9 @@ footer {
 /* ------------------------------------------------------------ responsive */
 
 @media (max-width: 760px) {
-  .nav-inner { height: auto; padding: 12px 20px; flex-direction: column; gap: 10px; }
-  .nav-links { gap: 14px; justify-content: center; }
-  .nav-links a { font-size: 0.6rem; }
+  .nav-inner { height: auto; padding: 12px 20px; flex-direction: column; align-items: stretch; gap: 10px; }
+  .nav-links { width: 100%; gap: 10px 14px; justify-content: center; }
+  .nav-links a { font-size: 0.64rem; }
 
   .hero {
     grid-template-columns: 1fr;
