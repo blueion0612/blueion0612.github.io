@@ -6,25 +6,31 @@
   <title>Yuhyeon Lee — Wearable Robotics &amp; Exoskeleton Engineer</title>
   <meta name="description" content="Yuhyeon Lee — Wearable Robotics &amp; Exoskeleton Engineer. Integrated M.S./Ph.D. student at Korea University's MINT Lab, working on foundation model–based robot control and exoskeletons.">
   <meta name="author" content="Yuhyeon Lee">
+  <meta name="theme-color" content="#0c0d0b">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Yuhyeon Lee — Wearable Robotics &amp; Exoskeleton Engineer">
   <meta property="og:description" content="Integrated M.S./Ph.D. student in Mechanical Engineering at Korea University, MINT Lab. Foundation model–based robot control, wearable sensing, and exoskeletons.">
   <meta property="og:url" content="https://blueion0612.github.io">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3EYL%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230c0d0b'/%3E%3Crect x='6.5' y='6.5' width='51' height='51' rx='6' fill='none' stroke='%2344d62c' stroke-width='2'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='24' font-weight='700' fill='%23e8e3d5' text-anchor='middle'%3EYL%3C/text%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
+<div class="grain" aria-hidden="true"></div>
+
 <nav class="nav" aria-label="Primary">
   <div class="nav-inner">
-    <a class="nav-name" href="#top">Yuhyeon&nbsp;Lee</a>
+    <a class="nav-brand" href="#top" aria-label="Yuhyeon Lee — top">
+      <span class="mark"><span>YL</span></span>
+      <span class="nav-name">Yuhyeon Lee</span>
+    </a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#research">Research</a>
@@ -41,11 +47,11 @@
   <!-- ============================================================ HERO -->
   <header class="hero">
     <div class="hero-text">
-      <p class="hero-kicker">Integrated M.S./Ph.D. Student · Mechanical Engineering</p>
-      <h1>Yuhyeon Lee</h1>
-      <p class="hero-title">Wearable Robotics &amp; Exoskeleton Engineer</p>
+      <p class="hero-kicker">Wearable Robotics · Exoskeleton Engineer</p>
+      <h1>Yuhyeon&nbsp;Lee</h1>
+      <p class="hero-thesis">The mind and the metal of wearable robots.</p>
       <p class="hero-affiliation">
-        <a href="https://mintlab.korea.ac.kr" target="_blank" rel="noopener">MINT Lab (Movement Intelligence Lab)</a> · Korea University · Seoul, South Korea
+        <a href="https://mintlab.korea.ac.kr" target="_blank" rel="noopener">MINT Lab — Movement Intelligence Lab</a> · Korea University
       </p>
       <div class="hero-links">
         <a class="btn btn-primary" href="mailto:yuhyunkorea@gmail.com">Email</a>
@@ -58,78 +64,105 @@
         -->
       </div>
     </div>
-    <div class="portrait" role="img" aria-label="Portrait placeholder">
+    <figure class="portrait" role="img" aria-label="Portrait placeholder">
       <!-- PHOTO — when the photo is ready, save it as assets/portrait.jpg and
-           replace the span below with:
+           replace the div.portrait-blank below with:
            <img src="assets/portrait.jpg" alt="Portrait of Yuhyeon Lee">
       -->
-      <span>YL</span>
-    </div>
+      <div class="portrait-blank">
+        <span class="portrait-mono">YL</span>
+        <span class="portrait-caption">File photo</span>
+      </div>
+    </figure>
   </header>
 
+  <div class="spec-strip" aria-label="At a glance">
+    <div class="spec">
+      <span class="spec-key">Base</span>
+      <span class="spec-val">Seoul, South Korea</span>
+    </div>
+    <div class="spec">
+      <span class="spec-key">Lab</span>
+      <span class="spec-val">MINT Lab, Korea University</span>
+    </div>
+    <div class="spec">
+      <span class="spec-key">Program</span>
+      <span class="spec-val"><span class="live-dot" aria-hidden="true"></span>Integrated M.S./Ph.D. — in progress</span>
+    </div>
+  </div>
+
   <!-- ============================================================ ABOUT -->
-  <section id="about">
-    <h2><span class="section-label">01</span>About</h2>
+  <section id="about" class="reveal">
+    <div class="section-head">
+      <span class="section-index">01</span>
+      <h2>About</h2>
+    </div>
+    <p class="epigraph">
+      &ldquo;A wearable robot needs a mind that understands movement and a body worth
+      trusting. I&rsquo;m building both — in that order.&rdquo;
+    </p>
     <dl class="facts">
       <div class="fact">
-        <dt>Position</dt>
-        <dd>Integrated M.S./Ph.D. student, Mechanical Engineering, Korea University</dd>
+        <dt>Now</dt>
+        <dd>Robot control built on foundation-scale AI models — bringing high-capability intelligence to real machines</dd>
+      </div>
+      <div class="fact">
+        <dt>Next</dt>
+        <dd>Complete exoskeleton systems — mechanism, actuation, and control designed as one</dd>
       </div>
       <div class="fact">
         <dt>Lab</dt>
         <dd><a href="https://mintlab.korea.ac.kr" target="_blank" rel="noopener">MINT Lab (Movement Intelligence Lab)</a> · Wearable &amp; Healthcare group · Advisor: Prof. Daekyum Kim</dd>
       </div>
       <div class="fact">
-        <dt>Focus</dt>
-        <dd>Robot control built on foundation-scale, high-capability AI models</dd>
-      </div>
-      <div class="fact">
-        <dt>Next</dt>
-        <dd>Transitioning toward complete exoskeleton systems — from mechanical design to control</dd>
-      </div>
-      <div class="fact">
-        <dt>Background</dt>
-        <dd>B.S. in Information &amp; Communication Engineering, Myongji University · IMU systems built end to end: WearOS/Android streaming → real-time UDP pipelines → deep-learning motion recognition</dd>
+        <dt>Path</dt>
+        <dd>B.S. in Information &amp; Communication Engineering, Myongji University → Integrated M.S./Ph.D. in Mechanical Engineering, Korea University</dd>
       </div>
     </dl>
   </section>
 
   <!-- ============================================================ RESEARCH -->
-  <section id="research">
-    <h2><span class="section-label">02</span>Research Interests</h2>
+  <section id="research" class="reveal">
+    <div class="section-head">
+      <span class="section-index">02</span>
+      <h2>Research Interests</h2>
+    </div>
     <div class="grid-2">
       <div class="card">
         <div class="card-head">
           <h3>Foundation Models for Robot Control</h3>
-          <span class="tag tag-current">Current</span>
+          <span class="tag tag-now">Now</span>
         </div>
-        <p>Foundation-scale, high-capability AI models as the intelligence layer of robot control.</p>
+        <p>Large, high-capability models as the control intelligence of real machines.</p>
       </div>
       <div class="card">
         <div class="card-head">
           <h3>Exoskeleton Design &amp; Control</h3>
           <span class="tag tag-next">Next</span>
         </div>
-        <p>Complete assistive exoskeletons — from mechanical design to control.</p>
+        <p>Assistive exoskeletons built whole — structure, actuation, control.</p>
       </div>
       <div class="card">
         <div class="card-head">
           <h3>Wearable Sensing &amp; Motion Intelligence</h3>
         </div>
-        <p>IMU and physiological sensing that reads human movement and intent.</p>
+        <p>IMU and physiological signals, read as human movement and intent.</p>
       </div>
       <div class="card">
         <div class="card-head">
           <h3>Real-Time Sensing-to-Action Pipelines</h3>
         </div>
-        <p>From body-worn sensor streams to on-device inference and robot action.</p>
+        <p>Sensor stream in, robot action out — nothing wasted in between.</p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================ EDUCATION -->
-  <section id="education">
-    <h2><span class="section-label">03</span>Education</h2>
+  <section id="education" class="reveal">
+    <div class="section-head">
+      <span class="section-index">03</span>
+      <h2>Education</h2>
+    </div>
     <ol class="timeline">
       <li>
         <span class="timeline-period">Mar 2026 — Present</span>
@@ -150,22 +183,31 @@
   </section>
 
   <!-- ============================================================ PUBLICATIONS -->
-  <section id="publications">
-    <h2><span class="section-label">04</span>Publications</h2>
+  <section id="publications" class="reveal">
+    <div class="section-head">
+      <span class="section-index">04</span>
+      <h2>Publications</h2>
+    </div>
     <ol class="publications">
       <li>
-        <p class="pub-title">PrintExo: An Open-Source, Shoe-Agnostic, 3D-Printable Ankle Exoskeleton for Accessible Locomotion Research</p>
+        <div class="pub-top">
+          <p class="pub-title">PrintExo: An Open-Source, Shoe-Agnostic, 3D-Printable Ankle Exoskeleton for Accessible Locomotion Research</p>
+          <span class="stamp">In revision</span>
+        </div>
         <p class="pub-authors">Sunin Baek<sup>*</sup>, <strong>Yuhyeon Lee</strong><sup>*</sup>, Benjamin Hur, Eun Sang Cha, Daekyum Kim <span class="pub-note"><sup>*</sup>&nbsp;co-first authors</span></p>
-        <p class="pub-venue">IEEE RAS/EMBS BioRob — in revision</p>
-        <p class="pub-links"><a href="https://printexo.github.io/" target="_blank" rel="noopener">project page</a><!-- add when published: · <a href="URL">paper</a> --></p>
+        <p class="pub-venue">IEEE RAS/EMBS International Conference on Biomedical Robotics and Biomechatronics (BioRob)</p>
+        <p class="pub-links"><a href="https://printexo.github.io/" target="_blank" rel="noopener">project page ↗</a><!-- add when published: · <a href="URL">paper ↗</a> --></p>
       </li>
     </ol>
   </section>
 
   <!-- ============================================================ AWARDS & EXPERIENCE
-       Uncomment when ready and renumber the section labels below.
-  <section id="awards">
-    <h2><span class="section-label">0X</span>Awards &amp; Experience</h2>
+       Uncomment when ready and renumber the section indexes below.
+  <section id="awards" class="reveal">
+    <div class="section-head">
+      <span class="section-index">0X</span>
+      <h2>Awards &amp; Experience</h2>
+    </div>
     <ul class="awards">
       <li><span class="award-year">2026</span> Award or role — Organization</li>
     </ul>
@@ -173,19 +215,22 @@
   -->
 
   <!-- ============================================================ PROJECTS -->
-  <section id="projects">
-    <h2><span class="section-label">05</span>Projects</h2>
+  <section id="projects" class="reveal">
+    <div class="section-head">
+      <span class="section-index">05</span>
+      <h2>Projects</h2>
+    </div>
 
     <div class="featured">
       <article class="project-card">
         <div class="project-head">
           <h3><a href="https://github.com/blueion0612/IVO" target="_blank" rel="noopener">IVO — IMU-Vision Overlay</a></h3>
-          <span class="project-year">2025</span>
+          <span class="project-index">P·01</span>
         </div>
         <ul class="project-points">
           <li>Hands-free presentation control — 15 smartwatch IMU gestures + webcam hand tracking</li>
           <li>On-screen drawing with real-time handwriting OCR</li>
-          <li>Myongji University capstone project</li>
+          <li>Myongji University capstone project, 2025</li>
         </ul>
         <div class="chips">
           <span class="chip">Electron</span><span class="chip">Python</span><span class="chip">Computer Vision</span>
@@ -195,6 +240,7 @@
       <article class="project-card">
         <div class="project-head">
           <h3><a href="https://github.com/blueion0612/IMU_Gesture_Classifier" target="_blank" rel="noopener">IMU Gesture Classifier</a></h3>
+          <span class="project-index">P·02</span>
         </div>
         <ul class="project-points">
           <li>Two-stage pipeline — binary entry detector gates a 15-class gesture classifier</li>
@@ -209,6 +255,7 @@
       <article class="project-card">
         <div class="project-head">
           <h3><a href="https://github.com/blueion0612/PPG_Classifier" target="_blank" rel="noopener">PPG Fist Classifier</a></h3>
+          <span class="project-index">P·03</span>
         </div>
         <ul class="project-points">
           <li>Hand-state detection (open vs. fist) — 16-channel smartwatch PPG at 25&nbsp;Hz</li>
@@ -249,13 +296,13 @@
   </section>
 
   <!-- ============================================================ CONTACT -->
-  <section id="contact">
-    <h2><span class="section-label">06</span>Contact</h2>
+  <section id="contact" class="reveal">
+    <div class="section-head">
+      <span class="section-index">06</span>
+      <h2>Contact</h2>
+    </div>
+    <a class="contact-mail" href="mailto:yuhyunkorea@gmail.com">yuhyunkorea@gmail.com&nbsp;<span aria-hidden="true">→</span></a>
     <dl class="facts">
-      <div class="fact">
-        <dt>Email</dt>
-        <dd><a href="mailto:yuhyunkorea@gmail.com">yuhyunkorea@gmail.com</a></dd>
-      </div>
       <div class="fact">
         <dt>GitHub</dt>
         <dd><a href="https://github.com/blueion0612" target="_blank" rel="noopener">github.com/blueion0612</a></dd>
@@ -275,13 +322,26 @@
 
 <footer>
   <div class="footer-inner">
-    <span>© 2026 Yuhyeon Lee</span>
-    <span class="footer-sep">·</span>
-    <a href="https://github.com/blueion0612/blueion0612.github.io" target="_blank" rel="noopener">Source</a>
-    <span class="footer-sep">·</span>
-    <span>Hand-built, no frameworks</span>
+    <span class="mark mark-footer"><span>YL</span></span>
+    <span class="footer-line">© MMXXVI · Yuhyeon Lee · Seoul</span>
+    <a class="footer-src" href="https://github.com/blueion0612/blueion0612.github.io" target="_blank" rel="noopener">Source</a>
   </div>
 </footer>
+
+<script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+</script>
 
 </body>
 </html>
