@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Besley:wght@600;700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/style.css?v=6">
+  <link rel="stylesheet" href="assets/style.css?v=7">
 </head>
 <body>
 
@@ -233,41 +233,46 @@
       <article class="project-card">
         <div class="project-head">
           <h3><a href="https://github.com/blueion0612/IVO" target="_blank" rel="noopener">IVO — IMU-Vision Overlay</a></h3>
+          <span class="project-year">2025</span>
         </div>
         <ul class="project-points">
-          <li>Hands-free presentation control — 15 smartwatch IMU gestures + webcam hand tracking</li>
-          <li>On-screen drawing with real-time handwriting OCR</li>
-          <li>Myongji University capstone project, 2025</li>
+          <li>Hands-free presentation overlay — 15 smartwatch IMU gestures + webcam hand tracking, with haptic confirmation on the watch</li>
+          <li>On-screen drawing with real-time handwriting OCR, calculation, and graph generation</li>
+          <li>Local Whisper speech-to-text and on-device LLM Q&amp;A summarization — no cloud required</li>
+          <li>Myongji University capstone project</li>
         </ul>
         <div class="chips">
-          <span class="chip">Electron</span><span class="chip">Python</span><span class="chip">Computer Vision</span>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-head">
-          <h3><a href="https://github.com/blueion0612/IMU_Gesture_Classifier" target="_blank" rel="noopener">IMU Gesture Classifier</a></h3>
-        </div>
-        <ul class="project-points">
-          <li>Two-stage pipeline — binary entry detector gates a 15-class gesture classifier</li>
-          <li>Real-time smartwatch IMU streams, 50&nbsp;Hz over UDP</li>
-          <li>Separates <em>when</em> a gesture happens from <em>which</em> gesture it is</li>
-        </ul>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">15 classes</span>
+          <span class="chip">Electron</span><span class="chip">Python</span><span class="chip">Computer Vision</span><span class="chip">On-device AI</span>
         </div>
       </article>
 
       <article class="project-card">
         <div class="project-head">
           <h3><a href="https://github.com/blueion0612/PPG_Classifier" target="_blank" rel="noopener">PPG Fist Classifier</a></h3>
+          <span class="project-year">2025</span>
         </div>
         <ul class="project-points">
-          <li>Hand-state detection (open vs. fist) — 16-channel smartwatch PPG at 25&nbsp;Hz</li>
-          <li>Leave-one-session-out evaluation — F1&nbsp;0.73 with 20&nbsp;s calibration · AUC&nbsp;0.94 user-dependent</li>
+          <li>Hand-state detection (open vs. fist) from 16-channel smartwatch PPG at 25&nbsp;Hz</li>
+          <li>Leave-one-session-out evaluation — F1&nbsp;0.73 after 20&nbsp;s of calibration, AUC&nbsp;0.94 user-dependent</li>
+          <li>Zero-shot, few-shot, and user-dependent scenarios compared on the same protocol</li>
         </ul>
         <div class="chips">
           <span class="chip">Python</span><span class="chip">LOSO</span><span class="chip">AUC 0.94</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-head">
+          <h3><a href="https://github.com/blueion0612/IMU_Gesture_Classifier" target="_blank" rel="noopener">IMU Gesture Classifier</a></h3>
+          <span class="project-year">2025</span>
+        </div>
+        <ul class="project-points">
+          <li>Two-stage deep learning pipeline — a binary entry detector gates a 15-class gesture classifier</li>
+          <li>Real-time smartwatch IMU streams at 50&nbsp;Hz over UDP; separates <em>when</em> a gesture happens from <em>which</em> gesture it is</li>
+          <li>Powers the gesture command set used by IVO</li>
+        </ul>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">15 classes</span>
         </div>
       </article>
     </div>
@@ -276,26 +281,26 @@
     <ul class="project-list">
       <li>
         <div>
-          <a href="https://github.com/blueion0612/IMU_Stream_APP_MJU" target="_blank" rel="noopener">IMU Stream App</a>
-          <p>Real-time IMU streaming from WearOS watch and Android phone over UDP.</p>
-        </div>
-        <span class="chip">Kotlin</span>
-      </li>
-      <li>
-        <div>
           <a href="https://github.com/blueion0612/Mint_IDE_Student" target="_blank" rel="noopener">MINT Exam IDE</a>
           <span class="list-sep">·</span>
           <a href="https://github.com/blueion0612/Mint_IDE_Teacher" target="_blank" rel="noopener">MINT Grader</a>
-          <p>Anti-cheat coding-exam environment: monitored editor, AES-256-encrypted submissions, batch-decrypt grading tool.</p>
+          <p>Anti-cheat coding-exam environment — monitored editor with edit-history logging and screen recording, AES-256-encrypted submissions, and a batch-decrypt grading tool for instructors.</p>
         </div>
-        <span class="chip">Rust · TS</span>
+        <span class="project-meta"><span class="project-year">2026</span><span class="chip">Rust · TS</span></span>
+      </li>
+      <li>
+        <div>
+          <a href="https://github.com/blueion0612/IMU_Stream_APP_MJU" target="_blank" rel="noopener">IMU Stream App</a>
+          <p>Real-time IMU streaming from a WearOS watch and Android phone over UDP — accelerometer, gyroscope, and rotation vector, with server-to-watch haptic feedback.</p>
+        </div>
+        <span class="project-meta"><span class="project-year">2025</span><span class="chip">Kotlin</span></span>
       </li>
       <li>
         <div>
           <a href="https://github.com/blueion0612/CapstoneVOX" target="_blank" rel="noopener">CapstoneVOX</a>
-          <p>Smartwatch IMU gesture-recognition service with Unity visualization.</p>
+          <p>Smartwatch gesture recognition with live pose estimation in Unity — five sequence models (BiLSTM, GRU, CNN, CNN-BiLSTM, TCN) benchmarked on F1, parameters, and FLOPs.</p>
         </div>
-        <span class="chip">Unity</span>
+        <span class="project-meta"><span class="project-year">2025</span><span class="chip">Unity</span></span>
       </li>
     </ul>
   </section>

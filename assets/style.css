@@ -653,6 +653,22 @@ h2 {
 .project-head h3 a { color: var(--ink); }
 .project-head h3 a:hover { color: var(--green); text-decoration: none; }
 
+.project-year {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
 .project-points { list-style: none; margin-top: 2px; }
 
 .project-points li {
@@ -730,7 +746,6 @@ h2 {
 
 .list-sep { color: var(--muted); margin: 0 4px; }
 
-.project-list .chip { margin-top: 5px; }
 
 /* ------------------------------------------------------------ contact & footer */
 
