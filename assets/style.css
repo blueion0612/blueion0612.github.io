@@ -199,13 +199,6 @@ section {
   border-bottom: 1px solid var(--line);
 }
 
-.section-index {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--green);
-  letter-spacing: 0.1em;
-}
-
 h2 {
   font-family: var(--display);
   font-size: 1.55rem;
@@ -446,6 +439,20 @@ h2 {
 
 .fact dd { font-size: 1.02rem; line-height: 1.7; }
 
+.fact-points { list-style: none; }
+
+.fact-points li {
+  position: relative;
+  padding-left: 18px;
+  margin: 3px 0;
+}
+.fact-points li::before {
+  content: "\2022";           /* • */
+  position: absolute;
+  left: 0;
+  color: var(--green);
+}
+
 /* ------------------------------------------------------------ research cards */
 
 .grid-2 {
@@ -646,14 +653,6 @@ h2 {
 .project-head h3 a { color: var(--ink); }
 .project-head h3 a:hover { color: var(--green); text-decoration: none; }
 
-.project-index {
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
-  color: var(--gold-dim);
-  white-space: nowrap;
-}
-
 .project-points { list-style: none; margin-top: 2px; }
 
 .project-points li {
@@ -666,7 +665,7 @@ h2 {
   max-width: 74ch;
 }
 .project-points li::before {
-  content: "–";
+  content: "\2022";           /* • */
   position: absolute;
   left: 0;
   color: var(--green);

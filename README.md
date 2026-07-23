@@ -25,8 +25,7 @@ assets/            # images go here (e.g. portrait.jpg)
 |:--|:--|
 | Photo | Save as `assets/portrait.jpg`, then in `index.html` replace `div.portrait-blank` with the `<img>` tag shown in the comment there |
 | Publications | Add an `<li>` to the `.publications` list; paper links go in `.pub-links` (see inline comment); swap the `.stamp` text when status changes |
-| Awards / Experience | Uncomment the `AWARDS & EXPERIENCE` section and renumber section indexes |
+| Awards / Experience | Uncomment the `AWARDS & EXPERIENCE` section |
 | LinkedIn · Scholar · ORCID | Uncomment the `FUTURE LINKS` buttons in the hero |
-| New project | Copy a `.project-card` (featured, with `P·0X` index) or `.project-list li` (compact) block |
+| New project | Copy a `.project-card` (featured) or `.project-list li` (compact) block |
 
-Section indexes (`01`–`06`) are manual — renumber after adding a section.
