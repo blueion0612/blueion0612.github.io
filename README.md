@@ -6,8 +6,10 @@ Live at **[blueion0612.github.io](https://blueion0612.github.io)**.
 Hand-written HTML + CSS, no frameworks, no build step — edit and push.
 
 **Design**: "the engineer's dossier" — dark-only matte black, film grain,
-engraved serif display (Bodoni Moda), monospace readouts (IBM Plex Mono),
+angular tech display in caps (Chakra Petch), monospace readouts (IBM Plex Mono),
 Archivo body, one phosphor-green accent, brass for stamps and the monogram.
+When editing `assets/style.css`, bump the `?v=` query on its `<link>` in
+`index.html` to bust the Pages CDN cache.
 
 ## Structure
 
