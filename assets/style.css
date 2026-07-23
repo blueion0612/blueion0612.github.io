@@ -8,9 +8,9 @@
 :root {
   --bg: #0c0d0b;
   --bg-raise: #12140f;
-  --ink: #e8e3d5;          /* bone white */
-  --ink-soft: #cdc9ba;
-  --muted: #8b8d7f;        /* olive gray */
+  --ink: #ece7d9;          /* bone white */
+  --ink-soft: #d8d4c6;
+  --muted: #a0a292;        /* olive gray */
   --line: #24261e;
   --line-soft: #191b14;
   --green: #44d62c;        /* phosphor */
@@ -59,7 +59,7 @@ a:focus-visible,
   inset: 0;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.055;
+  opacity: 0.028;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -134,10 +134,10 @@ a:focus-visible,
 
 .nav-links a {
   font-family: var(--mono);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   color: var(--muted);
 }
 .nav-links a:hover {
@@ -161,22 +161,12 @@ section {
 }
 
 .section-head {
-  position: relative;
   display: flex;
   align-items: baseline;
   gap: 18px;
   border-bottom: 1px solid var(--line);
   padding-bottom: 14px;
-  margin-bottom: 34px;
-}
-.section-head::after {          /* ledger double rule */
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -4px;
-  height: 1px;
-  background: var(--line-soft);
+  margin-bottom: 26px;
 }
 
 .section-index {
@@ -189,7 +179,7 @@ section {
 h2 {
   font-family: var(--serif);
   font-size: 1.9rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
   letter-spacing: 0.01em;
 }
@@ -210,9 +200,9 @@ h2 {
 
 .hero-kicker {
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.74rem;
   font-weight: 500;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--green);
   margin-bottom: 20px;
@@ -230,24 +220,16 @@ h2 {
 .hero h1 {
   font-family: var(--serif);
   font-size: clamp(3rem, 8vw, 4.6rem);
-  font-weight: 550;
+  font-weight: 600;
   color: var(--ink);
   letter-spacing: -0.005em;
   line-height: 1.04;
-  margin-bottom: 18px;
-}
-
-.hero-thesis {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.32rem;
-  color: var(--gold);
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 
 .hero-affiliation {
   font-family: var(--mono);
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--muted);
@@ -268,7 +250,7 @@ h2 {
   padding: 10px 20px;
   border: 1px solid #2c2e25;
   font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -370,15 +352,15 @@ h2 {
 
 .spec-key {
   font-family: var(--mono);
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.2em;
   color: var(--muted);
 }
 
 .spec-val {
   font-family: var(--mono);
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   color: var(--ink);
   letter-spacing: 0.02em;
 }
@@ -402,18 +384,6 @@ h2 {
 
 /* ------------------------------------------------------------ about */
 
-.epigraph {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.42rem;
-  line-height: 1.5;
-  color: var(--ink);
-  max-width: 42ch;
-  padding-left: 24px;
-  border-left: 2px solid var(--gold);
-  margin-bottom: 40px;
-}
-
 .facts { margin: 0; }
 
 .fact {
@@ -423,19 +393,20 @@ h2 {
   padding: 16px 0;
   border-top: 1px solid var(--line);
 }
+.facts .fact:first-child { border-top: none; }
 .facts .fact:last-child { border-bottom: 1px solid var(--line); }
 
 .fact dt {
   font-family: var(--mono);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   color: var(--green);
   padding-top: 4px;
 }
 
-.fact dd { font-size: 0.95rem; line-height: 1.65; }
+.fact dd { font-size: 0.98rem; line-height: 1.68; }
 
 /* ------------------------------------------------------------ research cards */
 
@@ -483,7 +454,7 @@ h2 {
 .tag-next { color: var(--gold); border: 1px solid var(--gold-dim); }
 
 .card p {
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--muted);
   line-height: 1.6;
 }
@@ -499,6 +470,7 @@ h2 {
   padding: 24px 0;
   border-top: 1px solid var(--line);
 }
+.timeline li:first-child { border-top: none; padding-top: 4px; }
 .timeline li:last-child { border-bottom: 1px solid var(--line); }
 
 .timeline-period {
@@ -513,15 +485,15 @@ h2 {
 .timeline-body h3 {
   font-family: var(--serif);
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
   margin-bottom: 3px;
 }
 
-.timeline-degree { font-size: 0.95rem; }
+.timeline-degree { font-size: 0.98rem; }
 
 .timeline-detail {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--muted);
   margin-top: 2px;
 }
@@ -534,6 +506,7 @@ h2 {
   padding: 24px 0;
   border-top: 1px solid var(--line);
 }
+.publications li:first-child { border-top: none; padding-top: 4px; }
 .publications li:last-child { border-bottom: 1px solid var(--line); }
 
 .pub-top {
@@ -546,8 +519,8 @@ h2 {
 
 .pub-title {
   font-family: var(--serif);
-  font-size: 1.32rem;
-  font-weight: 600;
+  font-size: 1.34rem;
+  font-weight: 700;
   line-height: 1.35;
   color: var(--ink);
   max-width: 60ch;
@@ -568,24 +541,24 @@ h2 {
   margin-top: 5px;
 }
 
-.pub-authors { font-size: 0.92rem; margin-bottom: 3px; }
+.pub-authors { font-size: 0.95rem; margin-bottom: 3px; }
 .pub-authors strong { color: var(--ink); }
 
 .pub-note {
   font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: var(--muted);
   margin-left: 10px;
 }
 
 .pub-venue {
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   font-style: italic;
   color: var(--muted);
   margin-bottom: 8px;
 }
 
-.pub-links { font-family: var(--mono); font-size: 0.76rem; }
+.pub-links { font-family: var(--mono); font-size: 0.78rem; }
 
 /* ------------------------------------------------------------ awards (hidden until ready) */
 
@@ -595,6 +568,7 @@ h2 {
   border-top: 1px solid var(--line);
   font-size: 0.95rem;
 }
+.awards li:first-child { border-top: none; }
 .awards li:last-child { border-bottom: 1px solid var(--line); }
 
 .award-year {
@@ -645,9 +619,9 @@ h2 {
 .project-points li {
   position: relative;
   padding-left: 18px;
-  font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.6;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.62;
   margin: 5px 0;
   max-width: 74ch;
 }
@@ -662,9 +636,9 @@ h2 {
 
 .chip {
   font-family: var(--mono);
-  font-size: 0.62rem;
+  font-size: 0.66rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--muted);
   background: #15170f;
   border: 1px solid var(--line);
@@ -674,10 +648,10 @@ h2 {
 
 .more-heading {
   font-family: var(--mono);
-  font-size: 0.64rem;
+  font-size: 0.68rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.2em;
   color: var(--muted);
   margin: 44px 0 6px;
 }
@@ -699,7 +673,7 @@ h2 {
 .project-list a:hover { color: var(--green); text-decoration: none; }
 
 .project-list p {
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--muted);
   margin-top: 3px;
   max-width: 64ch;
@@ -776,8 +750,6 @@ footer {
 
   .spec-strip { grid-template-columns: 1fr; }
   .spec + .spec { border-left: none; border-top: 1px solid var(--line); }
-
-  .epigraph { font-size: 1.22rem; }
 
   .grid-2 { grid-template-columns: 1fr; }
 
