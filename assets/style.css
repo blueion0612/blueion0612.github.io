@@ -759,12 +759,14 @@ h2 {
   margin-bottom: 30px;
 }
 
-.manicule {
+.pointer {
   display: inline-block;
+  font-size: 0.72em;
+  vertical-align: 1px;
   margin-right: 12px;
   transition: transform 0.18s ease;
 }
-.contact-mail:hover .manicule { transform: translateX(5px); }
+.contact-mail:hover .pointer { transform: translateX(5px); }
 
 footer {
   border-top: 3px solid var(--line-strong);
