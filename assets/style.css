@@ -496,7 +496,8 @@ h2 {
 }
 
 .tag-now { color: var(--green); border: 1px solid var(--green-dim); }
-.tag-next { color: var(--gold); border: 1px solid var(--gold-dim); }
+.tag-next,
+.tag-ult { color: var(--gold); border: 1px solid var(--gold-dim); }
 
 .card p {
   font-size: 0.95rem;
