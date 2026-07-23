@@ -359,8 +359,14 @@ section > p {
 }
 .publications li:last-child { border-bottom: 1px solid var(--line); }
 
-.pub-title { font-weight: 600; }
-.pub-authors { font-size: 0.92rem; }
+.pub-title { font-weight: 600; max-width: 72ch; }
+.pub-authors { font-size: 0.92rem; margin-top: 2px; }
+
+.pub-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-left: 8px;
+}
 .pub-venue { font-size: 0.88rem; color: var(--muted); font-style: italic; }
 .pub-links { font-size: 0.88rem; margin-top: 4px; }
 

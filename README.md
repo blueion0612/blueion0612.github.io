@@ -18,7 +18,7 @@ assets/            # images go here (e.g. portrait.jpg)
 | What | Where |
 |:--|:--|
 | Photo | Save as `assets/portrait.jpg`, then in `index.html` replace the `<span>YL</span>` inside `.portrait` with the `<img>` tag shown in the comment there |
-| Publications | Uncomment the `PUBLICATIONS` section in `index.html`, fill in the entry, add a nav link |
+| Publications | Add an `<li>` to the `.publications` list in `index.html`; paper links go in `.pub-links` (see inline comment) |
 | Awards / Experience | Uncomment the `AWARDS & EXPERIENCE` section |
 | LinkedIn · Scholar · ORCID | Uncomment the `FUTURE LINKS` buttons in the hero |
 | New project | Copy a `.project-card` (featured) or `.project-list li` (compact) block |
