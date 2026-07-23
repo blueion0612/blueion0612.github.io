@@ -611,9 +611,12 @@ h2 {
 
 .awards { list-style: none; }
 .awards li {
-  padding: 14px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 26px;
+  padding: 15px 0;
   border-top: 1px solid var(--line);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
 }
 .awards li:first-child { border-top: none; }
 .awards li:last-child { border-bottom: 1px solid var(--line); }
@@ -622,8 +625,12 @@ h2 {
   font-family: var(--mono);
   font-size: 0.74rem;
   color: var(--muted);
-  margin-right: 18px;
+  width: 172px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
+
+.award-body strong { color: var(--ink); font-weight: 600; }
 
 /* ------------------------------------------------------------ projects */
 
@@ -838,6 +845,9 @@ footer {
 
   .pub-top { flex-direction: column; gap: 12px; }
   .stamp { transform: rotate(0deg); margin-top: 0; }
+
+  .awards li { flex-direction: column; gap: 4px; padding: 13px 0; }
+  .award-year { width: auto; }
 
   .project-list li { flex-direction: column; gap: 8px; }
 
