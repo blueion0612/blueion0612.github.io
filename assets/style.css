@@ -271,10 +271,41 @@ section > p {
 }
 .card:hover { border-color: var(--accent); }
 
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+  min-height: 22px;
+}
+
 .card h3 {
   font-size: 0.98rem;
   font-weight: 600;
-  margin-bottom: 6px;
+}
+
+.tag {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 999px;
+  padding: 2px 9px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tag-current {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.tag-next {
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: var(--chip-bg);
 }
 
 .card p {
