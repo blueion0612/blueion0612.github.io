@@ -18,7 +18,7 @@
   --gold: #c9a96a;         /* brass */
   --gold-dim: #93805a;
 
-  --display: "Chakra Petch", "Segoe UI", sans-serif;
+  --display: "Besley", "Clarendon", Georgia, serif;
   --sans: "Archivo", -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
 }
@@ -119,11 +119,11 @@ a:focus-visible,
 
 .nav-name {
   font-family: var(--display);
-  font-size: 0.92rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   text-transform: uppercase;
   color: var(--ink);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   white-space: nowrap;
 }
 
@@ -179,11 +179,11 @@ section {
 
 h2 {
   font-family: var(--display);
-  font-size: 1.42rem;
+  font-size: 1.4rem;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--ink);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
 }
 
 /* reveal on scroll */
@@ -221,11 +221,11 @@ h2 {
 
 .hero h1 {
   font-family: var(--display);
-  font-size: clamp(2.5rem, 6.5vw, 3.9rem);
-  font-weight: 700;
+  font-size: clamp(2.6rem, 6.8vw, 4rem);
+  font-weight: 800;
   text-transform: uppercase;
   color: var(--ink);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.015em;
   line-height: 1.06;
   margin-bottom: 20px;
 }
@@ -315,7 +315,7 @@ h2 {
   font-family: var(--display);
   font-size: 2.6rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   color: var(--ink);
   opacity: 0.85;
 }
@@ -488,10 +488,10 @@ h2 {
 
 .timeline-body h3 {
   font-family: var(--display);
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1.06rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   color: var(--ink);
   margin-bottom: 4px;
 }
@@ -525,8 +525,8 @@ h2 {
 
 .pub-title {
   font-family: var(--display);
-  font-size: 1.18rem;
-  font-weight: 600;
+  font-size: 1.22rem;
+  font-weight: 700;
   line-height: 1.4;
   color: var(--ink);
   max-width: 60ch;
