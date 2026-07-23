@@ -734,7 +734,8 @@ h2 {
 .project-list li:first-child { border-top: none; }
 .project-list li:last-child { border-bottom: 1px solid var(--line); }
 
-.project-list a { font-weight: 600; color: var(--ink); }
+.project-list a,
+.project-list .no-link { font-weight: 600; color: var(--ink); }
 .project-list a:hover { color: var(--green); text-decoration: none; }
 
 .project-list p {
