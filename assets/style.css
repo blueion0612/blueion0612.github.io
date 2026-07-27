@@ -6,6 +6,7 @@
    ============================================================ */
 
 :root {
+  color-scheme: dark;
   --bg: #0c0d0b;
   --bg-raise: #12140f;
   --ink: #ece7d9;          /* bone white */
@@ -26,7 +27,11 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scrollbar-color: #262822 #0c0d0b; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 
 body {
   background: var(--bg);
@@ -44,9 +49,26 @@ a { color: var(--green); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 4px; }
 a:focus-visible,
 .btn:focus-visible {
-  outline: 1px solid var(--green);
+  outline: 2px solid var(--green);
   outline-offset: 3px;
 }
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translate(-50%, -160%);
+  z-index: 100;
+  background: var(--bg);
+  color: var(--green);
+  border: 1px solid var(--green);
+  padding: 8px 16px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.skip-link:focus { transform: translate(-50%, 0); }
 
 /* thin dark scrollbar */
 ::-webkit-scrollbar { width: 10px; }
@@ -209,9 +231,10 @@ h2 {
   white-space: nowrap;
 }
 
-/* reveal on scroll */
-.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.in { opacity: 1; transform: none; }
+/* reveal on scroll — armed only when JS is present (html.js),
+   so content stays visible with scripts disabled */
+html.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+html.js .reveal.in { opacity: 1; transform: none; }
 
 /* ------------------------------------------------------------ hero */
 
@@ -370,11 +393,11 @@ h2 {
   border-bottom: 3px solid var(--line-strong);
   box-shadow: 0 5px 0 -4px var(--line), 0 -5px 0 -4px var(--line);
   display: grid;
-  grid-template-columns: 1fr 1.1fr 1.3fr;
+  grid-template-columns: 1fr 1.1fr 1.34fr;
 }
 
 .spec {
-  padding: 16px 20px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -393,7 +416,6 @@ h2 {
   font-family: var(--mono);
   font-size: 0.84rem;
   color: var(--ink);
-  letter-spacing: 0.02em;
 }
 
 .live-dot {
@@ -403,7 +425,7 @@ h2 {
   border-radius: 50%;
   background: var(--green);
   box-shadow: 0 0 6px var(--green-dim);
-  margin-right: 9px;
+  margin-right: 7px;
   vertical-align: 1px;
   animation: pulse 2.6s ease-in-out infinite;
 }
@@ -833,9 +855,19 @@ footer {
 
 /* ------------------------------------------------------------ responsive */
 
-@media (max-width: 760px) {
+/* keep breathing room around the frame before the mobile layout kicks in */
+@media (max-width: 1012px) {
+  main { margin-left: 16px; margin-right: 16px; }
+}
+
+/* stack the nav before its link row starts wrapping raggedly */
+@media (max-width: 880px) {
   .nav-inner { height: auto; padding: 12px 20px; flex-direction: column; align-items: stretch; gap: 10px; }
   .nav-links { width: 100%; gap: 10px 14px; justify-content: center; }
+  section { scroll-margin-top: 130px; }
+}
+
+@media (max-width: 760px) {
   .nav-links a { font-size: 0.64rem; }
 
   main {
@@ -845,7 +877,8 @@ footer {
   }
 
   .hero { padding-top: 52px; }
-  .hero h1 { letter-spacing: 0.01em; }
+  /* the one-line name is unbreakable — its floor must scale with the viewport */
+  .hero h1 { font-size: clamp(1.8rem, 8.6vw, 2.7rem); letter-spacing: 0.01em; }
   .portrait { width: 156px; height: 187px; margin-bottom: 26px; }
   .portrait-mono { font-size: 2rem; }
 
@@ -876,6 +909,20 @@ footer {
   .contact-mail { font-size: 1.02rem; }
 }
 
+/* very narrow phones: let poster-band titles wrap instead of clipping */
+@media (max-width: 380px) {
+  h2 { white-space: normal; line-height: 1.3; }
+  .section-head { gap: 10px; }
+}
+
+/* ------------------------------------------------------------ reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal { opacity: 1; transform: none; transition: none; }
+  .live-dot { animation: none; }
+  .card, .project-card, .btn, .mark, .pointer, .skip-link { transition: none; }
+}
+
 /* ------------------------------------------------------------ print */
 
 @media print {
@@ -896,5 +943,5 @@ footer {
   .grain, .nav { display: none; }
   body { background: #ffffff; }
   section { margin: 40px 0; break-inside: avoid; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 1 !important; transform: none !important; }
 }
