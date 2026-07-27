@@ -30,10 +30,70 @@
   --mod-enc: #9fb8cc;      /* encoder — machined steel */
   --mod-enc-dim: rgba(159, 184, 204, 0.45);
 
+  /* keyword inks — technique / language / year (co-occurrence checked per card) */
+  --kw-ai: #b48ce0;        /* violet — indelible ink */
+  --kw-ai-dim: rgba(180, 140, 224, 0.45);
+  --kw-sw: #c9bd72;        /* sand */
+  --kw-sw-dim: rgba(201, 189, 114, 0.45);
+  --kw-app: #d693a8;       /* faded rose */
+  --kw-app-dim: rgba(214, 147, 168, 0.45);
+  --kw-py: #7cb8e8;        /* python — sky */
+  --kw-py-dim: rgba(124, 184, 232, 0.45);
+  --kw-rust: #c47a52;      /* rust — sienna */
+  --kw-rust-dim: rgba(196, 122, 82, 0.45);
+  --kw-kt: #e8b04a;        /* kotlin — marigold */
+  --kw-kt-dim: rgba(232, 176, 74, 0.45);
+  --year: #d9d2bd;         /* date stamp — bone */
+  --year-dim: rgba(217, 210, 189, 0.4);
+
+  --bg-hover: #15170f;
+
   --display: "Besley", "Clarendon", Georgia, serif;
   --poster: "Rye", "Besley", Georgia, serif;   /* section bands only — Rye ships one weight (400) */
   --sans: "Archivo", -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+}
+
+/* ------------------------------------------------------------ day mode
+   the same bill printed on aged paper — toggled by the nav sun/moon,
+   persisted in localStorage, night stays the default */
+html[data-theme="day"] {
+  color-scheme: light;
+  scrollbar-color: #b5a683 #e8dcc2;
+
+  --bg: #e8dcc2;
+  --bg-raise: #e0d3b2;
+  --bg-hover: #dbcda6;
+  --ink: #241c10;
+  --ink-soft: #332918;
+  --muted: #695942;
+  --line: #c6b48e;
+  --line-strong: #7d6b4a;
+  --line-soft: #d8caa8;
+  --green: #12570a;
+  --green-dim: #12570a;
+  --gold: #6f5522;
+  --gold-dim: #6f5522;
+
+  --mod-emg: #9a4f10;  --mod-emg-dim: #9a4f10;
+  --mod-ppg: #a03434;  --mod-ppg-dim: #a03434;
+  --mod-vis: #106b80;  --mod-vis-dim: #106b80;
+  --mod-enc: #44586b;  --mod-enc-dim: #44586b;
+
+  --kw-ai: #5f3596;    --kw-ai-dim: #5f3596;
+  --kw-sw: #6b6226;    --kw-sw-dim: #6b6226;
+  --kw-app: #9c3f63;   --kw-app-dim: #9c3f63;
+  --kw-py: #2d5f8a;    --kw-py-dim: #2d5f8a;
+  --kw-rust: #8a4423;  --kw-rust-dim: #8a4423;
+  --kw-kt: #8a5f10;    --kw-kt-dim: #8a5f10;
+  --year: #4a4132;     --year-dim: #4a4132;
+}
+
+html[data-theme="day"] .nav { background: rgba(232, 220, 194, 0.9); }
+html[data-theme="day"] ::-webkit-scrollbar-thumb { background: #b5a683; }
+html[data-theme="day"] .portrait { background: linear-gradient(160deg, #ded1af 0%, #e5d9bb 100%); }
+html[data-theme="day"] .vignette {
+  background: radial-gradient(ellipse 130% 95% at 50% 24%, rgba(0, 0, 0, 0) 52%, rgba(74, 56, 24, 0.3) 100%);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -111,7 +171,7 @@ a:focus-visible,
 .mark {
   width: 26px;
   height: 26px;
-  border: 1px solid #4a4636;
+  border: 1px solid var(--line-strong);
   transform: rotate(45deg);
   display: inline-flex;
   align-items: center;
@@ -142,13 +202,13 @@ a:focus-visible,
 }
 
 .nav-inner {
+  position: relative;
   max-width: 900px;
   margin: 0 auto;
   padding: 0 24px;
   height: 62px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 18px;
 }
 
@@ -174,6 +234,7 @@ a:focus-visible,
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  margin-left: auto;
 }
 
 .nav-links a {
@@ -190,6 +251,25 @@ a:focus-visible,
   text-decoration-color: var(--green);
   text-underline-offset: 6px;
 }
+
+.theme-toggle {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+.theme-toggle:hover { border-color: var(--green); color: var(--ink); }
+.theme-toggle:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 
 /* ------------------------------------------------------------ layout */
 
@@ -361,7 +441,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border: 1px solid #2c2e25;
+  border: 1px solid var(--line);
   font-family: var(--mono);
   font-size: 0.72rem;
   font-weight: 500;
@@ -561,7 +641,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   padding: 22px 24px;
   transition: border-color 0.18s ease, background 0.18s ease;
 }
-.card:hover { border-color: var(--gold-dim); background: #15170f; }
+.card:hover { border-color: var(--gold-dim); background: var(--bg-hover); }
 
 .card-head {
   display: flex;
@@ -742,7 +822,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   padding: 24px 26px;
   transition: border-color 0.18s ease, background 0.18s ease;
 }
-.project-card:hover { border-color: var(--gold-dim); background: #15170f; }
+.project-card:hover { border-color: var(--gold-dim); background: var(--bg-hover); }
 
 .project-head {
   display: flex;
@@ -760,8 +840,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
   font-family: var(--mono);
   font-size: 0.62rem;
   letter-spacing: 0.12em;
-  color: var(--muted);
-  border: 1px solid var(--line);
+  color: var(--year);
+  border: 1px solid var(--year-dim);
   padding: 3px 10px;
   white-space: nowrap;
 }
@@ -807,7 +887,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
-  background: #15170f;
+  background: transparent;
   border: 1px solid var(--line);
   padding: 3px 10px;
   white-space: nowrap;
@@ -824,6 +904,14 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .chip.mod-enc, .mod-enc { color: var(--mod-enc); border-color: var(--mod-enc-dim); }
 
 .mod-word { font-family: var(--mono); font-size: 0.82em; letter-spacing: 0.04em; }
+
+/* technique + language keyword inks — same compound-selector rule as .mod-* */
+.chip.kw-ai { color: var(--kw-ai); border-color: var(--kw-ai-dim); }
+.chip.kw-sw { color: var(--kw-sw); border-color: var(--kw-sw-dim); }
+.chip.kw-app { color: var(--kw-app); border-color: var(--kw-app-dim); }
+.chip.kw-py { color: var(--kw-py); border-color: var(--kw-py-dim); }
+.chip.kw-rust { color: var(--kw-rust); border-color: var(--kw-rust-dim); }
+.chip.kw-kt { color: var(--kw-kt); border-color: var(--kw-kt-dim); }
 
 .more-heading {
   display: flex;
@@ -942,7 +1030,8 @@ footer {
 /* stack the nav before its link row starts wrapping raggedly */
 @media (max-width: 880px) {
   .nav-inner { height: auto; padding: 12px 20px; flex-direction: column; align-items: stretch; gap: 10px; }
-  .nav-links { width: 100%; gap: 10px 14px; justify-content: center; }
+  .nav-links { width: 100%; gap: 10px 14px; justify-content: center; margin-left: 0; }
+  .theme-toggle { position: absolute; top: 10px; right: 16px; width: 28px; height: 28px; }
   section { scroll-margin-top: 130px; }
 }
 
@@ -1008,9 +1097,10 @@ footer {
 /* ------------------------------------------------------------ print */
 
 @media print {
-  :root {
+  :root, html[data-theme="day"] {
     --bg: #ffffff;
     --bg-raise: #ffffff;
+    --bg-hover: #ffffff;
     --ink: #111111;
     --ink-soft: #222222;
     --muted: #555555;
@@ -1029,7 +1119,15 @@ footer {
     --mod-vis-dim: #106b80;
     --mod-enc: #44586b;
     --mod-enc-dim: #44586b;
+    --kw-ai: #5f3596;    --kw-ai-dim: #5f3596;
+    --kw-sw: #6b6226;    --kw-sw-dim: #6b6226;
+    --kw-app: #9c3f63;   --kw-app-dim: #9c3f63;
+    --kw-py: #2d5f8a;    --kw-py-dim: #2d5f8a;
+    --kw-rust: #8a4423;  --kw-rust-dim: #8a4423;
+    --kw-kt: #8a5f10;    --kw-kt-dim: #8a5f10;
+    --year: #4a4132;     --year-dim: #4a4132;
   }
+  .theme-toggle { display: none; }
   .grain, .vignette, .nav { display: none; }
   .hero h1 { color: var(--ink); background: none; -webkit-background-clip: initial; background-clip: initial; }
   body { background: #ffffff; }

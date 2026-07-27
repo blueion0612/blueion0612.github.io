@@ -25,8 +25,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Besley:wght@700;800&family=Archivo:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Rye&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/style.css?v=18">
-  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="assets/style.css?v=19">
+  <script>
+    document.documentElement.classList.add('js');
+    try { if (localStorage.getItem('theme') === 'day') document.documentElement.setAttribute('data-theme', 'day'); } catch (e) {}
+  </script>
 
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Yuhyeon Lee","url":"https://blueion0612.github.io/","image":"https://blueion0612.github.io/assets/portrait.jpg","jobTitle":"Integrated M.S./Ph.D. student, Mechanical Engineering","affiliation":{"@type":"Organization","name":"MINT Lab (Movement Intelligence Lab), Korea University","url":"https://mintlab.korea.ac.kr"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Myongji University"},"email":"mailto:yuhyunkorea@gmail.com","sameAs":["https://github.com/blueion0612"]}
@@ -53,6 +56,7 @@
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </div>
+    <button class="theme-toggle" type="button" aria-label="Switch to day mode">&#9728;</button>
   </div>
 </nav>
 
@@ -266,7 +270,7 @@
           <div class="project-side">
             <span class="tag vis-private">Private</span>
             <span class="project-year">2026</span>
-            <span class="chip">Python</span>
+            <span class="chip kw-py">Python</span>
           </div>
         </div>
         <ul class="project-points">
@@ -276,7 +280,7 @@
           <li>Validated leave-one-subject-out on ~30 adults aged 21–76, indoors and outdoors, across assistance levels — industry-sponsored R&amp;D</li>
         </ul>
         <div class="chips">
-          <span class="chip">AI</span><span class="chip">SW</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-enc">Encoder</span>
+          <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-enc">Encoder</span>
         </div>
       </article>
 
@@ -286,7 +290,7 @@
           <div class="project-side">
             <span class="tag vis-public">Public</span>
             <span class="project-year">2026</span>
-            <span class="chip">Python</span>
+            <span class="chip kw-py">Python</span>
           </div>
         </div>
         <ul class="project-points">
@@ -296,7 +300,7 @@
           <li>Graduate coursework, Korea University</li>
         </ul>
         <div class="chips">
-          <span class="chip">AI</span><span class="chip chip-mod mod-emg">EMG</span>
+          <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-emg">EMG</span>
         </div>
       </article>
 
@@ -306,7 +310,7 @@
           <div class="project-side">
             <span class="tag vis-public">Public</span>
             <span class="project-year">2025</span>
-            <span class="chip">Python</span>
+            <span class="chip kw-py">Python</span>
           </div>
         </div>
         <ul class="project-points">
@@ -315,7 +319,7 @@
           <li>Honest evaluation ladder — zero-shot F1&nbsp;0.46 → 0.73 with 20&nbsp;s calibration → AUC&nbsp;0.94 user-dependent (leave-one-session-out)</li>
         </ul>
         <div class="chips">
-          <span class="chip">AI</span><span class="chip chip-mod mod-ppg">PPG</span>
+          <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-ppg">PPG</span>
         </div>
       </article>
 
@@ -325,7 +329,7 @@
           <div class="project-side">
             <span class="tag vis-public">Public</span>
             <span class="project-year">2025</span>
-            <span class="chip">Python</span>
+            <span class="chip kw-py">Python</span>
           </div>
         </div>
         <ul class="project-points">
@@ -334,7 +338,7 @@
           <li>Best pair in deployment: LSTM entry detection + TCN classification — powers IVO's gesture commands</li>
         </ul>
         <div class="chips">
-          <span class="chip">AI</span><span class="chip chip-mod mod-imu">IMU</span>
+          <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-imu">IMU</span>
         </div>
       </article>
     </div>
@@ -351,9 +355,9 @@
             <li>AES-256-encrypted submissions; instructors batch-decrypt code, activity logs, and recordings per student</li>
             <li>Tauri desktop apps with one-command classroom installers (portable Python, Node, JDK, FFmpeg bundled)</li>
           </ul>
-          <div class="chips"><span class="chip">SW</span><span class="chip">App</span></div>
+          <div class="chips"><span class="chip kw-sw">SW</span><span class="chip kw-app">App</span></div>
         </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2026</span><span class="chip">Rust · TS</span></span>
+        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2026</span><span class="chip kw-rust">Rust · TS</span></span>
       </li>
       <li>
         <div class="list-main">
@@ -364,9 +368,9 @@
             <li>Local Whisper speech-to-text and on-device LLM Q&amp;A summarization — no cloud required</li>
             <li>Myongji University capstone project</li>
           </ul>
-          <div class="chips"><span class="chip">AI</span><span class="chip">App</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-vis">Vision</span></div>
+          <div class="chips"><span class="chip kw-ai">AI</span><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-vis">Vision</span></div>
         </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip">Python · JS</span></span>
+        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip kw-py">Python · JS</span></span>
       </li>
       <li>
         <div class="list-main">
@@ -376,9 +380,9 @@
             <li>Server-to-watch haptic feedback and live Wi-Fi status monitoring</li>
             <li>Data source for the IMU gesture pipeline and IVO</li>
           </ul>
-          <div class="chips"><span class="chip">App</span><span class="chip chip-mod mod-imu">IMU</span></div>
+          <div class="chips"><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span></div>
         </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip">Kotlin</span></span>
+        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip kw-kt">Kotlin</span></span>
       </li>
       <li>
         <div class="list-main">
@@ -388,9 +392,9 @@
             <li>Five sequence models benchmarked on F1, parameters, and FLOPs — CNN-BiLSTM strongest</li>
             <li>Built on the wear_mocap stack; capstone design project</li>
           </ul>
-          <div class="chips"><span class="chip">AI</span><span class="chip">App</span><span class="chip chip-mod mod-imu">IMU</span></div>
+          <div class="chips"><span class="chip kw-ai">AI</span><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span></div>
         </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip">Python · C#</span></span>
+        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip kw-py">Python · C#</span></span>
       </li>
     </ul>
   </section>
@@ -439,6 +443,24 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+
+  (function () {
+    var tg = document.querySelector('.theme-toggle');
+    if (!tg) return;
+    var mt = document.querySelector('meta[name="theme-color"]');
+    function apply(day) {
+      if (day) { document.documentElement.setAttribute('data-theme', 'day'); }
+      else { document.documentElement.removeAttribute('data-theme'); }
+      tg.textContent = day ? '☾' : '☀';
+      tg.setAttribute('aria-label', day ? 'Switch to night mode' : 'Switch to day mode');
+      if (mt) { mt.setAttribute('content', day ? '#e8dcc2' : '#0c0d0b'); }
+      try { localStorage.setItem('theme', day ? 'day' : 'night'); } catch (e) {}
+    }
+    apply(document.documentElement.hasAttribute('data-theme'));
+    tg.addEventListener('click', function () {
+      apply(!document.documentElement.hasAttribute('data-theme'));
+    });
   })();
 </script>
 
