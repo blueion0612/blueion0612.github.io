@@ -20,6 +20,16 @@
   --gold: #c9a96a;         /* brass */
   --gold-dim: #93805a;
 
+  /* modality signal colors (IMU stays phosphor green — the house modality) */
+  --mod-emg: #e0813f;      /* EMG — muscle signal */
+  --mod-emg-dim: rgba(224, 129, 63, 0.45);
+  --mod-ppg: #e26666;      /* PPG — blood pulse */
+  --mod-ppg-dim: rgba(226, 102, 102, 0.45);
+  --mod-vis: #52c7de;      /* vision — optics */
+  --mod-vis-dim: rgba(82, 199, 222, 0.45);
+  --mod-enc: #9fb8cc;      /* encoder — machined steel */
+  --mod-enc-dim: rgba(159, 184, 204, 0.45);
+
   --display: "Besley", "Clarendon", Georgia, serif;
   --sans: "Archivo", -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
@@ -708,12 +718,6 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .vis-public { color: var(--green); border: 1px solid var(--green-dim); }
 .vis-private { color: var(--gold); border: 1px solid var(--gold-dim); }
 
-.chip-mod {
-  color: var(--green);
-  border-color: var(--green-dim);
-  background: transparent;
-}
-
 .project-points { list-style: none; margin-top: 2px; }
 
 .project-points li {
@@ -745,6 +749,18 @@ html.js .reveal.in { opacity: 1; transform: none; }
   padding: 3px 10px;
   white-space: nowrap;
 }
+
+/* modality chips are colored signal codes — technique chips stay neutral.
+   compound selectors (.chip.mod-*) must outrank .chip, which resets color/border */
+.chip.chip-mod { background: transparent; color: var(--green); border-color: var(--green-dim); }
+
+.chip.mod-imu, .mod-imu { color: var(--green); border-color: var(--green-dim); }
+.chip.mod-emg, .mod-emg { color: var(--mod-emg); border-color: var(--mod-emg-dim); }
+.chip.mod-ppg, .mod-ppg { color: var(--mod-ppg); border-color: var(--mod-ppg-dim); }
+.chip.mod-vis, .mod-vis { color: var(--mod-vis); border-color: var(--mod-vis-dim); }
+.chip.mod-enc, .mod-enc { color: var(--mod-enc); border-color: var(--mod-enc-dim); }
+
+.mod-word { font-family: var(--mono); font-size: 0.82em; letter-spacing: 0.04em; }
 
 .more-heading {
   display: flex;
@@ -939,6 +955,14 @@ footer {
     --green-dim: #1a7a10;
     --gold: #7a6233;
     --gold-dim: #7a6233;
+    --mod-emg: #9a4f10;
+    --mod-emg-dim: #9a4f10;
+    --mod-ppg: #a03434;
+    --mod-ppg-dim: #a03434;
+    --mod-vis: #106b80;
+    --mod-vis-dim: #106b80;
+    --mod-enc: #44586b;
+    --mod-enc-dim: #44586b;
   }
   .grain, .nav { display: none; }
   body { background: #ffffff; }
