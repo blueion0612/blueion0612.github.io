@@ -521,6 +521,16 @@ html.js .reveal.in { opacity: 1; transform: none; }
   padding-top: 4px;
 }
 
+/* About keys are poster subheads — About is the impression section;
+   Contact keeps the small mono keys (utility register) */
+#about .fact dt {
+  font-family: var(--poster);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  padding-top: 0;
+}
+
 .fact dd { font-size: 1.02rem; line-height: 1.7; }
 
 .fact-points { list-style: none; }
@@ -964,6 +974,7 @@ footer {
   .grid-2 { grid-template-columns: 1fr; }
 
   .fact { grid-template-columns: 1fr; gap: 5px; padding: 14px 0; }
+  #about .fact dt { font-size: 1.02rem; }
 
   .timeline li { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
 
