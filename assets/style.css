@@ -1076,6 +1076,11 @@ footer {
   .project-list > li { flex-direction: column; gap: 8px; }
   .project-meta { justify-content: flex-start; margin-top: 0; order: -1; }
   .project-head { flex-wrap: wrap; }
+  /* the meta rows already wrap internally, but flex-shrink:0 pinned them to
+     max-content, so on a narrow phone they pushed past the card edge instead
+     of breaking onto a second line */
+  .project-side,
+  .project-meta { flex-shrink: 1; min-width: 0; }
 
   .contact-mail { font-size: 1.02rem; }
 }

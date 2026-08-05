@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Besley:wght@700;800&family=Archivo:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Rye&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/style.css?v=19">
+  <link rel="stylesheet" href="assets/style.css?v=20">
   <script>
     document.documentElement.classList.add('js');
     try { if (localStorage.getItem('theme') === 'day') document.documentElement.setAttribute('data-theme', 'day'); } catch (e) {}
@@ -301,6 +301,26 @@
         </ul>
         <div class="chips">
           <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-emg">EMG</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-head">
+          <h3><a href="https://github.com/blueion0612/Markerless_3D_Pose_TwoSmartphones" target="_blank" rel="noopener">Markerless 3D Pose from Two Smartphones</a></h3>
+          <div class="project-side">
+            <span class="tag vis-public">Public</span>
+            <span class="project-year">2025 — 2026</span>
+            <span class="chip kw-py">Python</span>
+          </div>
+        </div>
+        <ul class="project-points">
+          <li>Reconstructs 3D human motion from two ordinary phone cameras — a green torch flash carries the timing, a printed checkerboard the geometry; no sync hardware, no motion-capture suit</li>
+          <li>Six sequential heuristic correction passes replaced by one windowed spatio-temporal bundle adjustment — reprojection, bone-length, acceleration, and joint-limit residuals solved together with an analytic sparse Jacobian</li>
+          <li>23.1&nbsp;mm MPJPE / 19.7&nbsp;mm PA-MPJPE against synthetic ground truth — a scripted motion projected through the real calibrated cameras, so accuracy is measurable without any recorded footage</li>
+          <li>Measured error budget shows calibration scale, not reconstruction, dominates absolute accuracy — undistorting before stereo calibration takes baseline error from 12.1% to 0.14%</li>
+        </ul>
+        <div class="chips">
+          <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-vis">Vision</span>
         </div>
       </article>
 
