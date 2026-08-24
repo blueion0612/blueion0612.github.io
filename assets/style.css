@@ -772,6 +772,9 @@ html.js .reveal.in { opacity: 1; transform: none; }
   font-size: 0.7rem;
   color: var(--muted);
   margin-left: 10px;
+  /* atomic, so a two-marker note drops to the next line whole instead of
+     breaking after the separator and orphaning a leading middot */
+  display: inline-block;
 }
 
 .pub-venue {
