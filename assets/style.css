@@ -789,7 +789,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* ------------------------------------------------------------ awards (hidden until ready) */
 
 .awards { list-style: none; }
-.awards li {
+.awards > li {
   display: flex;
   align-items: baseline;
   gap: 26px;
@@ -797,8 +797,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
   border-top: 1px solid var(--line);
   font-size: 0.98rem;
 }
-.awards li:first-child { border-top: none; }
-.awards li:last-child { border-bottom: 1px solid var(--line); }
+.awards > li:first-child { border-top: none; }
+.awards > li:last-child { border-bottom: 1px solid var(--line); }
 
 .award-year {
   font-family: var(--mono);
@@ -810,6 +810,23 @@ html.js .reveal.in { opacity: 1; transform: none; }
 }
 
 .award-body strong { color: var(--ink); font-weight: 600; }
+
+.award-points { list-style: none; margin-top: 9px; }
+.award-points li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 3px 0;
+  max-width: 74ch;
+}
+.award-points li::before {
+  content: "\2022";           /* • */
+  position: absolute;
+  left: 0;
+  color: var(--green);
+}
 
 /* ------------------------------------------------------------ projects */
 
@@ -1073,7 +1090,7 @@ footer {
   .pub-top { flex-direction: column; gap: 12px; }
   .stamp { transform: rotate(0deg); margin-top: 0; }
 
-  .awards li { flex-direction: column; gap: 4px; padding: 13px 0; }
+  .awards > li { flex-direction: column; gap: 4px; padding: 13px 0; }
   .award-year { width: auto; }
 
   .project-list > li { flex-direction: column; gap: 8px; }
