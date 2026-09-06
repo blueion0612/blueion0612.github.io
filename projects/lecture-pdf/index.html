@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecture PDF — Yuhyeon Lee</title>
+  <meta name="description" content="A lecture recording in, a slide handout out, with the lecturer&#x27;s handwriting kept and no per-recording calibration.">
+  <meta name="author" content="Yuhyeon Lee">
+  <meta name="theme-color" content="#0c0d0b">
+  <link rel="canonical" href="https://blueion0612.github.io/projects/lecture-pdf/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yuhyeon Lee">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Lecture PDF — Yuhyeon Lee">
+  <meta property="og:description" content="A lecture recording in, a slide handout out, with the lecturer&#x27;s handwriting kept and no per-recording calibration.">
+  <meta property="og:url" content="https://blueion0612.github.io/projects/lecture-pdf/">
+  <meta property="og:image" content="https://blueion0612.github.io/assets/projects/lecture-pdf.webp">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="500">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+
+  <link rel="preload" href="../../assets/fonts/besley-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibmplexmono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/style.css?v=23">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'day');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#top">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../">
+      <span class="mark" aria-hidden="true"><span>YL</span></span>
+      <span class="nav-name">Yuhyeon Lee</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../#about">About</a>
+      <a href="../../#research">Research</a>
+      <a href="../../#education">Education</a>
+      <a href="../../#publications">Publications</a>
+      <a href="../../#awards">Awards</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Switch to day mode">&#9728;</button>
+  </div>
+</nav>
+
+<main id="top" class="project-page">
+
+  <div class="frame-tacks" aria-hidden="true"><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span></div>
+
+  <header class="project-hero">
+    <p class="hero-kicker">Development &middot; 2026</p>
+    <h1>Lecture PDF</h1>
+    <p class="project-lede">A recording of a lecture becomes a PDF of its slides, handwriting included.</p>
+    <div class="tile-meta project-hero-meta">
+      <span class="tag vis-public">Public</span>
+    </div>
+    <div class="chips project-hero-chips"><span class="chip kw-sw">SW</span><span class="chip chip-mod mod-vis">Vision</span><span class="chip kw-py">Python</span></div>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/blueion0612/Lecture_PDF" target="_blank" rel="noopener">GitHub</a> <a class="btn" href="../../#projects">All projects</a>
+    </div>
+  </header>
+
+  <figure class="project-figure project-figure-hero"><img class="fig-night" src="../../assets/projects/lecture-pdf-hero-dark.webp" alt="A lecture frame with the projected screen keystoned on the left, and the rectified slide page the pipeline recovered from it on the right" width="1400" height="509" fetchpriority="high" decoding="async"><img class="fig-day" src="../../assets/projects/lecture-pdf-hero.webp" alt="A lecture frame with the projected screen keystoned on the left, and the rectified slide page the pipeline recovered from it on the right" width="1400" height="509" fetchpriority="high" decoding="async"><figcaption>Real output: the fixture on the left, the page recovered from it on the right.</figcaption></figure>
+
+  <section class="detail">
+    <div class="section-head"><h2>What it does</h2></div>
+    <ul class="project-points">
+        <li>Turns a recording of a lecture into a PDF of the slides, including what the lecturer wrote on them.</li>
+        <li>Finds the projected screen or whiteboard by itself, so there is no per-recording calibration: keystoned off-axis cameras, screen captures, letterboxed video and recordings whose framing changes part-way are handled.</li>
+        <li>Four ink modes decide what a page is: clean, one page per slide at its least annotated; final, at its most annotated; epochs, one page per write-and-wipe cycle; and all.</li>
+        <li>Per video it writes the handout PDF, a contact sheet for a quick check, the page images and a JSON extraction report.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>How it works</h2></div>
+    <ul class="project-points">
+        <li>A screen is the part of the frame that changes but does not move. A wall does neither, a lectern does not change, and the lecturer never stops moving; those three facts isolate the screen, which is then snapped to its physical border and rectified.</li>
+        <li>A slide change is accepted only if the frame still differs some seconds later, and it is measured as how much of the previous slide survives, so annotation does not count as a new slide.</li>
+        <li>Ink is whatever differs from the slide when it first appeared, so any pen color, chalk or marker behaves the same; a mark must persist to count, bodies are filtered from the ink mask, and whatever the lecturer occludes is unknown rather than erased.</li>
+        <li>Pages are median composites of nearby frames, which removes the lecturer and recovers what they stood in front of. Four bounded passes over the video, so multi-hour recordings are fine.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Facts</h2></div>
+    <dl class="facts">
+      <div class="fact"><dt>Year</dt><dd>2026</dd></div>
+      <div class="fact"><dt>Status</dt><dd>Public, release v2.0.0</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>Python, OpenCV, NumPy, Pillow; Windows launchers that build their own environment</dd></div>
+    </dl>
+  </section>
+
+
+
+  <section class="detail">
+    <div class="section-head"><h2>Related</h2></div>
+    <ul class="tiles tiles-small">
+      <li><a class="tile tile-small" href="../../projects/mint-sensor-studio/"><img class="tile-thumb" src="../../assets/projects/mint-sensor-studio.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">MINT Sensor Studio</h3><div class="tile-meta"><span class="project-year">2026</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/mint-exam-ide/"><img class="tile-thumb" src="../../assets/projects/mint-exam-ide.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">MINT Exam IDE</h3><div class="tile-meta"><span class="project-year">2026</span></div></div></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="mark mark-footer" aria-hidden="true"><span>YL</span></span>
+    <span class="footer-line">&copy; MMXXVI &middot; Yuhyeon Lee &middot; Seoul</span>
+    <a class="footer-src" href="https://github.com/blueion0612/blueion0612.github.io" target="_blank" rel="noopener">Source</a>
+  </div>
+</footer>
+
+<script src="../../assets/site.js" defer></script>
+
+</body>
+</html>

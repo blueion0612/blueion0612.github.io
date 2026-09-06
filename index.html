@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yuhyeon Lee — Wearable Robotics &amp; Exoskeleton Engineer</title>
-  <meta name="description" content="Yuhyeon Lee — Wearable Robotics &amp; Exoskeleton Engineer. Integrated M.S./Ph.D. student at Korea University's MINT Lab, working on foundation model–based robot control and exoskeletons.">
+  <meta name="description" content="Yuhyeon Lee, wearable robotics and exoskeleton engineer. Integrated M.S./Ph.D. student at Korea University's MINT Lab: robot control, wearable sensing, exoskeletons.">
   <meta name="author" content="Yuhyeon Lee">
   <meta name="theme-color" content="#0c0d0b">
   <link rel="canonical" href="https://blueion0612.github.io/">
 
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Yuhyeon Lee">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Yuhyeon Lee — Wearable Robotics &amp; Exoskeleton Engineer">
   <meta property="og:description" content="Integrated M.S./Ph.D. student in Mechanical Engineering at Korea University, MINT Lab. Foundation model–based robot control, wearable sensing, and exoskeletons.">
   <meta property="og:url" content="https://blueion0612.github.io/">
@@ -19,16 +21,22 @@
   <meta property="og:image:alt" content="Yuhyeon Lee — Wearable Robotics &amp; Exoskeleton Engineer">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230c0d0b'/%3E%3Crect x='6.5' y='6.5' width='51' height='51' rx='6' fill='none' stroke='%2344d62c' stroke-width='2'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='23' font-weight='bold' fill='%23e8e3d5' text-anchor='middle'%3EYL%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Besley:wght@700;800&family=Archivo:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Rye&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="assets/style.css?v=22">
+  <link rel="preload" href="assets/fonts/besley-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/ibmplexmono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/style.css?v=23">
   <script>
     document.documentElement.classList.add('js');
-    try { if (localStorage.getItem('theme') === 'day') document.documentElement.setAttribute('data-theme', 'day'); } catch (e) {}
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'day');
+      }
+    } catch (e) {}
   </script>
 
   <script type="application/ld+json">
@@ -43,8 +51,8 @@
 
 <nav class="nav" aria-label="Primary">
   <div class="nav-inner">
-    <a class="nav-brand" href="#top" aria-label="Yuhyeon Lee — top">
-      <span class="mark"><span>YL</span></span>
+    <a class="nav-brand" href="#top">
+      <span class="mark" aria-hidden="true"><span>YL</span></span>
       <span class="nav-name">Yuhyeon Lee</span>
     </a>
     <div class="nav-links">
@@ -69,7 +77,7 @@
     <p class="hero-kicker">Wearable Robotics · Exoskeleton Engineer</p>
     <h1>Yuhyeon&nbsp;Lee</h1>
     <figure class="portrait">
-      <img src="assets/portrait.jpg" alt="Portrait of Yuhyeon Lee">
+      <img src="assets/portrait.jpg" alt="Portrait of Yuhyeon Lee" width="413" height="531" fetchpriority="high">
     </figure>
     <p class="hero-affiliation">
       <a href="https://mintlab.korea.ac.kr" target="_blank" rel="noopener">MINT Lab — Movement Intelligence Lab</a> · Korea University
@@ -81,13 +89,10 @@
       <a class="btn" href="https://www.linkedin.com/in/yuhyeon-lee-67a9853a5" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="https://www.instagram.com/yuhyeonkorea/" target="_blank" rel="noopener">Instagram</a>
       <a class="btn" href="https://mintlab.korea.ac.kr" target="_blank" rel="noopener">MINT Lab</a>
-      <!-- FUTURE LINKS — uncomment and fill in when ready:
-      <a class="btn" href="https://scholar.google.com/citations?user=USER_ID" target="_blank" rel="noopener">Google Scholar</a>
-      -->
     </div>
   </header>
 
-  <div class="spec-strip" aria-label="At a glance">
+  <div class="spec-strip" role="group" aria-label="At a glance">
     <div class="spec">
       <span class="spec-key">Base</span>
       <span class="spec-val">Seoul, South Korea</span>
@@ -140,7 +145,7 @@
         <dt>Path</dt>
         <dd>
           <ul class="fact-points">
-            <li>B.S. in Information &amp; Communication Engineering, Myongji University</li>
+            <li>B.S. in Information and Communication Engineering, Myongji University</li>
             <li>Integrated M.S./Ph.D. in Mechanical Engineering, Korea University</li>
           </ul>
         </dd>
@@ -220,7 +225,7 @@
         </div>
         <p class="pub-authors">Sunin Baek<sup>*</sup>, <strong>Yuhyeon Lee</strong><sup>*</sup>, Benjamin Hur, Eun Sang Cha, Daekyum Kim <span class="pub-note"><sup>*</sup>&nbsp;co-first authors</span></p>
         <p class="pub-venue">IEEE RAS/EMBS International Conference on Biomedical Robotics and Biomechatronics (BioRob)</p>
-        <p class="pub-links"><a href="https://printexo.github.io/" target="_blank" rel="noopener">project page ↗</a><!-- add when published: · <a href="URL">paper ↗</a> --></p>
+        <p class="pub-links"><a href="https://printexo.github.io/" target="_blank" rel="noopener">project page ↗</a></p>
       </li>
       <li>
         <div class="pub-top">
@@ -228,7 +233,6 @@
           <span class="stamp">In preparation</span>
         </div>
         <p class="pub-authors">Sang Hyun Kim<sup>*</sup>, Sunin Baek<sup>*</sup>, Benjamin Hur, Younghoon Bae, <strong>Yuhyeon Lee</strong>, Hyuk Soon Choi<sup>&dagger;</sup>, Daekyum Kim<sup>&dagger;</sup> <span class="pub-note"><sup>*</sup>&nbsp;co-first &middot; <sup>&dagger;</sup>&nbsp;co-corresponding</span></p>
-        <!-- add when published: <p class="pub-links"><a href="URL" target="_blank" rel="noopener">paper ↗</a></p> -->
       </li>
     </ol>
   </section>
@@ -282,184 +286,182 @@
       <h2>Projects</h2>
     </div>
 
-    <div class="featured">
-      <article class="project-card">
-        <div class="project-head">
-          <h3>Hip Exoskeleton Gait Assessment</h3>
-          <div class="project-side">
-            <span class="tag vis-private">Private</span>
-            <span class="project-year">2026</span>
-            <span class="chip kw-py">Python</span>
-          </div>
-        </div>
-        <ul class="project-points">
-          <li>Turns a hip exoskeleton into a gait-assessment platform — clinical metrics from the robot's own sensors alone (hip-joint encoders + thigh IMUs, 100&nbsp;Hz)</li>
-          <li>Estimates three clinical measures in real time: sit-to-stand power age, Gait Profile Score, and enhanced Gait Variability Index</li>
-          <li>Knowledge distillation — motion-capture and reference-IMU teachers train lightweight onboard student models</li>
-          <li>Validated leave-one-subject-out on ~30 adults aged 21–76, indoors and outdoors, across assistance levels — industry-sponsored R&amp;D</li>
-        </ul>
-        <div class="chips">
-          <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-enc">Encoder</span>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-head">
-          <h3><a href="https://github.com/blueion0612/sEMG_Gesture_Classifier" target="_blank" rel="noopener">sEMG Gesture Classifier</a></h3>
-          <div class="project-side">
-            <span class="tag vis-public">Public</span>
-            <span class="project-year">2026</span>
-            <span class="chip kw-py">Python</span>
-          </div>
-        </div>
-        <ul class="project-points">
-          <li>Six-gesture hand recognition from 16-channel surface EMG at 2&nbsp;kHz — public GREAT dataset (8 subjects, arm-translation protocol)</li>
-          <li>Classical-ML bake-off across Hudgins-4 and rich-14 feature sets, extended with boosting successors and soft voting</li>
-          <li>Reproduces the original paper's protocol as a baseline, then adds LOSO evaluation — KNN ≈ 98% on full data</li>
-          <li>Graduate coursework, Korea University</li>
-        </ul>
-        <div class="chips">
-          <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-emg">EMG</span>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-head">
-          <h3><a href="https://github.com/blueion0612/TwinPose" target="_blank" rel="noopener">TwinPose</a></h3>
-          <div class="project-side">
-            <span class="tag vis-public">Public</span>
-            <span class="project-year">2025 — 2026</span>
-            <span class="chip kw-py">Python</span>
-          </div>
-        </div>
-        <ul class="project-points">
-          <li>Reconstructs 3D human motion from two ordinary phone cameras — a green torch flash carries the timing, a printed checkerboard the geometry; no sync hardware, no motion-capture suit</li>
-          <li>Six sequential heuristic correction passes replaced by one windowed spatio-temporal bundle adjustment — reprojection, bone-length, acceleration, and joint-limit residuals solved together with an analytic sparse Jacobian</li>
-          <li>23.1&nbsp;mm MPJPE / 19.7&nbsp;mm PA-MPJPE against synthetic ground truth — a scripted motion projected through the real calibrated cameras, so accuracy is measurable without any recorded footage</li>
-          <li>Measured error budget shows calibration scale, not reconstruction, dominates absolute accuracy — undistorting before stereo calibration takes baseline error from 12.1% to 0.14%</li>
-        </ul>
-        <div class="chips">
-          <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-vis">Vision</span>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-head">
-          <h3><a href="https://github.com/blueion0612/PPG_Fist_Classifier" target="_blank" rel="noopener">PPG Fist Classifier</a></h3>
-          <div class="project-side">
-            <span class="tag vis-public">Public</span>
-            <span class="project-year">2025</span>
-            <span class="chip kw-py">Python</span>
-          </div>
-        </div>
-        <ul class="project-points">
-          <li>Detects hand state (open vs. fist) from 16-channel smartwatch PPG at 25&nbsp;Hz — no IMU, no camera</li>
-          <li>224 engineered features (time, gradient, band-power) → gradient boosting, running in real time over UDP</li>
-          <li>Honest evaluation ladder — zero-shot F1&nbsp;0.46 → 0.73 with 20&nbsp;s calibration → AUC&nbsp;0.94 user-dependent (leave-one-session-out)</li>
-        </ul>
-        <div class="chips">
-          <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-ppg">PPG</span>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-head">
-          <h3><a href="https://github.com/blueion0612/IMU_Gesture_Classifier" target="_blank" rel="noopener">IMU Gesture Classifier</a></h3>
-          <div class="project-side">
-            <span class="tag vis-public">Public</span>
-            <span class="project-year">2025</span>
-            <span class="chip kw-py">Python</span>
-          </div>
-        </div>
-        <ul class="project-points">
-          <li>Recognizes 15 wrist gestures in real time from a smartwatch IMU stream (6 channels, 50&nbsp;Hz over UDP)</li>
-          <li>Two-stage pipeline — an entry detector answers <em>when</em>, a classifier answers <em>which</em>; six architectures grid-searched (MLP, LSTM, GRU, TCN, CNN variants)</li>
-          <li>Best pair in deployment: LSTM entry detection + TCN classification — powers IVO's gesture commands</li>
-        </ul>
-        <div class="chips">
-          <span class="chip kw-ai">AI</span><span class="chip chip-mod mod-imu">IMU</span>
-        </div>
-      </article>
-    </div>
-
-    <h3 class="more-heading">Development Projects</h3>
-    <ul class="project-list">
+    <!-- projects:tiles -->
+    <h3 class="more-heading">Research</h3>
+    <ul class="tiles">
       <li>
-        <div class="list-main">
-          <a href="https://github.com/blueion0612/Mint_Sensor_Studio" target="_blank" rel="noopener">MINT Sensor Studio</a>
-          <ul class="project-points">
-            <li>One window for IMU, EMG, and PPG sensors — the live signal comes from a board over USB, from a recording, or from a simulator whose faults are set by the user, so its truth is known</li>
-            <li>Eighteen pages: orientation and position, EMG envelope and fatigue, heart rate and SpO2, plus sampling, spectrum, spectrogram, filters, denoising, and PCA/ICA — each with its equation and why it behaves as it does</li>
-            <li>Course material for MOBI311 (Sensor Theory and Signal Processing I); PySide6 + pyqtgraph, no hardware required</li>
-          </ul>
-          <div class="chips"><span class="chip kw-sw">SW</span><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-emg">EMG</span><span class="chip chip-mod mod-ppg">PPG</span></div>
-        </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2026</span><span class="chip kw-py">Python</span></span>
+        <a class="tile" href="projects/hip-exoskeleton-gait/">
+          <img class="tile-thumb" src="assets/projects/hip-exoskeleton-gait.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">Hip Exoskeleton Gait Assessment</h3>
+            <p class="tile-blurb">Clinical gait measures from a hip exoskeleton&#x27;s own encoders and thigh IMUs, distilled from motion-capture teachers into onboard models.</p>
+            <div class="tile-meta">
+              <span class="tag vis-private">Private</span>
+              <span class="project-year">2026</span>
+            </div>
+            <div class="chips"><span class="chip kw-ai">AI</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-enc">Encoder</span><span class="chip kw-py">Python</span></div>
+          </div>
+        </a>
       </li>
       <li>
-        <div class="list-main">
-          <a href="https://github.com/blueion0612/Lecture_PDF" target="_blank" rel="noopener">Lecture PDF</a>
-          <ul class="project-points">
-            <li>Rebuilds slide handouts from a lecture recording — the screen is found as the region that changes but does not move, so no per-recording calibration is needed</li>
-            <li>Keeps the lecturer's handwriting: one page per write-and-wipe cycle, so a board that is filled, erased and filled again yields both</li>
-            <li>Nearby frames are median-composited to remove the lecturer and recover what they stood in front of</li>
-          </ul>
-          <div class="chips"><span class="chip kw-sw">SW</span><span class="chip chip-mod mod-vis">Vision</span></div>
-        </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2026</span><span class="chip kw-py">Python</span></span>
+        <a class="tile" href="projects/semg-gesture-classifier/">
+          <img class="tile-thumb" src="assets/projects/semg-gesture-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">sEMG Gesture Classifier</h3>
+            <p class="tile-blurb">Six-gesture surface EMG on the public GREAT dataset: classical models judged as the evaluation stops sharing users, positions and sessions with training.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2026</span>
+            </div>
+            <div class="chips"><span class="chip kw-ai">AI</span><span class="chip chip-mod mod-emg">EMG</span><span class="chip kw-py">Python</span></div>
+          </div>
+        </a>
       </li>
       <li>
-        <div class="list-main">
-          <a href="https://github.com/blueion0612/Mint_IDE_Student" target="_blank" rel="noopener">MINT Exam IDE</a>
-          <span class="list-sep">·</span>
-          <a href="https://github.com/blueion0612/Mint_IDE_Teacher" target="_blank" rel="noopener">MINT Grader</a>
-          <ul class="project-points">
-            <li>Anti-cheat coding-exam environment — monitored editor with edit history, clipboard forensics, and screen recording</li>
-            <li>AES-256-encrypted submissions; instructors batch-decrypt code, activity logs, and recordings per student</li>
-            <li>Tauri desktop apps with one-command classroom installers (portable Python, Node, JDK, FFmpeg bundled)</li>
-          </ul>
-          <div class="chips"><span class="chip kw-sw">SW</span><span class="chip kw-app">App</span></div>
-        </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2026</span><span class="chip kw-rust">Rust · TS</span></span>
+        <a class="tile" href="projects/twinpose/">
+          <img class="tile-thumb" src="assets/projects/twinpose.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">TwinPose</h3>
+            <p class="tile-blurb">3D human motion from two ordinary phone cameras, synchronized by a flashlight and calibrated by a printed checkerboard; no sync hardware, no suit.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2025 — 2026</span>
+            </div>
+            <div class="chips"><span class="chip kw-ai">AI</span><span class="chip chip-mod mod-vis">Vision</span><span class="chip kw-py">Python</span></div>
+          </div>
+        </a>
       </li>
       <li>
-        <div class="list-main">
-          <a href="https://github.com/blueion0612/IVO" target="_blank" rel="noopener">IVO — IMU-Vision Overlay</a>
-          <ul class="project-points">
-            <li>Hands-free presentation control — 15 smartwatch IMU gestures + webcam hand tracking, haptic confirmation on the wrist</li>
-            <li>On-screen drawing with real-time handwriting OCR, calculation, and graph generation</li>
-            <li>Local Whisper speech-to-text and on-device LLM Q&amp;A summarization — no cloud required</li>
-            <li>Myongji University capstone project</li>
-          </ul>
-          <div class="chips"><span class="chip kw-ai">AI</span><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-vis">Vision</span></div>
-        </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip kw-py">Python · JS</span></span>
+        <a class="tile" href="projects/ppg-fist-classifier/">
+          <img class="tile-thumb" src="assets/projects/ppg-fist-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">PPG Fist Classifier</h3>
+            <p class="tile-blurb">Open hand or clenched fist from 16-channel wrist PPG alone, with a real-time UDP service and a twenty-second per-user calibration.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2025</span>
+            </div>
+            <div class="chips"><span class="chip kw-ai">AI</span><span class="chip chip-mod mod-ppg">PPG</span><span class="chip kw-py">Python</span></div>
+          </div>
+        </a>
       </li>
       <li>
-        <div class="list-main">
-          <a href="https://github.com/blueion0612/IMU_Streamer" target="_blank" rel="noopener">IMU Streamer</a>
-          <ul class="project-points">
-            <li>Streams accelerometer, gyroscope, and rotation vector from a WearOS watch and Android phone — 50&nbsp;Hz over UDP, 55 channels</li>
-            <li>Server-to-watch haptic feedback and live Wi-Fi status monitoring</li>
-            <li>Data source for the IMU gesture pipeline and IVO</li>
-          </ul>
-          <div class="chips"><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span></div>
-        </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip kw-kt">Kotlin</span></span>
-      </li>
-      <li>
-        <div class="list-main">
-          <a href="https://github.com/blueion0612/VOX" target="_blank" rel="noopener">VOX</a>
-          <ul class="project-points">
-            <li>Smartwatch gesture recognition with live pose estimation rendered in Unity</li>
-            <li>Five sequence models benchmarked on F1, parameters, and FLOPs — CNN-BiLSTM strongest</li>
-            <li>Built on the wear_mocap stack; capstone design project</li>
-          </ul>
-          <div class="chips"><span class="chip kw-ai">AI</span><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span></div>
-        </div>
-        <span class="project-meta"><span class="tag vis-public">Public</span><span class="project-year">2025</span><span class="chip kw-py">Python · C#</span></span>
+        <a class="tile" href="projects/imu-gesture-classifier/">
+          <img class="tile-thumb" src="assets/projects/imu-gesture-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">IMU Gesture Classifier</h3>
+            <p class="tile-blurb">Fifteen wrist gestures from a smartwatch&#x27;s accelerometer and gyroscope, live: an entry detector answers when, a classifier answers which.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2025</span>
+            </div>
+            <div class="chips"><span class="chip kw-ai">AI</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip kw-py">Python</span></div>
+          </div>
+        </a>
       </li>
     </ul>
+    <h3 class="more-heading">Development</h3>
+    <ul class="tiles">
+      <li>
+        <a class="tile" href="projects/mint-sensor-studio/">
+          <img class="tile-thumb" src="assets/projects/mint-sensor-studio.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">MINT Sensor Studio</h3>
+            <p class="tile-blurb">One window for IMU, EMG and PPG sensors and the signal processing taught on them, with simulated sensors whose truth is known.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2026</span>
+            </div>
+            <div class="chips"><span class="chip kw-sw">SW</span><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-emg">EMG</span><span class="chip chip-mod mod-ppg">PPG</span><span class="chip kw-py">Python</span></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="tile" href="projects/lecture-pdf/">
+          <img class="tile-thumb" src="assets/projects/lecture-pdf.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">Lecture PDF</h3>
+            <p class="tile-blurb">A lecture recording in, a slide handout out, with the lecturer&#x27;s handwriting kept and no per-recording calibration.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2026</span>
+            </div>
+            <div class="chips"><span class="chip kw-sw">SW</span><span class="chip chip-mod mod-vis">Vision</span><span class="chip kw-py">Python</span></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="tile" href="projects/mint-exam-ide/">
+          <img class="tile-thumb" src="assets/projects/mint-exam-ide.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">MINT Exam IDE</h3>
+            <p class="tile-blurb">The student side of a programming exam: an editor that records how the code was written and seals the submission so it cannot be altered afterwards.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2026</span>
+            </div>
+            <div class="chips"><span class="chip kw-sw">SW</span><span class="chip kw-app">App</span><span class="chip kw-rust">Rust · TS</span></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="tile" href="projects/mint-grader/">
+          <img class="tile-thumb" src="assets/projects/mint-grader.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">MINT Grader</h3>
+            <p class="tile-blurb">The invigilator&#x27;s side: hash-checks and batch-decrypts sealed submissions into code, logs and recordings, one folder per student.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2026</span>
+            </div>
+            <div class="chips"><span class="chip kw-sw">SW</span><span class="chip kw-app">App</span><span class="chip kw-rust">Rust · TS</span></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="tile" href="projects/ivo/">
+          <img class="tile-thumb" src="assets/projects/ivo.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">IVO <span class="tile-sub">IMU-Vision Overlay</span></h3>
+            <p class="tile-blurb">A presentation driven by wrist gestures and a webcam, with haptic acknowledgement on the wrist, local speech-to-text and handwriting OCR.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2025</span>
+            </div>
+            <div class="chips"><span class="chip kw-ai">AI</span><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-vis">Vision</span><span class="chip kw-py">Python · JS</span></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="tile" href="projects/imu-streamer/">
+          <img class="tile-thumb" src="assets/projects/imu-streamer.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">IMU Streamer</h3>
+            <p class="tile-blurb">A WearOS watch and an Android phone on one UDP socket, both devices in every packet, with a haptic command path back to the wrist.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2025</span>
+            </div>
+            <div class="chips"><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip kw-kt">Kotlin</span></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="tile" href="projects/vox/">
+          <img class="tile-thumb" src="assets/projects/vox.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          <div class="tile-body">
+            <h3 class="tile-title">VOX</h3>
+            <p class="tile-blurb">Hand signals from a smartwatch to a command post, for firefighters and police whose radios are half duplex, with the arm pose drawn live in Unity.</p>
+            <div class="tile-meta">
+              <span class="tag vis-public">Public</span>
+              <span class="project-year">2025</span>
+            </div>
+            <div class="chips"><span class="chip kw-ai">AI</span><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip kw-py">Python · C#</span></div>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <!-- /projects:tiles -->
   </section>
 
   <!-- ============================================================ CONTACT -->
@@ -504,44 +506,13 @@
 
 <footer>
   <div class="footer-inner">
-    <span class="mark mark-footer"><span>YL</span></span>
+    <span class="mark mark-footer" aria-hidden="true"><span>YL</span></span>
     <span class="footer-line">© MMXXVI · Yuhyeon Lee · Seoul</span>
     <a class="footer-src" href="https://github.com/blueion0612/blueion0612.github.io" target="_blank" rel="noopener">Source</a>
   </div>
 </footer>
 
-<script>
-  (function () {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-  })();
-
-  (function () {
-    var tg = document.querySelector('.theme-toggle');
-    if (!tg) return;
-    var mt = document.querySelector('meta[name="theme-color"]');
-    function apply(day) {
-      if (day) { document.documentElement.setAttribute('data-theme', 'day'); }
-      else { document.documentElement.removeAttribute('data-theme'); }
-      tg.textContent = day ? '☾' : '☀';
-      tg.setAttribute('aria-label', day ? 'Switch to night mode' : 'Switch to day mode');
-      if (mt) { mt.setAttribute('content', day ? '#e8dcc2' : '#0c0d0b'); }
-      try { localStorage.setItem('theme', day ? 'day' : 'night'); } catch (e) {}
-    }
-    apply(document.documentElement.hasAttribute('data-theme'));
-    tg.addEventListener('click', function () {
-      apply(!document.documentElement.hasAttribute('data-theme'));
-    });
-  })();
-</script>
+<script src="assets/site.js" defer></script>
 
 </body>
 </html>

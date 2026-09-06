@@ -2,8 +2,17 @@
    Yuhyeon Lee — personal portfolio
    Concept: "the engineer's dossier" — matte black ground,
    engraved serif display, monospace readouts, one phosphor-green
-   accent, brass for stamps and the monogram. Dark only.
+   accent, brass for stamps and the monogram. Night by default,
+   day on the toggle or the OS preference.
    ============================================================ */
+
+/* self-hosted type (SIL Open Font License, see fonts/OFL-*.txt) */
+@font-face { font-family: "Besley"; font-style: normal; font-weight: 700 800; font-display: swap; src: url("fonts/besley-var.woff2") format("woff2"); }
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("fonts/archivo-var.woff2") format("woff2"); }
+@font-face { font-family: "Archivo"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/archivo-italic-var.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/ibmplexmono-400.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/ibmplexmono-500.woff2") format("woff2"); }
+@font-face { font-family: "Rye"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/rye-400.woff2") format("woff2"); }
 
 :root {
   color-scheme: dark;
@@ -66,26 +75,28 @@ html[data-theme="day"] {
   --bg-hover: #dbcda6;
   --ink: #241c10;
   --ink-soft: #332918;
-  --muted: #695942;
+  --muted: #63543e;
   --line: #c6b48e;
   --line-strong: #7d6b4a;
   --line-soft: #d8caa8;
   --green: #12570a;
   --green-dim: #12570a;
-  --gold: #6f5522;
-  --gold-dim: #6f5522;
+  --gold: #6c5221;
+  --gold-dim: #6c5221;
 
-  --mod-emg: #9a4f10;  --mod-emg-dim: #9a4f10;
-  --mod-ppg: #a03434;  --mod-ppg-dim: #a03434;
-  --mod-vis: #106b80;  --mod-vis-dim: #106b80;
+  /* every chip ink reaches 4.6:1 on the darkest day surface (--bg-hover),
+     so small chip text passes WCAG AA in both themes */
+  --mod-emg: #86450e;  --mod-emg-dim: #86450e;
+  --mod-ppg: #9a3232;  --mod-ppg-dim: #9a3232;
+  --mod-vis: #0e5e71;  --mod-vis-dim: #0e5e71;
   --mod-enc: #44586b;  --mod-enc-dim: #44586b;
 
   --kw-ai: #5f3596;    --kw-ai-dim: #5f3596;
-  --kw-sw: #6b6226;    --kw-sw-dim: #6b6226;
-  --kw-app: #9c3f63;   --kw-app-dim: #9c3f63;
-  --kw-py: #2d5f8a;    --kw-py-dim: #2d5f8a;
-  --kw-rust: #8a4423;  --kw-rust-dim: #8a4423;
-  --kw-kt: #8a5f10;    --kw-kt-dim: #8a5f10;
+  --kw-sw: #5f5722;    --kw-sw-dim: #5f5722;
+  --kw-app: #8e395a;   --kw-app-dim: #8e395a;
+  --kw-py: #2a5982;    --kw-py-dim: #2a5982;
+  --kw-rust: #874322;  --kw-rust-dim: #874322;
+  --kw-kt: #734f0d;    --kw-kt-dim: #734f0d;
   --year: #4a4132;     --year-dim: #4a4132;
 }
 
@@ -983,6 +994,142 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
 .list-sep { color: var(--muted); margin: 0 4px; }
 
+/* ------------------------------------------------------------ project tiles */
+
+/* the Projects tab is a grid of tiles: thumbnail, name, two lines, chips.
+   the whole tile is the link to the project's own page */
+.tiles {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--line);
+  background: var(--bg-raise);
+  color: var(--ink-soft);
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.tile:hover { border-color: var(--gold-dim); background: var(--bg-hover); text-decoration: none; }
+.tile:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+
+/* thumbnails are composed on the night card color, so they read as plates in both themes */
+.tile-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  background: #12140f;
+  border-bottom: 1px solid var(--line);
+}
+
+.tile-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px 18px;
+}
+
+.tile-title { font-size: 1.02rem; font-weight: 600; color: var(--ink); line-height: 1.35; }
+.tile:hover .tile-title { color: var(--green); }
+.tile-sub { font-weight: 400; font-size: 0.9em; color: var(--muted); }
+
+.tile-blurb { font-size: 0.92rem; line-height: 1.6; color: var(--muted); }
+.tile:hover .tile-blurb { color: var(--ink-soft); }
+
+.tile-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.tile .chips { margin-top: 4px; }
+
+.tiles-small { grid-template-columns: repeat(3, 1fr); }
+.tiles-small .tile-body { padding: 12px 14px 14px; gap: 4px; }
+.tiles-small .tile-title { font-size: 0.92rem; }
+.tiles-small .tile-meta { padding-top: 2px; }
+
+/* ------------------------------------------------------------ project pages */
+
+.project-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 64px 0 0;
+}
+
+.project-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5.2vw, 3.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  line-height: 1.08;
+  margin-bottom: 14px;
+}
+
+.project-subtitle {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.project-lede {
+  font-size: 1.12rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 58ch;
+  margin-bottom: 18px;
+}
+
+.project-hero-meta { justify-content: center; margin-top: 0; padding-top: 0; }
+.project-hero-chips { justify-content: center; margin: 12px 0 26px; }
+
+.project-figure { margin: 44px 0 0; }
+.project-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  background: var(--bg-raise);
+}
+.project-figure figcaption {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: 10px;
+}
+.project-figure-hero { margin-top: 48px; }
+
+/* figures ship in both palettes; the page shows the one that matches the theme.
+   (two classes, so these outrank the `.project-figure img { display: block }` above) */
+.project-figure .fig-day { display: none; }
+html[data-theme="day"] .project-figure .fig-day { display: block; }
+html[data-theme="day"] .project-figure .fig-night { display: none; }
+
+.figure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 14px; }
+.figure-grid .project-figure { margin: 0; }
+
+.detail { margin: 72px 0; }
+.detail .project-points li { max-width: none; }
+.project-page .fact { grid-template-columns: 150px 1fr; }
+
 
 /* ------------------------------------------------------------ contact & footer */
 
@@ -1102,7 +1249,19 @@ footer {
   .project-side,
   .project-meta { flex-shrink: 1; min-width: 0; }
 
+  .tiles, .tiles-small { grid-template-columns: 1fr; }
+  .figure-grid { grid-template-columns: 1fr; }
+  .project-hero { padding-top: 44px; }
+  .project-page .fact { grid-template-columns: 1fr; }
+  .detail { margin: 56px 0; }
+
   .contact-mail { font-size: 1.02rem; }
+}
+
+/* narrow phones: tighten the nav row so seven links wrap evenly */
+@media (max-width: 430px) {
+  .nav-links { gap: 8px 12px; }
+  .nav-links a { font-size: 0.6rem; letter-spacing: 0.08em; }
 }
 
 /* very narrow phones: let poster-band titles wrap instead of clipping */
@@ -1116,7 +1275,7 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   html.js .reveal { opacity: 1; transform: none; transition: none; }
   .live-dot { animation: none; }
-  .card, .project-card, .btn, .mark, .pointer, .skip-link { transition: none; }
+  .card, .project-card, .tile, .btn, .mark, .pointer, .skip-link { transition: none; }
 }
 
 /* ------------------------------------------------------------ print */

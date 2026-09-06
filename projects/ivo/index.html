@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IVO — Yuhyeon Lee</title>
+  <meta name="description" content="A presentation driven by wrist gestures and a webcam, with haptic acknowledgement on the wrist, local speech-to-text and handwriting OCR.">
+  <meta name="author" content="Yuhyeon Lee">
+  <meta name="theme-color" content="#0c0d0b">
+  <link rel="canonical" href="https://blueion0612.github.io/projects/ivo/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yuhyeon Lee">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="IVO — Yuhyeon Lee">
+  <meta property="og:description" content="A presentation driven by wrist gestures and a webcam, with haptic acknowledgement on the wrist, local speech-to-text and handwriting OCR.">
+  <meta property="og:url" content="https://blueion0612.github.io/projects/ivo/">
+  <meta property="og:image" content="https://blueion0612.github.io/assets/projects/ivo.webp">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="500">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+
+  <link rel="preload" href="../../assets/fonts/besley-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibmplexmono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/style.css?v=23">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'day');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#top">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../">
+      <span class="mark" aria-hidden="true"><span>YL</span></span>
+      <span class="nav-name">Yuhyeon Lee</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../#about">About</a>
+      <a href="../../#research">Research</a>
+      <a href="../../#education">Education</a>
+      <a href="../../#publications">Publications</a>
+      <a href="../../#awards">Awards</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Switch to day mode">&#9728;</button>
+  </div>
+</nav>
+
+<main id="top" class="project-page">
+
+  <div class="frame-tacks" aria-hidden="true"><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span></div>
+
+  <header class="project-hero">
+    <p class="hero-kicker">Development &middot; 2025</p>
+    <h1>IVO</h1>
+    <p class="project-subtitle">IMU-Vision Overlay</p>
+    <p class="project-lede">A presentation without a clicker: wrist gestures, a webcam, and a watch that buzzes back.</p>
+    <div class="tile-meta project-hero-meta">
+      <span class="tag vis-public">Public</span>
+    </div>
+    <div class="chips project-hero-chips"><span class="chip kw-ai">AI</span><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-vis">Vision</span><span class="chip kw-py">Python · JS</span></div>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/blueion0612/IVO" target="_blank" rel="noopener">GitHub</a> <a class="btn" href="../../#projects">All projects</a>
+    </div>
+  </header>
+
+  <figure class="project-figure project-figure-hero"><img src="../../assets/projects/ivo-hero.webp" alt="The overlay on top of a slide: a border and a Perform gesture now prompt while a gesture is read, the gesture guide on the right, the timer at the bottom left" width="1280" height="720" fetchpriority="high" decoding="async"><figcaption>The overlay on top of a sample slide. The border and the prompt show while a gesture is being read.</figcaption></figure>
+
+  <section class="detail">
+    <div class="section-head"><h2>What it does</h2></div>
+    <ul class="project-points">
+        <li>Fifteen wrist gestures change and jump slides, black out the screen and switch every other mode on and off. The watch vibrates when a gesture is read.</li>
+        <li>Webcam hand tracking with MediaPipe: the index finger is a pointer, a pinch draws, six colors and four line widths are picked by hovering, and a four-corner calibration maps the camera to the screen.</li>
+        <li>Strokes drawn on the overlay become text, an evaluated arithmetic expression or a plotted graph, through Google Vision and SimpleTex, SymPy and Matplotlib.</li>
+        <li>Speech becomes a transcript and a summary of the question-and-answer segments, locally, with faster-whisper and an Ollama model.</li>
+        <li>Sticky notes with voice input and dictionary lookups in Korean and English, an on-screen timer, and camera and microphone chosen by name so a setup survives a reboot.</li>
+        <li>Every feature is also reachable from the keyboard, so the app runs without any of the hardware.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>How it is built</h2></div>
+    <ul class="project-points">
+        <li>An Electron main process manages the Python subprocesses: gesture controller, hand tracker, speech-to-text, summarizer and dictionary. Gesture data arrives over a WebSocket.</li>
+        <li>The two-stage gesture model is trained with IMU Gesture Classifier; the watch and phone apps are IMU Streamer. IVO remaps the six channels between the two packet layouts.</li>
+        <li>The models are trained on one wearer and the detector thresholds were tuned by hand; UDP carries no acknowledgement; handwriting OCR calls two cloud APIs. The README says all of this under Limitations.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Facts</h2></div>
+    <dl class="facts">
+      <div class="fact"><dt>Year</dt><dd>2025</dd></div>
+      <div class="fact"><dt>Status</dt><dd>Public, release v3.2.0</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>Electron and Node.js; Python with PyTorch, MediaPipe, OpenCV, faster-whisper</dd></div>
+      <div class="fact"><dt>Hardware</dt><dd>WearOS watch, Android phone, any webcam</dd></div>
+      <div class="fact"><dt>Context</dt><dd>Undergraduate capstone project, Myongji University</dd></div>
+    </dl>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Figures</h2></div>
+    <div class="figure-grid">
+      <figure class="project-figure"><img class="fig-night" src="../../assets/projects/ivo-system-dark.webp" alt="A smartwatch sends inertial data through a phone to the desktop app, a webcam supplies hand landmarks, and haptic acknowledgement returns to the wrist" width="1263" height="640" loading="lazy" decoding="async"><img class="fig-day" src="../../assets/projects/ivo-system.webp" alt="A smartwatch sends inertial data through a phone to the desktop app, a webcam supplies hand landmarks, and haptic acknowledgement returns to the wrist" width="1263" height="640" loading="lazy" decoding="async"><figcaption>Two input paths into one desktop app, and the haptic acknowledgement sent back to the wrist.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Related</h2></div>
+    <ul class="tiles tiles-small">
+      <li><a class="tile tile-small" href="../../projects/imu-gesture-classifier/"><img class="tile-thumb" src="../../assets/projects/imu-gesture-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">IMU Gesture Classifier</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/imu-streamer/"><img class="tile-thumb" src="../../assets/projects/imu-streamer.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">IMU Streamer</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/vox/"><img class="tile-thumb" src="../../assets/projects/vox.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">VOX</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="mark mark-footer" aria-hidden="true"><span>YL</span></span>
+    <span class="footer-line">&copy; MMXXVI &middot; Yuhyeon Lee &middot; Seoul</span>
+    <a class="footer-src" href="https://github.com/blueion0612/blueion0612.github.io" target="_blank" rel="noopener">Source</a>
+  </div>
+</footer>
+
+<script src="../../assets/site.js" defer></script>
+
+</body>
+</html>

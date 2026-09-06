@@ -1,0 +1,404 @@
+{
+  "base": "https://blueion0612.github.io",
+  "groups": [
+    {"key": "research", "label": "Research"},
+    {"key": "development", "label": "Development"}
+  ],
+  "projects": [
+    {
+      "slug": "hip-exoskeleton-gait",
+      "name": "Hip Exoskeleton Gait Assessment",
+      "group": "research", "year": "2026", "visibility": "Private",
+      "langs": [["Python", "kw-py"]], "kinds": [["AI", "kw-ai"]], "mods": [["IMU", "mod-imu"], ["Encoder", "mod-enc"]],
+      "blurb": "Clinical gait measures from a hip exoskeleton's own encoders and thigh IMUs, distilled from motion-capture teachers into onboard models.",
+      "lede": "A hip exoskeleton turned into a gait-assessment platform, using nothing but the sensors it already carries.",
+      "github": null, "project_page": null, "paper": null,
+      "hero": null,
+      "figures": [],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Turns a hip exoskeleton into a gait-assessment platform: clinical metrics from the robot's own sensors alone, hip-joint encoders and thigh IMUs at 100 Hz.",
+          "Estimates three clinical measures in real time: sit-to-stand power age, Gait Profile Score, and the enhanced Gait Variability Index.",
+          "Knowledge distillation: motion-capture and reference-IMU teachers train lightweight student models that run on the robot.",
+          "Validated leave-one-subject-out on about 30 adults aged 21 to 76, indoors and outdoors, across assistance levels."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2026"], ["Status", "Private repository; industry-sponsored R&D"], ["Stack", "Python, PyTorch"],
+        ["Sensors", "Hip-joint encoders, thigh IMUs, 100 Hz"], ["Role", "Estimation pipeline, models, validation"]
+      ],
+      "related": ["twinpose", "imu-gesture-classifier"]
+    },
+    {
+      "slug": "semg-gesture-classifier",
+      "name": "sEMG Gesture Classifier",
+      "group": "research", "year": "2026", "visibility": "Public",
+      "langs": [["Python", "kw-py"]], "kinds": [["AI", "kw-ai"]], "mods": [["EMG", "mod-emg"]],
+      "blurb": "Six-gesture surface EMG on the public GREAT dataset: classical models judged as the evaluation stops sharing users, positions and sessions with training.",
+      "lede": "Classical machine learning on six-gesture surface EMG, evaluated the hard way.",
+      "github": "https://github.com/blueion0612/sEMG_Gesture_Classifier", "project_page": null, "paper": null,
+      "hero": {"light": "semg-gesture-classifier-hero.webp", "dark": "semg-gesture-classifier-hero-dark.webp",
+               "alt": "The evaluation ladder: four rungs from the full-data bake-off down to leave-one-subject-out, each holding out more of what training and test share",
+               "caption": "The four evaluations, easiest at the top. Each rung holds out more of what the training set shares with the test set."},
+      "figures": [],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Six-gesture hand recognition from 16-channel surface EMG at 2 kHz, on the public GREAT dataset: 8 participants, arm-translation protocol.",
+          "Compares decision tree, random forest, AdaBoost, histogram gradient boosting, KNN, logistic regression and a perceptron, plus a soft-voting ensemble, against the paper's LDA baseline.",
+          "Two feature sets: Hudgins-4, 64 features in total, and rich-14, 224 features."
+        ]},
+        {"title": "How it is evaluated", "items": [
+          "Four rungs: the full-data bake-off, the paper's within-position protocol, transfer across arm positions, and leave-one-subject-out over eight folds.",
+          "Every split keeps a whole trial on one side. Windows overlap by 78 ms, so a window-level split would leak and the bake-off number would be meaningless.",
+          "Accuracy carries a 95% bootstrap confidence interval over 1000 resamples; significance is a Wilcoxon signed-rank test over the eight participants, not over windows.",
+          "128 ms windows, 256 samples, 50 ms hop: 470,413 windows over 4,800 trials. Counting features are thresholded at 1% of each channel's own standard deviation."
+        ]},
+        {"title": "Results", "items": [
+          "KNN reaches about 98% on the full-data bake-off; the paper's own protocol reports about 96% within position and 84 to 92% across positions.",
+          "Nothing is cached: the pipeline recomputes every number from the recordings and writes them to a results file, so the figures are what the code produces.",
+          "Boosting is represented by its histogram implementation, and an equivalence check on a subsample shows the successor buys speed, not accuracy."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2026"], ["Status", "Public, release v1.0.0"], ["Stack", "Python, scikit-learn, NumPy"],
+        ["Data", "GREAT dataset, 8 participants, 16 channels, 2 kHz"], ["Context", "Graduate coursework, Korea University"]
+      ],
+      "related": ["imu-gesture-classifier", "ppg-fist-classifier", "mint-sensor-studio"]
+    },
+    {
+      "slug": "twinpose",
+      "name": "TwinPose",
+      "group": "research", "year": "2025 — 2026", "visibility": "Public",
+      "langs": [["Python", "kw-py"]], "kinds": [["AI", "kw-ai"]], "mods": [["Vision", "mod-vis"]],
+      "blurb": "3D human motion from two ordinary phone cameras, synchronized by a flashlight and calibrated by a printed checkerboard; no sync hardware, no suit.",
+      "lede": "3D human motion from two phone cameras, with one windowed bundle adjustment where six heuristic passes used to be.",
+      "github": "https://github.com/blueion0612/TwinPose", "project_page": null, "paper": null,
+      "hero": {"light": "twinpose-hero.webp", "dark": "twinpose-hero-dark.webp",
+               "alt": "Accuracy across the three pipeline stages: triangulation, single-view bootstrap and bundle adjustment, with the noise-free upper bound",
+               "caption": "MPJPE through the pipeline on the synthetic benchmark, drawn from the committed results file."},
+      "figures": [],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Reconstructs 3D human motion from two ordinary phone cameras. A green flashlight carries the timing signal, a printed checkerboard the geometry, and one person can record alone.",
+          "Five stages: synchronization, calibration, 2D detection, 3D reconstruction, wrist kinematics.",
+          "The v2.0 rebuild replaced six sequential heuristic correction passes with a single windowed spatio-temporal bundle adjustment: reprojection, bone-length, acceleration and joint-limit residuals solved together with an analytic sparse Jacobian."
+        ]},
+        {"title": "Results", "items": [
+          "Synthetic benchmark: a scripted motion built by forward kinematics, projected through the real calibrated camera pair (1.88 m baseline), corrupted with a detector noise model, and run through the real pipeline. 510 frames, five noise seeds, ground truth known.",
+          "23.1 mm MPJPE and 19.7 mm PA-MPJPE after bundle adjustment, from 28.2 mm at triangulation. PCK@50 mm 91.7%, bone-length CV 2.9%, coverage 99.5%. Runtime 5.2 s for 510 frames.",
+          "Reprojection error rises from 1.6 px to 3.4 px through the pipeline, and that is correct: detector noise is 2.5 px per axis, so the lower number was overfitting. Reprojection error alone cannot tell a good reconstruction from an overfitted one.",
+          "A calibration fix: undistorting before stereo calibration took baseline error from 12.1% to 0.14%, around an OpenCV 5.x behavior that silently discards distortion coefficients.",
+          "A measured error budget shows that calibration scale, not reconstruction, dominates absolute accuracy."
+        ]},
+        {"title": "What ships", "items": [
+          "No footage, weights or keypoints ship with the repository, so the benchmark is what makes accuracy measurable without any recording.",
+          "A README-numbers test asserts every number in the README against the committed results file. 103 tests in about ten minutes."
+        ]}
+      ],
+      "facts": [
+        ["Years", "2025 — 2026"], ["Status", "Public, release v2.0.0"], ["Stack", "Python, OpenCV, NumPy, SciPy; OpenPose BODY_25B for 2D keypoints"],
+        ["Benchmark", "510 frames, 5 seeds, real task30 camera pair"]
+      ],
+      "related": ["vox", "hip-exoskeleton-gait"]
+    },
+    {
+      "slug": "ppg-fist-classifier",
+      "name": "PPG Fist Classifier",
+      "group": "research", "year": "2025", "visibility": "Public",
+      "langs": [["Python", "kw-py"]], "kinds": [["AI", "kw-ai"]], "mods": [["PPG", "mod-ppg"]],
+      "blurb": "Open hand or clenched fist from 16-channel wrist PPG alone, with a real-time UDP service and a twenty-second per-user calibration.",
+      "lede": "Open hand or fist, from wrist PPG alone, with an evaluation ladder that says what the number is worth.",
+      "github": "https://github.com/blueion0612/PPG_Fist_Classifier", "project_page": null, "paper": null,
+      "hero": {"light": "ppg-fist-classifier-hero.webp", "dark": "ppg-fist-classifier-hero-dark.webp",
+               "alt": "Three evaluation scenarios side by side: zero-shot across sessions, twenty seconds of calibration, and user-dependent leave-one-session-out",
+               "caption": "The three scenarios, from the results file the experiment writes."},
+      "figures": [
+        {"light": "ppg-fist-classifier-pipeline.webp", "dark": "ppg-fist-classifier-pipeline-dark.webp", "alt": "The pipeline from raw channels through filtering, windowing and 224 features to the classifier", "caption": "From 16 raw channels to a prediction: filtering, 3 s windows, 14 features per channel, gradient boosting."},
+        {"light": "ppg-fist-classifier-sessions.webp", "dark": "ppg-fist-classifier-sessions-dark.webp", "alt": "Per-session leave-one-session-out scores, two of seven sessions far below the rest", "caption": "Leave-one-session-out, per session. Two sessions fall below 0.20 F1 and the cause is not settled."}
+      ],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Detects hand state, open versus fist, from 16-channel smartwatch PPG at 25 Hz, with no IMU and no camera.",
+          "224 engineered features per window, 14 per channel: time-domain statistics, gradient statistics, band power in three bands and a baseline shift, into a histogram gradient boosting classifier.",
+          "A real-time UDP service holds a rolling 3 s buffer, predicts at the stride rate, and can fit a per-user model from a guided calibration sequence and blend it with the generic model."
+        ]},
+        {"title": "Results", "items": [
+          "Zero-shot across sessions: F1 0.46. With 20 s of labeled calibration per wearer: F1 0.73. User-dependent, leave-one-session-out: AUC 0.94.",
+          "Two of the seven sessions score below 0.20 F1 when held out; the cause is not settled, and the README says so.",
+          "Every number in the README is asserted by a test against the results file the experiment writes."
+        ]},
+        {"title": "Two model paths", "items": [
+          "The deployed classifier is gradient boosting over the 224 features, which the real-time service loads.",
+          "The reported experiment also trains a multi-scale CNN on raw windows from the three channels that separate the classes best on their own.",
+          "Recordings are on Google Drive; the deployed model is sent on request by email, or retrained from the recordings."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2025"], ["Status", "Public, release v1.0.0"], ["Stack", "Python, scikit-learn, SciPy; PyTorch for the CNN experiment"],
+        ["Data", "Seven sessions of 16-channel wrist PPG at 25 Hz"]
+      ],
+      "related": ["imu-gesture-classifier", "semg-gesture-classifier", "mint-sensor-studio"]
+    },
+    {
+      "slug": "imu-gesture-classifier",
+      "name": "IMU Gesture Classifier",
+      "group": "research", "year": "2025", "visibility": "Public",
+      "langs": [["Python", "kw-py"]], "kinds": [["AI", "kw-ai"]], "mods": [["IMU", "mod-imu"]],
+      "blurb": "Fifteen wrist gestures from a smartwatch's accelerometer and gyroscope, live: an entry detector answers when, a classifier answers which.",
+      "lede": "Fifteen wrist gestures, live, from six channels of a watch, split into when and which.",
+      "github": "https://github.com/blueion0612/IMU_Gesture_Classifier", "project_page": null, "paper": null,
+      "hero": {"light": "imu-gesture-classifier-hero.webp", "dark": "imu-gesture-classifier-hero-dark.webp",
+               "alt": "The two-stage pipeline: an entry detector on every window, then a fifteen-class classifier on the 2.5 seconds that follow a detection",
+               "caption": "Green is the entry detector that runs on every window, gold the classifier that runs only after a detection."},
+      "figures": [],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Recognizes fifteen hand gestures from a smartwatch in real time, from six channels, linear acceleration and angular rate, at 50 Hz over UDP.",
+          "Two stages: a small binary entry detector runs on every window and decides when a gesture has started; only then does a fifteen-class model run on the 2.5 s that follow.",
+          "Six architectures in the grid, MLP, LSTM, GRU, TCN, 1D CNN and CNN-LSTM. Both training scripts write the full grid, not the winner alone.",
+          "Deployed pair: LSTM entry detection and TCN classification, the models that drive IVO's gesture commands."
+        ]},
+        {"title": "How it works", "items": [
+          "A detection opens a 2.5 s buffer; the classifier runs over several windows inside it and the highest-confidence result wins, so the gesture need not start exactly where the detector fired.",
+          "After a recognized gesture the detector is suppressed for a configurable interval, two seconds by default, so one movement cannot produce a burst of detections.",
+          "Fixed protocol: 70/15/15 split, seed 42, early stopping after 15 epochs without improvement, accuracy and macro F1 with a confusion matrix. No benchmark numbers are committed, so none are claimed."
+        ]},
+        {"title": "Data", "items": [
+          "Recordings, pretrained checkpoints and training reports are on Google Drive, linked from the README.",
+          "Eight tests run without recordings or a checkpoint."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2025"], ["Status", "Public, release v1.0.0"], ["Stack", "Python, PyTorch, NumPy"],
+        ["Input", "Six watch channels at 50 Hz over UDP"]
+      ],
+      "related": ["ivo", "imu-streamer", "vox", "ppg-fist-classifier"]
+    },
+    {
+      "slug": "mint-sensor-studio",
+      "name": "MINT Sensor Studio",
+      "group": "development", "year": "2026", "visibility": "Public",
+      "langs": [["Python", "kw-py"]], "kinds": [["SW", "kw-sw"], ["App", "kw-app"]], "mods": [["IMU", "mod-imu"], ["EMG", "mod-emg"], ["PPG", "mod-ppg"]],
+      "blurb": "One window for IMU, EMG and PPG sensors and the signal processing taught on them, with simulated sensors whose truth is known.",
+      "lede": "One window for sensors and the methods that read them, written as course material.",
+      "github": "https://github.com/blueion0612/Mint_Sensor_Studio", "project_page": null, "paper": null,
+      "hero": {"light": "mint-sensor-studio-hero.webp", "dark": "mint-sensor-studio-hero-dark.webp",
+               "alt": "The Orientation page: a simulated IMU's attitude drawn as a board in a wire cube, roll, pitch and heading beside it, the quaternion update equation along the bottom",
+               "caption": "The Orientation page on a simulated IMU. The window takes this screenshot of itself."},
+      "figures": [
+        {"light": "mint-sensor-studio-envelope.webp", "dark": null, "alt": "EMG, the Envelope page: RMS envelope, onset and percent of MVC", "caption": "EMG: envelope, onset, percent of MVC."},
+        {"light": "mint-sensor-studio-heartrate.webp", "dark": null, "alt": "PPG, the Heart rate page: beats, heart rate and variability", "caption": "PPG: beats, heart rate, variability."},
+        {"light": "mint-sensor-studio-spectrogram.webp", "dark": null, "alt": "The Spectrogram page in the dark palette", "caption": "The Spectrogram page, dark palette."}
+      ],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Puts one live signal on screen, from an IMU, an EMG board or a pulse oximeter, over a cable or the radio, from a recording, or from a simulated sensor.",
+          "Every sensor has a simulated version whose faults are set by the user, so its truth is known and an estimate's error can be measured rather than inferred.",
+          "Eighteen pages in the rail: IMU (Signals, Frames, Orientation, Position), EMG (Signals, Envelope, Fatigue), PPG (Signals, Heart rate, SpO2), and signal processing for any of them (Sampling, Convolution, Periodicity, Spectrum, Spectrogram, Filters, Denoise, Separation).",
+          "The panel along the bottom gives each page's equation, what its symbols are, why the page behaves as it does, something to try, and a link to read more."
+        ]},
+        {"title": "Engineering", "items": [
+          "Records to CSV and plays recordings back at speed. Arduino sketches for an IMU and an analog board are included.",
+          "A window check drives every page on every simulated sensor, measures frame time against a budget, and fails on overlapping text; CI runs it off screen on Linux beside an estimator check on three Python versions.",
+          "Three releases: v1.0.0, v1.0.1 and v1.1.0, the last after a merge with the development side's update."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2026"], ["Status", "Public, release v1.1.0"], ["Stack", "Python, PySide6, pyqtgraph, NumPy, SciPy"],
+        ["Context", "Course material for MOBI311, Sensor Theory and Signal Processing I"]
+      ],
+      "related": ["imu-gesture-classifier", "semg-gesture-classifier", "ppg-fist-classifier", "imu-streamer"]
+    },
+    {
+      "slug": "lecture-pdf",
+      "name": "Lecture PDF",
+      "group": "development", "year": "2026", "visibility": "Public",
+      "langs": [["Python", "kw-py"]], "kinds": [["SW", "kw-sw"]], "mods": [["Vision", "mod-vis"]],
+      "blurb": "A lecture recording in, a slide handout out, with the lecturer's handwriting kept and no per-recording calibration.",
+      "lede": "A recording of a lecture becomes a PDF of its slides, handwriting included.",
+      "github": "https://github.com/blueion0612/Lecture_PDF", "project_page": null, "paper": null,
+      "hero": {"light": "lecture-pdf-hero.webp", "dark": "lecture-pdf-hero-dark.webp",
+               "alt": "A lecture frame with the projected screen keystoned on the left, and the rectified slide page the pipeline recovered from it on the right",
+               "caption": "Real output: the fixture on the left, the page recovered from it on the right."},
+      "figures": [],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Turns a recording of a lecture into a PDF of the slides, including what the lecturer wrote on them.",
+          "Finds the projected screen or whiteboard by itself, so there is no per-recording calibration: keystoned off-axis cameras, screen captures, letterboxed video and recordings whose framing changes part-way are handled.",
+          "Four ink modes decide what a page is: clean, one page per slide at its least annotated; final, at its most annotated; epochs, one page per write-and-wipe cycle; and all.",
+          "Per video it writes the handout PDF, a contact sheet for a quick check, the page images and a JSON extraction report."
+        ]},
+        {"title": "How it works", "items": [
+          "A screen is the part of the frame that changes but does not move. A wall does neither, a lectern does not change, and the lecturer never stops moving; those three facts isolate the screen, which is then snapped to its physical border and rectified.",
+          "A slide change is accepted only if the frame still differs some seconds later, and it is measured as how much of the previous slide survives, so annotation does not count as a new slide.",
+          "Ink is whatever differs from the slide when it first appeared, so any pen color, chalk or marker behaves the same; a mark must persist to count, bodies are filtered from the ink mask, and whatever the lecturer occludes is unknown rather than erased.",
+          "Pages are median composites of nearby frames, which removes the lecturer and recovers what they stood in front of. Four bounded passes over the video, so multi-hour recordings are fine."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2026"], ["Status", "Public, release v2.0.0"], ["Stack", "Python, OpenCV, NumPy, Pillow; Windows launchers that build their own environment"]
+      ],
+      "related": ["mint-sensor-studio", "mint-exam-ide"]
+    },
+    {
+      "slug": "mint-exam-ide",
+      "name": "MINT Exam IDE",
+      "group": "development", "year": "2026", "visibility": "Public",
+      "langs": [["Rust · TS", "kw-rust"]], "kinds": [["SW", "kw-sw"], ["App", "kw-app"]], "mods": [],
+      "blurb": "The student side of a programming exam: an editor that records how the code was written and seals the submission so it cannot be altered afterwards.",
+      "lede": "The student side of a programming exam: an editor that records how the code was written, not only what.",
+      "github": "https://github.com/blueion0612/Mint_IDE_Student", "project_page": null, "paper": null,
+      "hero": {"light": "mint-exam-ide-hero.webp", "dark": null,
+               "alt": "The editor during a session: a test script open, its output in the panel below, and the activity log listing every save and run",
+               "caption": "The IDE during a session on Windows: a library check running in the exam environment, the activity log along the bottom."},
+      "figures": [
+        {"light": "mint-exam-ide-flow.webp", "dark": "mint-exam-ide-flow-dark.webp", "alt": "The exam lifecycle: the editor, five recorded streams, and the sealed submission that only the grader opens", "caption": "The exam lifecycle. The recorder runs for the length of the session and feeds the sealed submission."}
+      ],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Syntax highlighting for Python, JavaScript, TypeScript, Java, C and C++, a file tree with drag and drop, and code run from the editor with its output beside it. Python can point at the system interpreter or a chosen virtual environment.",
+          "Five streams run for the length of the session: edit history classified as typing, paste or undo; clipboard contents with the application they came from; window focus; file integrity; and a screen recording.",
+          "The work is packed into an AES-256 encrypted archive whose key is derived from a hashed student identifier, so a submission cannot be opened, altered or re-sealed without the grader.",
+          "One-pass classroom installers for Windows and macOS bring a portable Python, Node, a JDK, FFmpeg and WebView2."
+        ]},
+        {"title": "Notes", "items": [
+          "The interface is Korean, because that is who sits the exams it was built for.",
+          "Windows installers are on the releases page; macOS builds from source because the project has no Apple Developer certificate.",
+          "Integrity checking detects edits made outside the editor. It is not a sandbox and does not prevent them."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2026"], ["Status", "Public, release v5.0.3"], ["Stack", "Tauri: Rust for monitoring, recording and packaging; TypeScript for the editor"],
+        ["Pair", "Opened by MINT Grader"]
+      ],
+      "related": ["mint-grader", "lecture-pdf", "mint-sensor-studio"]
+    },
+    {
+      "slug": "mint-grader",
+      "name": "MINT Grader",
+      "group": "development", "year": "2026", "visibility": "Public",
+      "langs": [["Rust · TS", "kw-rust"]], "kinds": [["SW", "kw-sw"], ["App", "kw-app"]], "mods": [],
+      "blurb": "The invigilator's side: hash-checks and batch-decrypts sealed submissions into code, logs and recordings, one folder per student.",
+      "lede": "The invigilator's half of the pair: one pass over the batch, hash checks before anything opens.",
+      "github": "https://github.com/blueion0612/Mint_IDE_Teacher", "project_page": null, "paper": null,
+      "hero": {"light": "mint-grader-hero.webp", "dark": null,
+               "alt": "The grader after a batch: the submissions folder chosen, one student detected and marked SUCCESS, and the progress panel reporting the decrypted files",
+               "caption": "The grader after a batch on Windows: one submission detected, decrypted and hash checked."},
+      "figures": [
+        {"light": "mint-grader-flow.webp", "dark": "mint-grader-flow-dark.webp", "alt": "The grading pass: sealed folders decrypted and hash checked into code, logs and video per student", "caption": "The grading pass. Decryption and the hash check run once over the whole batch."}
+      ],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Point it at a folder of MINT_Exam_* submissions; student identifiers are read from the manifests rather than typed in.",
+          "Hash verification before anything is opened, so an archive that was altered after submission is reported instead of silently decrypted.",
+          "One pass over the batch: AES-256, all submissions at once, not one at a time.",
+          "Everything the session recorded, extracted per student: the code, the edit and activity logs, and the screen recording."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2026"], ["Status", "Public, release v4.0.1"], ["Stack", "Tauri: Rust for decryption, hash checks and extraction; TypeScript for the viewer"],
+        ["Pair", "Opens what MINT Exam IDE seals"]
+      ],
+      "related": ["mint-exam-ide"]
+    },
+    {
+      "slug": "ivo",
+      "name": "IVO", "subtitle": "IMU-Vision Overlay",
+      "group": "development", "year": "2025", "visibility": "Public",
+      "langs": [["Python · JS", "kw-py"]], "kinds": [["AI", "kw-ai"], ["App", "kw-app"]], "mods": [["IMU", "mod-imu"], ["Vision", "mod-vis"]],
+      "blurb": "A presentation driven by wrist gestures and a webcam, with haptic acknowledgement on the wrist, local speech-to-text and handwriting OCR.",
+      "lede": "A presentation without a clicker: wrist gestures, a webcam, and a watch that buzzes back.",
+      "github": "https://github.com/blueion0612/IVO", "project_page": null, "paper": null,
+      "hero": {"light": "ivo-hero.webp", "dark": null,
+               "alt": "The overlay on top of a slide: a border and a Perform gesture now prompt while a gesture is read, the gesture guide on the right, the timer at the bottom left",
+               "caption": "The overlay on top of a sample slide. The border and the prompt show while a gesture is being read."},
+      "figures": [
+        {"light": "ivo-system.webp", "dark": "ivo-system-dark.webp", "alt": "A smartwatch sends inertial data through a phone to the desktop app, a webcam supplies hand landmarks, and haptic acknowledgement returns to the wrist", "caption": "Two input paths into one desktop app, and the haptic acknowledgement sent back to the wrist."}
+      ],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Fifteen wrist gestures change and jump slides, black out the screen and switch every other mode on and off. The watch vibrates when a gesture is read.",
+          "Webcam hand tracking with MediaPipe: the index finger is a pointer, a pinch draws, six colors and four line widths are picked by hovering, and a four-corner calibration maps the camera to the screen.",
+          "Strokes drawn on the overlay become text, an evaluated arithmetic expression or a plotted graph, through Google Vision and SimpleTex, SymPy and Matplotlib.",
+          "Speech becomes a transcript and a summary of the question-and-answer segments, locally, with faster-whisper and an Ollama model.",
+          "Sticky notes with voice input and dictionary lookups in Korean and English, an on-screen timer, and camera and microphone chosen by name so a setup survives a reboot.",
+          "Every feature is also reachable from the keyboard, so the app runs without any of the hardware."
+        ]},
+        {"title": "How it is built", "items": [
+          "An Electron main process manages the Python subprocesses: gesture controller, hand tracker, speech-to-text, summarizer and dictionary. Gesture data arrives over a WebSocket.",
+          "The two-stage gesture model is trained with IMU Gesture Classifier; the watch and phone apps are IMU Streamer. IVO remaps the six channels between the two packet layouts.",
+          "The models are trained on one wearer and the detector thresholds were tuned by hand; UDP carries no acknowledgement; handwriting OCR calls two cloud APIs. The README says all of this under Limitations."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2025"], ["Status", "Public, release v3.2.0"], ["Stack", "Electron and Node.js; Python with PyTorch, MediaPipe, OpenCV, faster-whisper"],
+        ["Hardware", "WearOS watch, Android phone, any webcam"], ["Context", "Undergraduate capstone project, Myongji University"]
+      ],
+      "related": ["imu-gesture-classifier", "imu-streamer", "vox"]
+    },
+    {
+      "slug": "imu-streamer",
+      "name": "IMU Streamer",
+      "group": "development", "year": "2025", "visibility": "Public",
+      "langs": [["Kotlin", "kw-kt"]], "kinds": [["App", "kw-app"]], "mods": [["IMU", "mod-imu"]],
+      "blurb": "A WearOS watch and an Android phone on one UDP socket, both devices in every packet, with a haptic command path back to the wrist.",
+      "lede": "A wrist device and a phone on the same UDP socket, with a haptic return path.",
+      "github": "https://github.com/blueion0612/IMU_Streamer", "project_page": null, "paper": null,
+      "hero": {"light": "imu-streamer-hero.webp", "dark": "imu-streamer-hero-dark.webp",
+               "alt": "Sensors flow from the watch through the phone to a UDP listener, and a haptic command returns through the phone to the wrist",
+               "caption": "Sensors flow out in green, from the watch through the phone to any UDP listener; the haptic command returns in gold."},
+      "figures": [],
+      "sections": [
+        {"title": "What it does", "items": [
+          "The watch streams linear acceleration, angular rate and rotation vector to the phone over the wearable channel; the phone merges in its own sensors and sends both to whatever server the app points at.",
+          "Every datagram carries a watch block and a phone block, 30 big-endian floats on UDP port 65000, so a consumer never has to align two streams. Gravity is already removed by the platform.",
+          "A server can vibrate the watch: three little-endian integers to port 65010, intensity, pulse count and milliseconds per pulse, which makes closed-loop experiments possible over the same link.",
+          "Nothing to calibrate, and the server address is set in the app, so no rebuild to change it."
+        ]},
+        {"title": "Around it", "items": [
+          "A Python receiver plots both devices live, learns the phone's address from the first packet, and carries sliders and a button for firing haptic commands back.",
+          "The data source for IMU Gesture Classifier's live recognition and for IVO. Derived from the wearable-motion-capture streaming apps, credited in the README."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2025"], ["Status", "Public"], ["Stack", "Kotlin, Android and WearOS, Gradle"],
+        ["Protocol", "30 floats per datagram, UDP 65000 out, 65010 back"]
+      ],
+      "related": ["ivo", "imu-gesture-classifier", "vox"]
+    },
+    {
+      "slug": "vox",
+      "name": "VOX",
+      "group": "development", "year": "2025", "visibility": "Public",
+      "langs": [["Python · C#", "kw-py"]], "kinds": [["AI", "kw-ai"], ["App", "kw-app"]], "mods": [["IMU", "mod-imu"]],
+      "blurb": "Hand signals from a smartwatch to a command post, for firefighters and police whose radios are half duplex, with the arm pose drawn live in Unity.",
+      "lede": "Hand signals from a smartwatch to a command post, built for firefighting and policing.",
+      "github": "https://github.com/blueion0612/VOX", "project_page": null, "paper": null,
+      "hero": {"light": "vox-hero.webp", "dark": "vox-hero-dark.webp",
+               "alt": "Accuracy of five architectures on the public 6DMG dataset and on the project's own recordings under three filter settings",
+               "caption": "Five architectures on two data sources, parsed from the training logs so the figure cannot drift from what was run."},
+      "figures": [
+        {"light": "vox-demo-stable.webp", "dark": null, "alt": "The arm pose drawn in Unity and streamed to the squad page, which shows the agent as stable", "caption": "Stable: the arm pose, drawn in Unity and streamed to the squad page."},
+        {"light": "vox-demo-sos.webp", "dark": null, "alt": "The X signal recognized in the classifier's log, and the squad page showing SOS", "caption": "X, read as SOS."},
+        {"light": "vox-demo-assist.webp", "dark": null, "alt": "The circle signal recognized, and the squad page showing a request for assistance", "caption": "Circle, read as a request for assistance."}
+      ],
+      "sections": [
+        {"title": "What it does", "items": [
+          "Reads a hand signal from a smartwatch and sends it to a command post. Radios in firefighting and policing are half duplex, so one person speaks at a time, and operating one at all is hard in the middle of an emergency.",
+          "The arm pose is estimated continuously from the watch and drawn in Unity; a gesture is recorded on a key press, classified, and sent over UDP to a server whose squad page shows each agent's state.",
+          "Three signals: V for a request for communication, X for SOS, and a circle for a request for assistance."
+        ]},
+        {"title": "Results", "items": [
+          "Five architectures, BiLSTM, GRU, CNN, CNN-BiLSTM and TCN, trained on two sources: the public 6DMG dataset under five-fold cross-validation and the project's own recordings under three filter settings.",
+          "On 6DMG, TCN reaches 99.05% and CNN-BiLSTM 97.62%. On the 60 held-out samples of the project's own recordings, CNN-BiLSTM with a high-pass filter reaches 100%, and that is the deployed model.",
+          "Built on the wear_mocap stack for the arm pose. Team of three; the machine learning, the Python pipeline and the repository are the author's part."
+        ]}
+      ],
+      "facts": [
+        ["Year", "2025"], ["Status", "Public"], ["Stack", "Python, PyTorch; Unity, C#; a web server for the squad page"],
+        ["Context", "Undergraduate capstone project, Myongji University"]
+      ],
+      "related": ["imu-gesture-classifier", "imu-streamer", "ivo", "twinpose"]
+    }
+  ]
+}

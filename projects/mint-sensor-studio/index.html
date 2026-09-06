@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINT Sensor Studio — Yuhyeon Lee</title>
+  <meta name="description" content="One window for IMU, EMG and PPG sensors and the signal processing taught on them, with simulated sensors whose truth is known.">
+  <meta name="author" content="Yuhyeon Lee">
+  <meta name="theme-color" content="#0c0d0b">
+  <link rel="canonical" href="https://blueion0612.github.io/projects/mint-sensor-studio/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yuhyeon Lee">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="MINT Sensor Studio — Yuhyeon Lee">
+  <meta property="og:description" content="One window for IMU, EMG and PPG sensors and the signal processing taught on them, with simulated sensors whose truth is known.">
+  <meta property="og:url" content="https://blueion0612.github.io/projects/mint-sensor-studio/">
+  <meta property="og:image" content="https://blueion0612.github.io/assets/projects/mint-sensor-studio.webp">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="500">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+
+  <link rel="preload" href="../../assets/fonts/besley-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibmplexmono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/style.css?v=23">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'day');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#top">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../">
+      <span class="mark" aria-hidden="true"><span>YL</span></span>
+      <span class="nav-name">Yuhyeon Lee</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../#about">About</a>
+      <a href="../../#research">Research</a>
+      <a href="../../#education">Education</a>
+      <a href="../../#publications">Publications</a>
+      <a href="../../#awards">Awards</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Switch to day mode">&#9728;</button>
+  </div>
+</nav>
+
+<main id="top" class="project-page">
+
+  <div class="frame-tacks" aria-hidden="true"><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span></div>
+
+  <header class="project-hero">
+    <p class="hero-kicker">Development &middot; 2026</p>
+    <h1>MINT Sensor Studio</h1>
+    <p class="project-lede">One window for sensors and the methods that read them, written as course material.</p>
+    <div class="tile-meta project-hero-meta">
+      <span class="tag vis-public">Public</span>
+    </div>
+    <div class="chips project-hero-chips"><span class="chip kw-sw">SW</span><span class="chip kw-app">App</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip chip-mod mod-emg">EMG</span><span class="chip chip-mod mod-ppg">PPG</span><span class="chip kw-py">Python</span></div>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/blueion0612/Mint_Sensor_Studio" target="_blank" rel="noopener">GitHub</a> <a class="btn" href="../../#projects">All projects</a>
+    </div>
+  </header>
+
+  <figure class="project-figure project-figure-hero"><img class="fig-night" src="../../assets/projects/mint-sensor-studio-hero-dark.webp" alt="The Orientation page: a simulated IMU&#x27;s attitude drawn as a board in a wire cube, roll, pitch and heading beside it, the quaternion update equation along the bottom" width="1280" height="800" fetchpriority="high" decoding="async"><img class="fig-day" src="../../assets/projects/mint-sensor-studio-hero.webp" alt="The Orientation page: a simulated IMU&#x27;s attitude drawn as a board in a wire cube, roll, pitch and heading beside it, the quaternion update equation along the bottom" width="1280" height="800" fetchpriority="high" decoding="async"><figcaption>The Orientation page on a simulated IMU. The window takes this screenshot of itself.</figcaption></figure>
+
+  <section class="detail">
+    <div class="section-head"><h2>What it does</h2></div>
+    <ul class="project-points">
+        <li>Puts one live signal on screen, from an IMU, an EMG board or a pulse oximeter, over a cable or the radio, from a recording, or from a simulated sensor.</li>
+        <li>Every sensor has a simulated version whose faults are set by the user, so its truth is known and an estimate&#x27;s error can be measured rather than inferred.</li>
+        <li>Eighteen pages in the rail: IMU (Signals, Frames, Orientation, Position), EMG (Signals, Envelope, Fatigue), PPG (Signals, Heart rate, SpO2), and signal processing for any of them (Sampling, Convolution, Periodicity, Spectrum, Spectrogram, Filters, Denoise, Separation).</li>
+        <li>The panel along the bottom gives each page&#x27;s equation, what its symbols are, why the page behaves as it does, something to try, and a link to read more.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Engineering</h2></div>
+    <ul class="project-points">
+        <li>Records to CSV and plays recordings back at speed. Arduino sketches for an IMU and an analog board are included.</li>
+        <li>A window check drives every page on every simulated sensor, measures frame time against a budget, and fails on overlapping text; CI runs it off screen on Linux beside an estimator check on three Python versions.</li>
+        <li>Three releases: v1.0.0, v1.0.1 and v1.1.0, the last after a merge with the development side&#x27;s update.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Facts</h2></div>
+    <dl class="facts">
+      <div class="fact"><dt>Year</dt><dd>2026</dd></div>
+      <div class="fact"><dt>Status</dt><dd>Public, release v1.1.0</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>Python, PySide6, pyqtgraph, NumPy, SciPy</dd></div>
+      <div class="fact"><dt>Context</dt><dd>Course material for MOBI311, Sensor Theory and Signal Processing I</dd></div>
+    </dl>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Figures</h2></div>
+    <div class="figure-grid">
+      <figure class="project-figure"><img src="../../assets/projects/mint-sensor-studio-envelope.webp" alt="EMG, the Envelope page: RMS envelope, onset and percent of MVC" width="1280" height="800" loading="lazy" decoding="async"><figcaption>EMG: envelope, onset, percent of MVC.</figcaption></figure>
+      <figure class="project-figure"><img src="../../assets/projects/mint-sensor-studio-heartrate.webp" alt="PPG, the Heart rate page: beats, heart rate and variability" width="1280" height="800" loading="lazy" decoding="async"><figcaption>PPG: beats, heart rate, variability.</figcaption></figure>
+      <figure class="project-figure"><img src="../../assets/projects/mint-sensor-studio-spectrogram.webp" alt="The Spectrogram page in the dark palette" width="1280" height="800" loading="lazy" decoding="async"><figcaption>The Spectrogram page, dark palette.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Related</h2></div>
+    <ul class="tiles tiles-small">
+      <li><a class="tile tile-small" href="../../projects/imu-gesture-classifier/"><img class="tile-thumb" src="../../assets/projects/imu-gesture-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">IMU Gesture Classifier</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/semg-gesture-classifier/"><img class="tile-thumb" src="../../assets/projects/semg-gesture-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">sEMG Gesture Classifier</h3><div class="tile-meta"><span class="project-year">2026</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/ppg-fist-classifier/"><img class="tile-thumb" src="../../assets/projects/ppg-fist-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">PPG Fist Classifier</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/imu-streamer/"><img class="tile-thumb" src="../../assets/projects/imu-streamer.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">IMU Streamer</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="mark mark-footer" aria-hidden="true"><span>YL</span></span>
+    <span class="footer-line">&copy; MMXXVI &middot; Yuhyeon Lee &middot; Seoul</span>
+    <a class="footer-src" href="https://github.com/blueion0612/blueion0612.github.io" target="_blank" rel="noopener">Source</a>
+  </div>
+</footer>
+
+<script src="../../assets/site.js" defer></script>
+
+</body>
+</html>

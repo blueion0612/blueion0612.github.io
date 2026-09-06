@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sEMG Gesture Classifier — Yuhyeon Lee</title>
+  <meta name="description" content="Six-gesture surface EMG on the public GREAT dataset: classical models judged as the evaluation stops sharing users, positions and sessions with training.">
+  <meta name="author" content="Yuhyeon Lee">
+  <meta name="theme-color" content="#0c0d0b">
+  <link rel="canonical" href="https://blueion0612.github.io/projects/semg-gesture-classifier/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yuhyeon Lee">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="sEMG Gesture Classifier — Yuhyeon Lee">
+  <meta property="og:description" content="Six-gesture surface EMG on the public GREAT dataset: classical models judged as the evaluation stops sharing users, positions and sessions with training.">
+  <meta property="og:url" content="https://blueion0612.github.io/projects/semg-gesture-classifier/">
+  <meta property="og:image" content="https://blueion0612.github.io/assets/projects/semg-gesture-classifier.webp">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="500">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+
+  <link rel="preload" href="../../assets/fonts/besley-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibmplexmono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/style.css?v=23">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'day');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#top">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../">
+      <span class="mark" aria-hidden="true"><span>YL</span></span>
+      <span class="nav-name">Yuhyeon Lee</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../#about">About</a>
+      <a href="../../#research">Research</a>
+      <a href="../../#education">Education</a>
+      <a href="../../#publications">Publications</a>
+      <a href="../../#awards">Awards</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Switch to day mode">&#9728;</button>
+  </div>
+</nav>
+
+<main id="top" class="project-page">
+
+  <div class="frame-tacks" aria-hidden="true"><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span></div>
+
+  <header class="project-hero">
+    <p class="hero-kicker">Research &middot; 2026</p>
+    <h1>sEMG Gesture Classifier</h1>
+    <p class="project-lede">Classical machine learning on six-gesture surface EMG, evaluated the hard way.</p>
+    <div class="tile-meta project-hero-meta">
+      <span class="tag vis-public">Public</span>
+    </div>
+    <div class="chips project-hero-chips"><span class="chip kw-ai">AI</span><span class="chip chip-mod mod-emg">EMG</span><span class="chip kw-py">Python</span></div>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/blueion0612/sEMG_Gesture_Classifier" target="_blank" rel="noopener">GitHub</a> <a class="btn" href="../../#projects">All projects</a>
+    </div>
+  </header>
+
+  <figure class="project-figure project-figure-hero"><img class="fig-night" src="../../assets/projects/semg-gesture-classifier-hero-dark.webp" alt="The evaluation ladder: four rungs from the full-data bake-off down to leave-one-subject-out, each holding out more of what training and test share" width="1263" height="653" fetchpriority="high" decoding="async"><img class="fig-day" src="../../assets/projects/semg-gesture-classifier-hero.webp" alt="The evaluation ladder: four rungs from the full-data bake-off down to leave-one-subject-out, each holding out more of what training and test share" width="1263" height="653" fetchpriority="high" decoding="async"><figcaption>The four evaluations, easiest at the top. Each rung holds out more of what the training set shares with the test set.</figcaption></figure>
+
+  <section class="detail">
+    <div class="section-head"><h2>What it does</h2></div>
+    <ul class="project-points">
+        <li>Six-gesture hand recognition from 16-channel surface EMG at 2 kHz, on the public GREAT dataset: 8 participants, arm-translation protocol.</li>
+        <li>Compares decision tree, random forest, AdaBoost, histogram gradient boosting, KNN, logistic regression and a perceptron, plus a soft-voting ensemble, against the paper&#x27;s LDA baseline.</li>
+        <li>Two feature sets: Hudgins-4, 64 features in total, and rich-14, 224 features.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>How it is evaluated</h2></div>
+    <ul class="project-points">
+        <li>Four rungs: the full-data bake-off, the paper&#x27;s within-position protocol, transfer across arm positions, and leave-one-subject-out over eight folds.</li>
+        <li>Every split keeps a whole trial on one side. Windows overlap by 78 ms, so a window-level split would leak and the bake-off number would be meaningless.</li>
+        <li>Accuracy carries a 95% bootstrap confidence interval over 1000 resamples; significance is a Wilcoxon signed-rank test over the eight participants, not over windows.</li>
+        <li>128 ms windows, 256 samples, 50 ms hop: 470,413 windows over 4,800 trials. Counting features are thresholded at 1% of each channel&#x27;s own standard deviation.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Results</h2></div>
+    <ul class="project-points">
+        <li>KNN reaches about 98% on the full-data bake-off; the paper&#x27;s own protocol reports about 96% within position and 84 to 92% across positions.</li>
+        <li>Nothing is cached: the pipeline recomputes every number from the recordings and writes them to a results file, so the figures are what the code produces.</li>
+        <li>Boosting is represented by its histogram implementation, and an equivalence check on a subsample shows the successor buys speed, not accuracy.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Facts</h2></div>
+    <dl class="facts">
+      <div class="fact"><dt>Year</dt><dd>2026</dd></div>
+      <div class="fact"><dt>Status</dt><dd>Public, release v1.0.0</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>Python, scikit-learn, NumPy</dd></div>
+      <div class="fact"><dt>Data</dt><dd>GREAT dataset, 8 participants, 16 channels, 2 kHz</dd></div>
+      <div class="fact"><dt>Context</dt><dd>Graduate coursework, Korea University</dd></div>
+    </dl>
+  </section>
+
+
+
+  <section class="detail">
+    <div class="section-head"><h2>Related</h2></div>
+    <ul class="tiles tiles-small">
+      <li><a class="tile tile-small" href="../../projects/imu-gesture-classifier/"><img class="tile-thumb" src="../../assets/projects/imu-gesture-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">IMU Gesture Classifier</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/ppg-fist-classifier/"><img class="tile-thumb" src="../../assets/projects/ppg-fist-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">PPG Fist Classifier</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/mint-sensor-studio/"><img class="tile-thumb" src="../../assets/projects/mint-sensor-studio.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">MINT Sensor Studio</h3><div class="tile-meta"><span class="project-year">2026</span></div></div></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="mark mark-footer" aria-hidden="true"><span>YL</span></span>
+    <span class="footer-line">&copy; MMXXVI &middot; Yuhyeon Lee &middot; Seoul</span>
+    <a class="footer-src" href="https://github.com/blueion0612/blueion0612.github.io" target="_blank" rel="noopener">Source</a>
+  </div>
+</footer>
+
+<script src="../../assets/site.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PPG Fist Classifier — Yuhyeon Lee</title>
+  <meta name="description" content="Open hand or clenched fist from 16-channel wrist PPG alone, with a real-time UDP service and a twenty-second per-user calibration.">
+  <meta name="author" content="Yuhyeon Lee">
+  <meta name="theme-color" content="#0c0d0b">
+  <link rel="canonical" href="https://blueion0612.github.io/projects/ppg-fist-classifier/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yuhyeon Lee">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="PPG Fist Classifier — Yuhyeon Lee">
+  <meta property="og:description" content="Open hand or clenched fist from 16-channel wrist PPG alone, with a real-time UDP service and a twenty-second per-user calibration.">
+  <meta property="og:url" content="https://blueion0612.github.io/projects/ppg-fist-classifier/">
+  <meta property="og:image" content="https://blueion0612.github.io/assets/projects/ppg-fist-classifier.webp">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="500">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+
+  <link rel="preload" href="../../assets/fonts/besley-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibmplexmono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/style.css?v=23">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'day');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#top">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../">
+      <span class="mark" aria-hidden="true"><span>YL</span></span>
+      <span class="nav-name">Yuhyeon Lee</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../#about">About</a>
+      <a href="../../#research">Research</a>
+      <a href="../../#education">Education</a>
+      <a href="../../#publications">Publications</a>
+      <a href="../../#awards">Awards</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Switch to day mode">&#9728;</button>
+  </div>
+</nav>
+
+<main id="top" class="project-page">
+
+  <div class="frame-tacks" aria-hidden="true"><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span></div>
+
+  <header class="project-hero">
+    <p class="hero-kicker">Research &middot; 2025</p>
+    <h1>PPG Fist Classifier</h1>
+    <p class="project-lede">Open hand or fist, from wrist PPG alone, with an evaluation ladder that says what the number is worth.</p>
+    <div class="tile-meta project-hero-meta">
+      <span class="tag vis-public">Public</span>
+    </div>
+    <div class="chips project-hero-chips"><span class="chip kw-ai">AI</span><span class="chip chip-mod mod-ppg">PPG</span><span class="chip kw-py">Python</span></div>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/blueion0612/PPG_Fist_Classifier" target="_blank" rel="noopener">GitHub</a> <a class="btn" href="../../#projects">All projects</a>
+    </div>
+  </header>
+
+  <figure class="project-figure project-figure-hero"><img class="fig-night" src="../../assets/projects/ppg-fist-classifier-hero-dark.webp" alt="Three evaluation scenarios side by side: zero-shot across sessions, twenty seconds of calibration, and user-dependent leave-one-session-out" width="1366" height="712" fetchpriority="high" decoding="async"><img class="fig-day" src="../../assets/projects/ppg-fist-classifier-hero.webp" alt="Three evaluation scenarios side by side: zero-shot across sessions, twenty seconds of calibration, and user-dependent leave-one-session-out" width="1366" height="712" fetchpriority="high" decoding="async"><figcaption>The three scenarios, from the results file the experiment writes.</figcaption></figure>
+
+  <section class="detail">
+    <div class="section-head"><h2>What it does</h2></div>
+    <ul class="project-points">
+        <li>Detects hand state, open versus fist, from 16-channel smartwatch PPG at 25 Hz, with no IMU and no camera.</li>
+        <li>224 engineered features per window, 14 per channel: time-domain statistics, gradient statistics, band power in three bands and a baseline shift, into a histogram gradient boosting classifier.</li>
+        <li>A real-time UDP service holds a rolling 3 s buffer, predicts at the stride rate, and can fit a per-user model from a guided calibration sequence and blend it with the generic model.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Results</h2></div>
+    <ul class="project-points">
+        <li>Zero-shot across sessions: F1 0.46. With 20 s of labeled calibration per wearer: F1 0.73. User-dependent, leave-one-session-out: AUC 0.94.</li>
+        <li>Two of the seven sessions score below 0.20 F1 when held out; the cause is not settled, and the README says so.</li>
+        <li>Every number in the README is asserted by a test against the results file the experiment writes.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Two model paths</h2></div>
+    <ul class="project-points">
+        <li>The deployed classifier is gradient boosting over the 224 features, which the real-time service loads.</li>
+        <li>The reported experiment also trains a multi-scale CNN on raw windows from the three channels that separate the classes best on their own.</li>
+        <li>Recordings are on Google Drive; the deployed model is sent on request by email, or retrained from the recordings.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Facts</h2></div>
+    <dl class="facts">
+      <div class="fact"><dt>Year</dt><dd>2025</dd></div>
+      <div class="fact"><dt>Status</dt><dd>Public, release v1.0.0</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>Python, scikit-learn, SciPy; PyTorch for the CNN experiment</dd></div>
+      <div class="fact"><dt>Data</dt><dd>Seven sessions of 16-channel wrist PPG at 25 Hz</dd></div>
+    </dl>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Figures</h2></div>
+    <div class="figure-grid">
+      <figure class="project-figure"><img class="fig-night" src="../../assets/projects/ppg-fist-classifier-pipeline-dark.webp" alt="The pipeline from raw channels through filtering, windowing and 224 features to the classifier" width="1263" height="666" loading="lazy" decoding="async"><img class="fig-day" src="../../assets/projects/ppg-fist-classifier-pipeline.webp" alt="The pipeline from raw channels through filtering, windowing and 224 features to the classifier" width="1263" height="666" loading="lazy" decoding="async"><figcaption>From 16 raw channels to a prediction: filtering, 3 s windows, 14 features per channel, gradient boosting.</figcaption></figure>
+      <figure class="project-figure"><img class="fig-night" src="../../assets/projects/ppg-fist-classifier-sessions-dark.webp" alt="Per-session leave-one-session-out scores, two of seven sessions far below the rest" width="1366" height="542" loading="lazy" decoding="async"><img class="fig-day" src="../../assets/projects/ppg-fist-classifier-sessions.webp" alt="Per-session leave-one-session-out scores, two of seven sessions far below the rest" width="1366" height="542" loading="lazy" decoding="async"><figcaption>Leave-one-session-out, per session. Two sessions fall below 0.20 F1 and the cause is not settled.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Related</h2></div>
+    <ul class="tiles tiles-small">
+      <li><a class="tile tile-small" href="../../projects/imu-gesture-classifier/"><img class="tile-thumb" src="../../assets/projects/imu-gesture-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">IMU Gesture Classifier</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/semg-gesture-classifier/"><img class="tile-thumb" src="../../assets/projects/semg-gesture-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">sEMG Gesture Classifier</h3><div class="tile-meta"><span class="project-year">2026</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/mint-sensor-studio/"><img class="tile-thumb" src="../../assets/projects/mint-sensor-studio.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">MINT Sensor Studio</h3><div class="tile-meta"><span class="project-year">2026</span></div></div></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="mark mark-footer" aria-hidden="true"><span>YL</span></span>
+    <span class="footer-line">&copy; MMXXVI &middot; Yuhyeon Lee &middot; Seoul</span>
+    <a class="footer-src" href="https://github.com/blueion0612/blueion0612.github.io" target="_blank" rel="noopener">Source</a>
+  </div>
+</footer>
+
+<script src="../../assets/site.js" defer></script>
+
+</body>
+</html>

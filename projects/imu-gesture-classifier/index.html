@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMU Gesture Classifier — Yuhyeon Lee</title>
+  <meta name="description" content="Fifteen wrist gestures from a smartwatch&#x27;s accelerometer and gyroscope, live: an entry detector answers when, a classifier answers which.">
+  <meta name="author" content="Yuhyeon Lee">
+  <meta name="theme-color" content="#0c0d0b">
+  <link rel="canonical" href="https://blueion0612.github.io/projects/imu-gesture-classifier/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yuhyeon Lee">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="IMU Gesture Classifier — Yuhyeon Lee">
+  <meta property="og:description" content="Fifteen wrist gestures from a smartwatch&#x27;s accelerometer and gyroscope, live: an entry detector answers when, a classifier answers which.">
+  <meta property="og:url" content="https://blueion0612.github.io/projects/imu-gesture-classifier/">
+  <meta property="og:image" content="https://blueion0612.github.io/assets/projects/imu-gesture-classifier.webp">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="500">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+
+  <link rel="preload" href="../../assets/fonts/besley-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibmplexmono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/style.css?v=23">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'day');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#top">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../">
+      <span class="mark" aria-hidden="true"><span>YL</span></span>
+      <span class="nav-name">Yuhyeon Lee</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../#about">About</a>
+      <a href="../../#research">Research</a>
+      <a href="../../#education">Education</a>
+      <a href="../../#publications">Publications</a>
+      <a href="../../#awards">Awards</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Switch to day mode">&#9728;</button>
+  </div>
+</nav>
+
+<main id="top" class="project-page">
+
+  <div class="frame-tacks" aria-hidden="true"><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span></div>
+
+  <header class="project-hero">
+    <p class="hero-kicker">Research &middot; 2025</p>
+    <h1>IMU Gesture Classifier</h1>
+    <p class="project-lede">Fifteen wrist gestures, live, from six channels of a watch, split into when and which.</p>
+    <div class="tile-meta project-hero-meta">
+      <span class="tag vis-public">Public</span>
+    </div>
+    <div class="chips project-hero-chips"><span class="chip kw-ai">AI</span><span class="chip chip-mod mod-imu">IMU</span><span class="chip kw-py">Python</span></div>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/blueion0612/IMU_Gesture_Classifier" target="_blank" rel="noopener">GitHub</a> <a class="btn" href="../../#projects">All projects</a>
+    </div>
+  </header>
+
+  <figure class="project-figure project-figure-hero"><img class="fig-night" src="../../assets/projects/imu-gesture-classifier-hero-dark.webp" alt="The two-stage pipeline: an entry detector on every window, then a fifteen-class classifier on the 2.5 seconds that follow a detection" width="1263" height="613" fetchpriority="high" decoding="async"><img class="fig-day" src="../../assets/projects/imu-gesture-classifier-hero.webp" alt="The two-stage pipeline: an entry detector on every window, then a fifteen-class classifier on the 2.5 seconds that follow a detection" width="1263" height="613" fetchpriority="high" decoding="async"><figcaption>Green is the entry detector that runs on every window, gold the classifier that runs only after a detection.</figcaption></figure>
+
+  <section class="detail">
+    <div class="section-head"><h2>What it does</h2></div>
+    <ul class="project-points">
+        <li>Recognizes fifteen hand gestures from a smartwatch in real time, from six channels, linear acceleration and angular rate, at 50 Hz over UDP.</li>
+        <li>Two stages: a small binary entry detector runs on every window and decides when a gesture has started; only then does a fifteen-class model run on the 2.5 s that follow.</li>
+        <li>Six architectures in the grid, MLP, LSTM, GRU, TCN, 1D CNN and CNN-LSTM. Both training scripts write the full grid, not the winner alone.</li>
+        <li>Deployed pair: LSTM entry detection and TCN classification, the models that drive IVO&#x27;s gesture commands.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>How it works</h2></div>
+    <ul class="project-points">
+        <li>A detection opens a 2.5 s buffer; the classifier runs over several windows inside it and the highest-confidence result wins, so the gesture need not start exactly where the detector fired.</li>
+        <li>After a recognized gesture the detector is suppressed for a configurable interval, two seconds by default, so one movement cannot produce a burst of detections.</li>
+        <li>Fixed protocol: 70/15/15 split, seed 42, early stopping after 15 epochs without improvement, accuracy and macro F1 with a confusion matrix. No benchmark numbers are committed, so none are claimed.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Data</h2></div>
+    <ul class="project-points">
+        <li>Recordings, pretrained checkpoints and training reports are on Google Drive, linked from the README.</li>
+        <li>Eight tests run without recordings or a checkpoint.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Facts</h2></div>
+    <dl class="facts">
+      <div class="fact"><dt>Year</dt><dd>2025</dd></div>
+      <div class="fact"><dt>Status</dt><dd>Public, release v1.0.0</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>Python, PyTorch, NumPy</dd></div>
+      <div class="fact"><dt>Input</dt><dd>Six watch channels at 50 Hz over UDP</dd></div>
+    </dl>
+  </section>
+
+
+
+  <section class="detail">
+    <div class="section-head"><h2>Related</h2></div>
+    <ul class="tiles tiles-small">
+      <li><a class="tile tile-small" href="../../projects/ivo/"><img class="tile-thumb" src="../../assets/projects/ivo.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">IVO</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/imu-streamer/"><img class="tile-thumb" src="../../assets/projects/imu-streamer.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">IMU Streamer</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/vox/"><img class="tile-thumb" src="../../assets/projects/vox.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">VOX</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/ppg-fist-classifier/"><img class="tile-thumb" src="../../assets/projects/ppg-fist-classifier.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">PPG Fist Classifier</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="mark mark-footer" aria-hidden="true"><span>YL</span></span>
+    <span class="footer-line">&copy; MMXXVI &middot; Yuhyeon Lee &middot; Seoul</span>
+    <a class="footer-src" href="https://github.com/blueion0612/blueion0612.github.io" target="_blank" rel="noopener">Source</a>
+  </div>
+</footer>
+
+<script src="../../assets/site.js" defer></script>
+
+</body>
+</html>

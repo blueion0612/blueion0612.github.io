@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TwinPose — Yuhyeon Lee</title>
+  <meta name="description" content="3D human motion from two ordinary phone cameras, synchronized by a flashlight and calibrated by a printed checkerboard; no sync hardware, no suit.">
+  <meta name="author" content="Yuhyeon Lee">
+  <meta name="theme-color" content="#0c0d0b">
+  <link rel="canonical" href="https://blueion0612.github.io/projects/twinpose/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yuhyeon Lee">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="TwinPose — Yuhyeon Lee">
+  <meta property="og:description" content="3D human motion from two ordinary phone cameras, synchronized by a flashlight and calibrated by a printed checkerboard; no sync hardware, no suit.">
+  <meta property="og:url" content="https://blueion0612.github.io/projects/twinpose/">
+  <meta property="og:image" content="https://blueion0612.github.io/assets/projects/twinpose.webp">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="500">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+
+  <link rel="preload" href="../../assets/fonts/besley-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/ibmplexmono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/style.css?v=23">
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'day');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#top">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../../">
+      <span class="mark" aria-hidden="true"><span>YL</span></span>
+      <span class="nav-name">Yuhyeon Lee</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../#about">About</a>
+      <a href="../../#research">Research</a>
+      <a href="../../#education">Education</a>
+      <a href="../../#publications">Publications</a>
+      <a href="../../#awards">Awards</a>
+      <a href="../../#projects">Projects</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Switch to day mode">&#9728;</button>
+  </div>
+</nav>
+
+<main id="top" class="project-page">
+
+  <div class="frame-tacks" aria-hidden="true"><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span><span>&#10022;</span></div>
+
+  <header class="project-hero">
+    <p class="hero-kicker">Research &middot; 2025 — 2026</p>
+    <h1>TwinPose</h1>
+    <p class="project-lede">3D human motion from two phone cameras, with one windowed bundle adjustment where six heuristic passes used to be.</p>
+    <div class="tile-meta project-hero-meta">
+      <span class="tag vis-public">Public</span>
+    </div>
+    <div class="chips project-hero-chips"><span class="chip kw-ai">AI</span><span class="chip chip-mod mod-vis">Vision</span><span class="chip kw-py">Python</span></div>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/blueion0612/TwinPose" target="_blank" rel="noopener">GitHub</a> <a class="btn" href="../../#projects">All projects</a>
+    </div>
+  </header>
+
+  <figure class="project-figure project-figure-hero"><img class="fig-night" src="../../assets/projects/twinpose-hero-dark.webp" alt="Accuracy across the three pipeline stages: triangulation, single-view bootstrap and bundle adjustment, with the noise-free upper bound" width="1400" height="557" fetchpriority="high" decoding="async"><img class="fig-day" src="../../assets/projects/twinpose-hero.webp" alt="Accuracy across the three pipeline stages: triangulation, single-view bootstrap and bundle adjustment, with the noise-free upper bound" width="1400" height="557" fetchpriority="high" decoding="async"><figcaption>MPJPE through the pipeline on the synthetic benchmark, drawn from the committed results file.</figcaption></figure>
+
+  <section class="detail">
+    <div class="section-head"><h2>What it does</h2></div>
+    <ul class="project-points">
+        <li>Reconstructs 3D human motion from two ordinary phone cameras. A green flashlight carries the timing signal, a printed checkerboard the geometry, and one person can record alone.</li>
+        <li>Five stages: synchronization, calibration, 2D detection, 3D reconstruction, wrist kinematics.</li>
+        <li>The v2.0 rebuild replaced six sequential heuristic correction passes with a single windowed spatio-temporal bundle adjustment: reprojection, bone-length, acceleration and joint-limit residuals solved together with an analytic sparse Jacobian.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Results</h2></div>
+    <ul class="project-points">
+        <li>Synthetic benchmark: a scripted motion built by forward kinematics, projected through the real calibrated camera pair (1.88 m baseline), corrupted with a detector noise model, and run through the real pipeline. 510 frames, five noise seeds, ground truth known.</li>
+        <li>23.1 mm MPJPE and 19.7 mm PA-MPJPE after bundle adjustment, from 28.2 mm at triangulation. PCK@50 mm 91.7%, bone-length CV 2.9%, coverage 99.5%. Runtime 5.2 s for 510 frames.</li>
+        <li>Reprojection error rises from 1.6 px to 3.4 px through the pipeline, and that is correct: detector noise is 2.5 px per axis, so the lower number was overfitting. Reprojection error alone cannot tell a good reconstruction from an overfitted one.</li>
+        <li>A calibration fix: undistorting before stereo calibration took baseline error from 12.1% to 0.14%, around an OpenCV 5.x behavior that silently discards distortion coefficients.</li>
+        <li>A measured error budget shows that calibration scale, not reconstruction, dominates absolute accuracy.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>What ships</h2></div>
+    <ul class="project-points">
+        <li>No footage, weights or keypoints ship with the repository, so the benchmark is what makes accuracy measurable without any recording.</li>
+        <li>A README-numbers test asserts every number in the README against the committed results file. 103 tests in about ten minutes.</li>
+    </ul>
+  </section>
+
+  <section class="detail">
+    <div class="section-head"><h2>Facts</h2></div>
+    <dl class="facts">
+      <div class="fact"><dt>Years</dt><dd>2025 — 2026</dd></div>
+      <div class="fact"><dt>Status</dt><dd>Public, release v2.0.0</dd></div>
+      <div class="fact"><dt>Stack</dt><dd>Python, OpenCV, NumPy, SciPy; OpenPose BODY_25B for 2D keypoints</dd></div>
+      <div class="fact"><dt>Benchmark</dt><dd>510 frames, 5 seeds, real task30 camera pair</dd></div>
+    </dl>
+  </section>
+
+
+
+  <section class="detail">
+    <div class="section-head"><h2>Related</h2></div>
+    <ul class="tiles tiles-small">
+      <li><a class="tile tile-small" href="../../projects/vox/"><img class="tile-thumb" src="../../assets/projects/vox.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">VOX</h3><div class="tile-meta"><span class="project-year">2025</span></div></div></a></li>
+      <li><a class="tile tile-small" href="../../projects/hip-exoskeleton-gait/"><img class="tile-thumb" src="../../assets/projects/hip-exoskeleton-gait.webp" width="800" height="500" loading="lazy" decoding="async" alt=""><div class="tile-body"><h3 class="tile-title">Hip Exoskeleton Gait Assessment</h3><div class="tile-meta"><span class="project-year">2026</span></div></div></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="mark mark-footer" aria-hidden="true"><span>YL</span></span>
+    <span class="footer-line">&copy; MMXXVI &middot; Yuhyeon Lee &middot; Seoul</span>
+    <a class="footer-src" href="https://github.com/blueion0612/blueion0612.github.io" target="_blank" rel="noopener">Source</a>
+  </div>
+</footer>
+
+<script src="../../assets/site.js" defer></script>
+
+</body>
+</html>
