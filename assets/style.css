@@ -100,7 +100,6 @@ html[data-theme="day"] {
   --year: #4a4132;     --year-dim: #4a4132;
 }
 
-html[data-theme="day"] .nav { background: rgba(232, 220, 194, 0.9); }
 html[data-theme="day"] ::-webkit-scrollbar-thumb { background: #b5a683; }
 html[data-theme="day"] .portrait { background: linear-gradient(160deg, #ded1af 0%, #e5d9bb 100%); }
 html[data-theme="day"] .vignette {
@@ -168,10 +167,15 @@ a:focus-visible,
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* lamplight — the bill darkens toward its edges */
+/* lamplight — the poster darkens toward its edges. Bound to the first screen and
+   scrolled away with it: as a fixed layer it washed the bottom of every screen,
+   which read as a haze over anything being scrolled past. */
 .vignette {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
   z-index: 998;
   pointer-events: none;
   background: radial-gradient(ellipse 130% 95% at 50% 24%, rgba(0, 0, 0, 0) 52%, rgba(3, 4, 2, 0.42) 100%);
@@ -206,9 +210,7 @@ a:focus-visible,
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(12, 13, 11, 0.86);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 

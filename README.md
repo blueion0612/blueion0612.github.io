@@ -17,7 +17,7 @@ it and remembers the choice. Fonts are self-hosted under `assets/fonts/` (SIL OF
 
 When editing `assets/style.css`, bump the `?v=` query on its `<link>` in
 `index.html`, `404.html` and `CSS_VERSION` in `tools/build_projects.py`, then
-rebuild, to bust the Pages CDN cache. It is currently at `v=24`.
+rebuild, to bust the Pages CDN cache. It is currently at `v=25`.
 
 ## Structure
 
@@ -59,3 +59,6 @@ There is no scroll-reveal effect and none should be added: the old
 IntersectionObserver used a 0.12 threshold, which a section taller than about
 eight viewports can never reach, so the Projects section stayed invisible on
 phones.
+Nothing translucent may sit over scrolling content: the vignette is bound to the
+first screen and the sticky nav is opaque, because a fixed wash and a
+see-through bar both read as haze while the page moves under them.
