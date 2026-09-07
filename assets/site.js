@@ -1,19 +1,6 @@
-/* Yuhyeon Lee — portfolio: scroll reveal and the day/night toggle.
+/* Yuhyeon Lee — portfolio: the day/night toggle.
    The theme is read before paint by the inline script in <head>; this file only
-   wires the button and the observer. */
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
-    return;
-  }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-})();
-
+   wires the button. */
 (function () {
   var tg = document.querySelector('.theme-toggle');
   if (!tg) return;

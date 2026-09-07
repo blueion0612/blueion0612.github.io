@@ -17,7 +17,7 @@ it and remembers the choice. Fonts are self-hosted under `assets/fonts/` (SIL OF
 
 When editing `assets/style.css`, bump the `?v=` query on its `<link>` in
 `index.html`, `404.html` and `CSS_VERSION` in `tools/build_projects.py`, then
-rebuild, to bust the Pages CDN cache. It is currently at `v=23`.
+rebuild, to bust the Pages CDN cache. It is currently at `v=24`.
 
 ## Structure
 
@@ -28,7 +28,7 @@ projects/projects.json  # every project: tile text, detail sections, facts, figu
 projects/<slug>/        # one generated page per project
 tools/build_projects.py # generator for the tiles, the pages and sitemap.xml
 assets/style.css        # all styling, both themes (print forces light)
-assets/site.js          # scroll reveal and the theme toggle
+assets/site.js          # the theme toggle
 assets/fonts/           # Besley, Archivo, IBM Plex Mono, Rye as woff2, with licenses
 assets/projects/        # thumbnails (800 x 500 WebP) and detail figures, built by
                         # _standards/site_thumbs.py from each repository's README figures
@@ -55,3 +55,7 @@ Rules that keep the layout intact: scope any rule that styles a bare descendant
 `li` to direct children (`.awards > li`) before nesting a list inside it, and
 check the render at 1200 px and 500 px in **both** themes after a CSS change.
 Day-theme chip inks are tuned to 4.6:1 on the darkest day surface; keep them there.
+There is no scroll-reveal effect and none should be added: the old
+IntersectionObserver used a 0.12 threshold, which a section taller than about
+eight viewports can never reach, so the Projects section stayed invisible on
+phones.

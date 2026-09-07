@@ -14,7 +14,7 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "projects", "projects.json")
-CSS_VERSION = "23"
+CSS_VERSION = "24"
 
 NAV_LINKS = ["about", "research", "education", "publications", "awards", "projects", "contact"]
 
@@ -116,7 +116,6 @@ def head(title, description, canonical, image, prefix):
   <link rel="preload" href="{prefix}assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{prefix}assets/style.css?v={CSS_VERSION}">
   <script>
-    document.documentElement.classList.add('js');
     try {{
       var t = localStorage.getItem('theme');
       if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {{
