@@ -9,12 +9,13 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/style.css?v=26">
+  <link rel="stylesheet" href="/assets/style.css?v=27">
   <script>
     try {
       var t = localStorage.getItem('theme');
       if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {
         document.documentElement.setAttribute('data-theme', 'day');
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e8dcc2');
       }
     } catch (e) {}
   </script>

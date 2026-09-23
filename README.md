@@ -17,7 +17,7 @@ remembers the choice. Fonts are self-hosted under `assets/fonts/` (SIL OFL).
 
 When editing `assets/style.css`, bump the `?v=` query on its `<link>` in
 `index.html`, `404.html` and `CSS_VERSION` in `tools/build_projects.py`, then
-rebuild, to bust the Pages CDN cache. It is currently at `v=26`.
+rebuild, to bust the Pages CDN cache. It is currently at `v=27`.
 
 ## Structure
 
@@ -28,10 +28,13 @@ projects/projects.json  # every project: tile text, detail sections, facts, figu
 projects/<slug>/        # one generated page per project
 tools/build_projects.py # generator for the tiles, the pages and sitemap.xml
 assets/style.css        # all styling, both themes (print forces light)
-assets/site.js          # the theme toggle
-assets/fonts/           # Besley, Archivo, IBM Plex Mono, Rye as woff2, with licenses
-assets/projects/        # thumbnails (800 x 500 WebP) and detail figures, built by
-                        # _standards/site_thumbs.py from each repository's README figures
+assets/site.js          # the theme toggle, themed images, the narrow-screen menu
+assets/fonts/           # woff2 with licenses; Besley and Archivo split into -core and
+                        # -ext by _standards/site_fonts.py, Rye and IBM Plex Mono whole
+assets/projects/        # thumbnails (800 x 500 WebP, night and -day) and detail figures
+                        # with -700 and -1000 copies, built by _standards/site_thumbs.py
+                        # from each repository's README figures
+assets/projects/og/     # 1200 x 630 share cards, rendered by _standards/site_og.py
 assets/portrait.jpg
 assets/og.png           # social preview card
 robots.txt, sitemap.xml, favicon.ico, assets/favicon.svg, assets/apple-touch-icon.png
@@ -46,7 +49,7 @@ contact.
 |:--|:--|
 | Publications | Add an `<li>` to the `.publications` list; a paper link is a `<p class="pub-links">` with an `<a>`; swap the `.stamp` text when the status changes |
 | Awards and experience | Add an `<li>` to `.awards`; sub-points go in a nested `ul.award-points` inside the `div.award-body` |
-| New project | Add an entry to `projects/projects.json`, add its images to `_standards/site_thumbs.py` and run it, then run `python tools/build_projects.py` |
+| New project | Add an entry to `projects/projects.json`, add its images to `_standards/site_thumbs.py`, run it and `_standards/site_og.py`, then run `python tools/build_projects.py` (it reads which image files exist) |
 | Project links | `github`, `project_page` and `paper` in the JSON; a null is simply not rendered, so a dedicated project page or a paper appears as soon as its URL is filled in |
 | Google Scholar | Add a `.btn` to the hero links once a paper is published |
 | Photo | Replace `assets/portrait.jpg` |
@@ -65,3 +68,8 @@ removed for this after two attempts (fixed, it washed the bottom of every screen
 bound to the first screen, it swept a hard-edged band up the screen), and the
 sticky nav is opaque. The film grain stays: it is uniform noise, at most 7/255 on
 any pixel and under 4/255 averaged over any row, with no edge anywhere.
+Up to 880 px the nav is one 52 px row and the section links live in a `<details>`
+menu; keep the link list in `index.html`, `404.html` and the generator in step.
+An image that ships in both palettes is a `<picture>` whose dark `<source>` carries
+`data-dark`; `site.js` pins it to the theme on screen, so only one file is fetched.
+Links inside running text are underlined, not told apart by color alone.

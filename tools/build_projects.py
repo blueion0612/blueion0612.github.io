@@ -6,7 +6,6 @@ Writes projects/<slug>/index.html for every project, rewrites the block between
 <!-- projects:tiles --> and <!-- /projects:tiles --> in index.html, and writes
 sitemap.xml. Run it after editing projects.json; the generated pages are committed.
 """
-import datetime
 import html
 import json
 import os
@@ -14,7 +13,7 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "projects", "projects.json")
-CSS_VERSION = "26"
+CSS_VERSION = "27"
 
 NAV_LINKS = ["about", "research", "education", "publications", "awards", "projects", "contact"]
 
@@ -163,6 +162,7 @@ def head(title, description, canonical, og, prefix):
       var t = localStorage.getItem('theme');
       if (t === 'day' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) {{
         document.documentElement.setAttribute('data-theme', 'day');
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e8dcc2');
       }}
     }} catch (e) {{}}
   </script>
@@ -344,11 +344,12 @@ def main():
     _, post = rest.split(close_mark, 1)
     new = pre + open_mark + "\n" + tiles_block(data) + "\n    " + close_mark + post
     open(idx, "w", encoding="utf-8", newline="").write(new)
-    today = datetime.date.today().isoformat()
+    # no <lastmod>: stamping every URL with the build date told crawlers that all pages
+    # changed at every build, and Google ignores a lastmod that is not accurate
     urls = [f"{data['base']}/"] + [f"{data['base']}/projects/{p['slug']}/" for p in data["projects"]]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
-        sm.append(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>")
+        sm.append(f"  <url><loc>{u}</loc></url>")
     sm.append("</urlset>")
     open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8", newline="\n").write("\n".join(sm) + "\n")
     print(f"{len(data['projects'])} project pages, tiles rewritten, sitemap with {len(urls)} URLs")
