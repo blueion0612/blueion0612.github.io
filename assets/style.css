@@ -1011,16 +1011,20 @@ h2::after { margin-left: 16px; }
 .tile:hover { border-color: var(--gold-dim); background: var(--bg-hover); text-decoration: none; }
 .tile:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 
-/* thumbnails are composed on the night card color, so they read as plates in both themes */
+/* thumbnails come in both palettes, each composed on its theme's card color */
 .tile-thumb {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 8 / 5;
   object-fit: cover;
-  background: #12140f;
+  background: var(--bg-raise);
   border-bottom: 1px solid var(--line);
 }
+
+/* a themed image is a <picture>; take its box out so the <img> lays out as before */
+.tile picture,
+.project-figure picture { display: contents; }
 
 .tile-body {
   flex: 1;
@@ -1109,12 +1113,6 @@ h2::after { margin-left: 16px; }
   margin-top: 10px;
 }
 .project-figure-hero { margin-top: 48px; }
-
-/* figures ship in both palettes; the page shows the one that matches the theme.
-   (two classes, so these outrank the `.project-figure img { display: block }` above) */
-.project-figure .fig-day { display: none; }
-html[data-theme="day"] .project-figure .fig-day { display: block; }
-html[data-theme="day"] .project-figure .fig-night { display: none; }
 
 .figure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 14px; }
 .figure-grid .project-figure { margin: 0; }

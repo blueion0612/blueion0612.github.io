@@ -40,7 +40,7 @@ def tile(p, prefix=""):
     name = e(p["name"]) + (f' <span class="tile-sub">{e(p["subtitle"])}</span>' if p.get("subtitle") else "")
     return f"""      <li>
         <a class="tile" href="{prefix}projects/{p['slug']}/">
-          <img class="tile-thumb" src="{prefix}assets/projects/{p['slug']}.webp" width="800" height="500" loading="lazy" decoding="async" alt="">
+          {thumb_html(p['slug'], prefix)}
           <div class="tile-body">
             <h3 class="tile-title">{name}</h3>
             <p class="tile-blurb">{e(p['blurb'])}</p>
@@ -70,18 +70,59 @@ def dims(name):
         return f'width="{im.width}" height="{im.height}"'
 
 
+# Rendered widths, measured at every breakpoint: below 761 px a figure spans the page
+# less 66 px of frame and padding; up to 992 px the hero spans it less 138 px and a
+# gallery figure takes half of that; past 992 px both stop growing.
+HERO_SIZES = "(max-width: 760px) calc(100vw - 66px), (max-width: 992px) calc(100vw - 138px), 854px"
+GRID_SIZES = "(max-width: 760px) calc(100vw - 66px), (max-width: 992px) calc(50vw - 76px), 420px"
+
+
+def srcset(stem, prefix):
+    """srcset over <stem>.webp and the narrower copies site_thumbs.py wrote beside it."""
+    from PIL import Image
+    out = []
+    for name in (f"{stem}-700.webp", f"{stem}-1000.webp", f"{stem}.webp"):
+        path = os.path.join(ROOT, "assets", "projects", name)
+        if os.path.exists(path):
+            with Image.open(path) as im:
+                out.append(f"{prefix}assets/projects/{name} {im.width}w")
+    return ", ".join(out)
+
+
+def picture(light, dark, prefix, attrs, sizes=None):
+    """An image in the palette on screen, fetched once.
+
+    `light` and `dark` are file stems under assets/projects; `dark` may be None. With
+    `sizes`, each palette gets a srcset of its widths; without, the file is used as is.
+    The dark <source> matches a dark system, which is exactly when the site starts in
+    night, and site.js pins it to the theme actually shown, so the other palette's file
+    is never requested unless the reader switches themes."""
+    def files(stem):
+        if sizes:
+            return f'srcset="{srcset(stem, prefix)}" sizes="{sizes}"'
+        return f'srcset="{prefix}assets/projects/{stem}.webp"'
+    img_files = f' srcset="{srcset(light, prefix)}" sizes="{sizes}"' if sizes else ""
+    img = f'<img src="{prefix}assets/projects/{light}.webp"{img_files} {attrs}>'
+    if not dark:
+        return img
+    return f'<picture><source media="(prefers-color-scheme: dark)" {files(dark)} data-dark>{img}</picture>'
+
+
 def figure_html(fig, prefix, cls="project-figure", hero=False):
     # the hero is the largest thing above the fold, so it loads eagerly and first;
     # every other figure waits until it is near the viewport
     load = 'fetchpriority="high" decoding="async"' if hero else 'loading="lazy" decoding="async"'
-    light = f"{prefix}assets/projects/{fig['light']}"
-    if fig.get("dark"):
-        dark = f"{prefix}assets/projects/{fig['dark']}"
-        imgs = (f'<img class="fig-night" src="{dark}" alt="{e(fig["alt"])}" {dims(fig["dark"])} {load}>'
-                f'<img class="fig-day" src="{light}" alt="{e(fig["alt"])}" {dims(fig["light"])} {load}>')
-    else:
-        imgs = f'<img src="{light}" alt="{e(fig["alt"])}" {dims(fig["light"])} {load}>'
-    return f'<figure class="{cls}">{imgs}<figcaption>{e(fig["caption"])}</figcaption></figure>'
+    light = fig["light"][:-len(".webp")]
+    dark = fig["dark"][:-len(".webp")] if fig.get("dark") else None
+    attrs = f'alt="{e(fig["alt"])}" {dims(fig["light"])} {load}'
+    img = picture(light, dark, prefix, attrs, HERO_SIZES if hero else GRID_SIZES)
+    return f'<figure class="{cls}">{img}<figcaption>{e(fig["caption"])}</figcaption></figure>'
+
+
+def thumb_html(slug, prefix, load='loading="lazy" decoding="async"', cls="tile-thumb"):
+    """The 800 x 500 thumbnail, night plate by night and parchment plate by day."""
+    cls_attr = f'class="{cls}" ' if cls else ""
+    return picture(f"{slug}-day", slug, prefix, f'{cls_attr}width="800" height="500" {load} alt=""')
 
 
 def head(title, description, canonical, image, prefix):
@@ -185,8 +226,8 @@ def project_page(p, data, by_slug):
     if p.get("hero"):
         hero = figure_html(p["hero"], prefix, cls="project-figure project-figure-hero", hero=True)
     else:
-        hero = (f'<figure class="project-figure project-figure-hero"><img src="{prefix}assets/projects/{p["slug"]}.webp" '
-                f'alt="" width="800" height="500" fetchpriority="high" decoding="async">'
+        plate = thumb_html(p["slug"], prefix, load='fetchpriority="high" decoding="async"', cls=None)
+        hero = (f'<figure class="project-figure project-figure-hero">{plate}'
                 f'<figcaption>Private repository. The code and the results stay with the sponsor.</figcaption></figure>')
 
     sections = []
@@ -222,7 +263,7 @@ def project_page(p, data, by_slug):
     if rel:
         items = "\n".join(
             f'      <li><a class="tile tile-small" href="{prefix}projects/{r["slug"]}/">'
-            f'<img class="tile-thumb" src="{prefix}assets/projects/{r["slug"]}.webp" width="800" height="500" loading="lazy" decoding="async" alt="">'
+            f'{thumb_html(r["slug"], prefix)}'
             f'<div class="tile-body"><h3 class="tile-title">{e(r["name"])}</h3>'
             f'<div class="tile-meta"><span class="project-year">{e(r["year"])}</span></div></div></a></li>'
             for r in rel)
