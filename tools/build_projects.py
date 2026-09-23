@@ -152,9 +152,9 @@ def head(title, description, canonical, image, prefix):
   <link rel="icon" href="{prefix}favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">
 
-  <link rel="preload" href="{prefix}assets/fonts/besley-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{prefix}assets/fonts/besley-core.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{prefix}assets/fonts/ibmplexmono-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="{prefix}assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{prefix}assets/fonts/archivo-core.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{prefix}assets/style.css?v={CSS_VERSION}">
   <script>
     try {{

@@ -7,9 +7,15 @@
    ============================================================ */
 
 /* self-hosted type (SIL Open Font License, see fonts/OFL-*.txt) */
-@font-face { font-family: "Besley"; font-style: normal; font-weight: 700 800; font-display: swap; src: url("fonts/besley-var.woff2") format("woff2"); }
-@font-face { font-family: "Archivo"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("fonts/archivo-var.woff2") format("woff2"); }
-@font-face { font-family: "Archivo"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/archivo-italic-var.woff2") format("woff2"); }
+/* Besley and Archivo are split by _standards/site_fonts.py: the core file covers ASCII and
+   the marks English prose uses, the ext file the rest, fetched only by a page that needs it.
+   Rye and IBM Plex Mono are left whole: their licences reserve the font names. */
+@font-face { font-family: "Besley"; font-style: normal; font-weight: 700 800; font-display: swap; src: url("fonts/besley-core.woff2") format("woff2"); unicode-range: U+20-7E, U+A0, U+A9, U+B0-B2, U+B5, U+B7, U+D7, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2212; }
+@font-face { font-family: "Besley"; font-style: normal; font-weight: 700 800; font-display: swap; src: url("fonts/besley-ext.woff2") format("woff2"); unicode-range: U+0, U+D, U+A1-A8, U+AA-AF, U+B3-B4, U+B6, U+B8-D6, U+D8-FF, U+131, U+152-153, U+2C6, U+2DA, U+2DC, U+300-301, U+303-304, U+308, U+323, U+2000, U+2002, U+2009, U+200B, U+201A, U+201E, U+2039-203A, U+2044, U+20AC, U+2215; }
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("fonts/archivo-core.woff2") format("woff2"); unicode-range: U+20-7E, U+A0, U+A9, U+B0-B2, U+B5, U+B7, U+D7, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2212; }
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("fonts/archivo-ext.woff2") format("woff2"); unicode-range: U+D, U+A1-A8, U+AA-AF, U+B3-B4, U+B6, U+B8-D6, U+D8-FF, U+102, U+131, U+152-153, U+2BC, U+2C6, U+2DA, U+2DC, U+300-301, U+303-304, U+308-309, U+323, U+2009, U+201A, U+201E, U+2039-203A, U+2044, U+20AC, U+2122, U+2191, U+2193, U+2215, U+FEFF; }
+@font-face { font-family: "Archivo"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/archivo-italic-core.woff2") format("woff2"); unicode-range: U+20-7E, U+A0, U+A9, U+B0-B2, U+B5, U+B7, U+D7, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2212; }
+@font-face { font-family: "Archivo"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/archivo-italic-ext.woff2") format("woff2"); unicode-range: U+D, U+A1-A8, U+AA-AF, U+B3-B4, U+B6, U+B8-D6, U+D8-FF, U+102, U+131, U+152-153, U+2BC, U+2C6, U+2DA, U+2DC, U+300-301, U+303-304, U+308-309, U+323, U+2009, U+201A, U+201E, U+2039-203A, U+2044, U+20AC, U+2122, U+2191, U+2193, U+2215, U+FEFF; }
 @font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/ibmplexmono-400.woff2") format("woff2"); }
 @font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/ibmplexmono-500.woff2") format("woff2"); }
 @font-face { font-family: "Rye"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/rye-400.woff2") format("woff2"); }
