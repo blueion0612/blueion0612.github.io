@@ -63,5 +63,5 @@ Nothing translucent may sit over the page, and that includes a layer bound to
 the first screen, because it scrolls up into view with the page. The vignette was
 removed for this after two attempts (fixed, it washed the bottom of every screen;
 bound to the first screen, it swept a hard-edged band up the screen), and the
-sticky nav is opaque. The film grain stays: it is uniform and changes no pixel by
-more than 4/255.
+sticky nav is opaque. The film grain stays: it is uniform noise, at most 7/255 on
+any pixel and under 4/255 averaged over any row, with no edge anywhere.
