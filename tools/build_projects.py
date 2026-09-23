@@ -170,6 +170,7 @@ def head(title, description, canonical, image, prefix):
 
 def nav(prefix):
     links = "\n".join(f'      <a href="{prefix}#{k}">{k.capitalize()}</a>' for k in NAV_LINKS)
+    menu_links = "\n".join(f'        <a href="{prefix}#{k}">{k.capitalize()}</a>' for k in NAV_LINKS)
     home = prefix if prefix else "./"
     return f"""<a class="skip-link" href="#top">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
@@ -183,6 +184,12 @@ def nav(prefix):
     <div class="nav-links">
 {links}
     </div>
+    <details class="nav-menu">
+      <summary>Menu</summary>
+      <div class="nav-menu-panel">
+{menu_links}
+      </div>
+    </details>
     <button class="theme-toggle" type="button" aria-label="Switch to day mode">&#9728;</button>
   </div>
 </nav>

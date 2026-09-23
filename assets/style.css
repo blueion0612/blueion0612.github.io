@@ -268,10 +268,71 @@ a:focus-visible,
   font-size: 0.9rem;
   line-height: 1;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   transition: border-color 0.18s ease, color 0.18s ease;
 }
 .theme-toggle:hover { border-color: var(--green); color: var(--ink); }
 .theme-toggle:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+
+/* the section menu for screens too narrow for the links; hidden where they fit */
+.nav-menu { display: none; }
+.nav-menu > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 30px;
+  padding: 0 11px 0 12px;
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+.nav-menu > summary::-webkit-details-marker { display: none; }
+/* chevron drawn from two borders, so it does not depend on a glyph */
+.nav-menu > summary::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+.nav-menu[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
+/* hover only where there is a pointer that hovers: on a phone it would stick after a tap */
+@media (hover: hover) {
+  .nav-menu > summary:hover { border-color: var(--green); color: var(--ink); }
+}
+.nav-menu[open] > summary { border-color: var(--green); color: var(--ink); }
+.nav-menu > summary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.nav-menu-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: grid;
+  padding: 4px 0 8px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line-strong);
+}
+.nav-menu-panel a {
+  padding: 13px 24px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.nav-menu-panel a + a { border-top: 1px solid var(--line-soft); }
+.nav-menu-panel a:hover { color: var(--ink); text-decoration: none; }
 
 /* ------------------------------------------------------------ layout */
 
@@ -1193,15 +1254,15 @@ footer {
 
 /* stack the nav before its link row starts wrapping raggedly */
 @media (max-width: 880px) {
-  .nav-inner { height: auto; padding: 12px 20px; flex-direction: column; align-items: stretch; gap: 10px; }
-  .nav-links { width: 100%; gap: 10px 14px; justify-content: center; margin-left: 0; }
-  .theme-toggle { position: absolute; top: 10px; right: 16px; width: 28px; height: 28px; }
-  section { scroll-margin-top: 130px; }
+  /* one row, 52 px: the brand, then the section menu and the theme toggle. The links
+     wrapped to three rows here, 101 px that stayed on screen for the whole page. */
+  .nav-inner { height: 52px; padding: 0 16px; gap: 10px; }
+  .nav-links { display: none; }
+  .nav-menu { display: block; margin-left: auto; }
+  section { scroll-margin-top: 72px; }
 }
 
 @media (max-width: 760px) {
-  .nav-links a { font-size: 0.64rem; }
-
   main {
     margin: 14px 10px 0;
     padding: 0 22px;
@@ -1214,7 +1275,7 @@ footer {
   .portrait { width: 156px; height: 187px; margin-bottom: 26px; }
   .portrait-mono { font-size: 2rem; }
 
-  section { margin: 76px 0; scroll-margin-top: 130px; }
+  section { margin: 76px 0; scroll-margin-top: 72px; }
 
   .section-head { gap: 14px; }
   h2 { font-size: 1.08rem; }
@@ -1257,8 +1318,8 @@ footer {
 
 /* narrow phones: tighten the nav row so seven links wrap evenly */
 @media (max-width: 430px) {
-  .nav-links { gap: 8px 12px; }
-  .nav-links a { font-size: 0.6rem; letter-spacing: 0.08em; }
+  .nav-brand { gap: 11px; }
+  .nav-name { font-size: 0.88rem; letter-spacing: 0.03em; }
 }
 
 /* very narrow phones: let poster-band titles wrap instead of clipping */
@@ -1271,7 +1332,7 @@ footer {
 
 @media (prefers-reduced-motion: reduce) {
   .live-dot { animation: none; }
-  .card, .project-card, .tile, .btn, .mark, .pointer, .skip-link { transition: none; }
+  .card, .project-card, .tile, .btn, .mark, .pointer, .skip-link, .nav-menu > summary { transition: none; }
 }
 
 /* ------------------------------------------------------------ print */
