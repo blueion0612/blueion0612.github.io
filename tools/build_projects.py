@@ -125,7 +125,7 @@ def thumb_html(slug, prefix, load='loading="lazy" decoding="async"', cls="tile-t
     return picture(f"{slug}-day", slug, prefix, f'{cls_attr}width="800" height="500" {load} alt=""')
 
 
-def head(title, description, canonical, image, prefix):
+def head(title, description, canonical, og, prefix):
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,9 +143,11 @@ def head(title, description, canonical, image, prefix):
   <meta property="og:title" content="{e(title)}">
   <meta property="og:description" content="{e(description)}">
   <meta property="og:url" content="{canonical}">
-  <meta property="og:image" content="{image}">
-  <meta property="og:image:width" content="800">
-  <meta property="og:image:height" content="500">
+  <meta property="og:image" content="{og['url']}">
+  <meta property="og:image:type" content="{og['type']}">
+  <meta property="og:image:width" content="{og['w']}">
+  <meta property="og:image:height" content="{og['h']}">
+  <meta property="og:image:alt" content="{e(og['alt'])}">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml">
@@ -217,7 +219,13 @@ def project_page(p, data, by_slug):
     base = data["base"]
     canonical = f"{base}/projects/{p['slug']}/"
     title = f"{p['name']} — Yuhyeon Lee"
-    image = f"{base}/assets/projects/{p['slug']}.webp"
+    # the share card from _standards/site_og.py, or the thumbnail until one is built
+    if os.path.exists(os.path.join(ROOT, "assets", "projects", "og", p["slug"] + ".png")):
+        og = {"url": f"{base}/assets/projects/og/{p['slug']}.png", "type": "image/png", "w": 1200, "h": 630,
+              "alt": f"{p['name']} — {p['blurb']}"}
+    else:
+        og = {"url": f"{base}/assets/projects/{p['slug']}.webp", "type": "image/webp", "w": 800, "h": 500,
+              "alt": p["name"]}
     group_label = next(g["label"] for g in data["groups"] if g["key"] == p["group"])
     vis_cls = "vis-public" if p["visibility"] == "Public" else "vis-private"
 
@@ -316,7 +324,7 @@ def project_page(p, data, by_slug):
 </main>
 
 {footer(prefix)}"""
-    return head(title, p["blurb"], canonical, image, prefix) + body
+    return head(title, p["blurb"], canonical, og, prefix) + body
 
 
 def main():
