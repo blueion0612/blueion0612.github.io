@@ -10,14 +10,14 @@ grid into `index.html`, one page per project under `projects/<slug>/`, and
 
 **Design**: a wanted poster. Besley carries the name, Rye the western bands and
 section keys, IBM Plex Mono the readouts and Archivo the body text. One
-phosphor-green accent, brass for the stamps and the monogram, brass tacks and a
-vignette over the whole page. Night is matte black with film grain, day is
-parchment. First visit follows the OS color scheme; the toggle in the nav overrides
-it and remembers the choice. Fonts are self-hosted under `assets/fonts/` (SIL OFL).
+phosphor-green accent, and brass for the stamps, the monogram and the tacks that
+pin the frame. Night is matte black with film grain, day is parchment. First
+visit follows the OS color scheme; the toggle in the nav overrides it and
+remembers the choice. Fonts are self-hosted under `assets/fonts/` (SIL OFL).
 
 When editing `assets/style.css`, bump the `?v=` query on its `<link>` in
 `index.html`, `404.html` and `CSS_VERSION` in `tools/build_projects.py`, then
-rebuild, to bust the Pages CDN cache. It is currently at `v=25`.
+rebuild, to bust the Pages CDN cache. It is currently at `v=26`.
 
 ## Structure
 
@@ -59,6 +59,9 @@ There is no scroll-reveal effect and none should be added: the old
 IntersectionObserver used a 0.12 threshold, which a section taller than about
 eight viewports can never reach, so the Projects section stayed invisible on
 phones.
-Nothing translucent may sit over scrolling content: the vignette is bound to the
-first screen and the sticky nav is opaque, because a fixed wash and a
-see-through bar both read as haze while the page moves under them.
+Nothing translucent may sit over the page, and that includes a layer bound to
+the first screen, because it scrolls up into view with the page. The vignette was
+removed for this after two attempts (fixed, it washed the bottom of every screen;
+bound to the first screen, it swept a hard-edged band up the screen), and the
+sticky nav is opaque. The film grain stays: it is uniform and changes no pixel by
+more than 4/255.

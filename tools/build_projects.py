@@ -14,7 +14,7 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "projects", "projects.json")
-CSS_VERSION = "25"
+CSS_VERSION = "26"
 
 NAV_LINKS = ["about", "research", "education", "publications", "awards", "projects", "contact"]
 
@@ -132,7 +132,6 @@ def nav(prefix):
     home = prefix if prefix else "./"
     return f"""<a class="skip-link" href="#top">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
-<div class="vignette" aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Primary">
   <div class="nav-inner">
