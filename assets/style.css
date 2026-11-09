@@ -1252,6 +1252,18 @@ footer {
   main { margin-left: 16px; margin-right: 16px; }
 }
 
+/* seven hero buttons: once one row no longer fits, wrap 4/3 (3/2/2 on phones)
+   so no button is left alone on a row */
+@media (max-width: 940px) {
+  .hero .hero-links { max-width: 470px; margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 480px) {
+  .hero .hero-links { max-width: 350px; }
+}
+@media (max-width: 340px) {
+  .hero .hero-links .btn { padding-left: 14px; padding-right: 14px; }
+}
+
 /* stack the nav before its link row starts wrapping raggedly */
 @media (max-width: 880px) {
   /* one row, 52 px: the brand, then the section menu and the theme toggle. The links

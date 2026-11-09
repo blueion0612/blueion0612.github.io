@@ -13,7 +13,7 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "projects", "projects.json")
-CSS_VERSION = "27"
+CSS_VERSION = "28"
 
 NAV_LINKS = ["about", "research", "education", "publications", "awards", "projects", "contact"]
 

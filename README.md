@@ -17,7 +17,7 @@ remembers the choice. Fonts are self-hosted under `assets/fonts/` (SIL OFL).
 
 When editing `assets/style.css`, bump the `?v=` query on its `<link>` in
 `index.html`, `404.html` and `CSS_VERSION` in `tools/build_projects.py`, then
-rebuild, to bust the Pages CDN cache. It is currently at `v=27`.
+rebuild, to bust the Pages CDN cache. It is currently at `v=28`.
 
 ## Structure
 
@@ -51,13 +51,18 @@ contact.
 | Awards and experience | Add an `<li>` to `.awards`; sub-points go in a nested `ul.award-points` inside the `div.award-body` |
 | New project | Add an entry to `projects/projects.json`, add its images to `_standards/site_thumbs.py`, run it and `_standards/site_og.py`, then run `python tools/build_projects.py` (it reads which image files exist) |
 | Project links | `github`, `project_page` and `paper` in the JSON; a null is simply not rendered, so a dedicated project page or a paper appears as soon as its URL is filled in |
-| Google Scholar | Add a `.btn` to the hero links once a paper is published |
+| Identity links | Three places: a `.btn` in the hero links, a `.fact` row in Contact and the JSON-LD `sameAs`. Hero order: Email, GitHub, ORCID, Scholar, LinkedIn, Instagram, MINT Lab |
 | Photo | Replace `assets/portrait.jpg` |
 
 Rules that keep the layout intact: scope any rule that styles a bare descendant
 `li` to direct children (`.awards > li`) before nesting a list inside it, and
 check the render at 1200 px and 500 px in **both** themes after a CSS change.
 Day-theme chip inks are tuned to 4.6:1 on the darkest day surface; keep them there.
+The front-page hero holds seven buttons: below 940 px and 480 px `.hero .hero-links`
+is capped at 470 px and 350 px so they wrap 4/3 and 3/2/2 and none is left alone on
+a row. Adding or renaming a button means re-measuring those caps at real phone widths
+(an iframe of the exact width works; headless Chrome on Windows will not open a
+window narrower than 500 px).
 There is no scroll-reveal effect and none should be added: the old
 IntersectionObserver used a 0.12 threshold, which a section taller than about
 eight viewports can never reach, so the Projects section stayed invisible on
